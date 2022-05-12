@@ -2,6 +2,8 @@ declare module "react-umg" {
     import * as React from 'react';
     import * as ue from 'ue';
     type TArray<T> = ue.TArray<T>;
+    type TSet<T> = ue.TSet<T>;
+    type TMap<TKey, TValue> = ue.TMap<TKey, TValue>;
 
     interface PanelSlot {
     }
@@ -227,6 +229,7 @@ declare module "react-umg" {
         ColorAndOpacityDelegate?: () => LinearColor;
         ForegroundColor?: SlateColor;
         ForegroundColorDelegate?: () => SlateColor;
+        OnVisibilityChanged?: (InVisibility: ESlateVisibility) => void;
         Padding?: Margin;
         NamedSlotBindings?: TArray<NamedSlotBinding>;
         DesignTimeSize?: Vector2D;
@@ -238,7 +241,6 @@ declare module "react-umg" {
         bStopAction?: boolean;
         bHasScriptImplementedTick?: boolean;
         bHasScriptImplementedPaint?: boolean;
-        bCookedWidgetTree?: boolean;
         TickFrequency?: EWidgetTickFrequency;
         AnimationCallbacks?: TArray<AnimationEventBinding>;
     }
@@ -406,6 +408,9 @@ declare module "react-umg" {
         HorizontalAlignment?: EHorizontalAlignment;
         Padding?: Margin;
         BorderBackgroundColor?: SlateColor;
+        ClickMethod?: EButtonClickMethod;
+        TouchMethod?: EButtonTouchMethod;
+        PressMethod?: EButtonPressMethod;
         IsFocusable?: boolean;
         OnCheckStateChanged?: (bIsChecked: boolean) => void;
     }
@@ -431,6 +436,8 @@ declare module "react-umg" {
     interface ComboButtonStyle extends SlateWidgetStyle {
         ButtonStyle?: ButtonStyle;
         DownArrowImage?: SlateBrush;
+        ShadowOffset?: Vector2D;
+        ShadowColorAndOpacity?: LinearColor;
         MenuBorderBrush?: SlateBrush;
         MenuBorderPadding?: Margin;
     }
@@ -474,6 +481,7 @@ declare module "react-umg" {
         OutlineSettings?: FontOutlineSettings;
         TypefaceFontName?: string;
         Size?: number;
+        LetterSpacing?: number;
         FontName?: string;
         Hinting?: EFontHinting;
     }
@@ -498,6 +506,13 @@ declare module "react-umg" {
     class ComboBoxString extends React.Component<ComboBoxStringProps> {}
 
     type EDynamicBoxType = ue.EDynamicBoxType;
+    interface RadialBoxSettings {
+        StartingAngle?: number;
+        bDistributeItemsEvenly?: boolean;
+        AngleBetweenItems?: number;
+        SectorCentralAngle?: number;
+    }
+
     interface UserWidgetPool {
     }
 
@@ -509,6 +524,7 @@ declare module "react-umg" {
         EntryHorizontalAlignment?: EHorizontalAlignment;
         EntryVerticalAlignment?: EVerticalAlignment;
         MaxElementSize?: number;
+        RadialBoxSettings?: RadialBoxSettings;
         EntryWidgetPool?: UserWidgetPool;
     }
 
@@ -533,6 +549,7 @@ declare module "react-umg" {
         bEnableAutocorrect?: boolean;
     }
 
+    type EVirtualKeyboardTrigger = ue.EVirtualKeyboardTrigger;
     type EVirtualKeyboardDismissAction = ue.EVirtualKeyboardDismissAction;
     type ETextJustify = ue.ETextJustify;
     type ETextShapingMethod = ue.ETextShapingMethod;
@@ -564,6 +581,7 @@ declare module "react-umg" {
         AllowContextMenu?: boolean;
         KeyboardType?: EVirtualKeyboardType;
         VirtualKeyboardOptions?: VirtualKeyboardOptions;
+        VirtualKeyboardTrigger?: EVirtualKeyboardTrigger;
         VirtualKeyboardDismissAction?: EVirtualKeyboardDismissAction;
         Justification?: ETextJustify;
         ShapedTextOptions?: ShapedTextOptions;
@@ -622,6 +640,7 @@ declare module "react-umg" {
         AllowContextMenu?: boolean;
         KeyboardType?: EVirtualKeyboardType;
         VirtualKeyboardOptions?: VirtualKeyboardOptions;
+        VirtualKeyboardTrigger?: EVirtualKeyboardTrigger;
         VirtualKeyboardDismissAction?: EVirtualKeyboardDismissAction;
         Justification?: ETextJustify;
         ShapedTextOptions?: ShapedTextOptions;
@@ -847,6 +866,7 @@ declare module "react-umg" {
     class ProgressBar extends React.Component<ProgressBarProps> {}
 
     interface RetainerBoxProps extends ContentWidgetProps {
+        bRetainRender?: boolean;
         RenderOnInvalidation?: boolean;
         RenderOnPhase?: boolean;
         Phase?: number;
@@ -856,11 +876,14 @@ declare module "react-umg" {
 
     class RetainerBox extends React.Component<RetainerBoxProps> {}
 
+    type ETextTransformPolicy = ue.ETextTransformPolicy;
     interface RichTextBlockProps extends TextLayoutWidgetProps {
         Text?: string;
         bOverrideDefaultStyle?: boolean;
         DefaultTextStyleOverride?: TextBlockStyle;
         MinDesiredWidth?: number;
+        TextTransformPolicy?: ETextTransformPolicy;
+        DefaultTextStyle?: TextBlockStyle;
     }
 
     class RichTextBlock extends React.Component<RichTextBlockProps> {}
@@ -904,6 +927,7 @@ declare module "react-umg" {
     }
 
     type EDescendantScrollDestination = ue.EDescendantScrollDestination;
+    type EScrollWhenFocusChanges = ue.EScrollWhenFocusChanges;
     interface ScrollBoxProps extends PanelWidgetProps {
         WidgetStyle?: ScrollBoxStyle;
         WidgetBarStyle?: ScrollBarStyle;
@@ -918,6 +942,7 @@ declare module "react-umg" {
         bAnimateWheelScrolling?: boolean;
         NavigationDestination?: EDescendantScrollDestination;
         NavigationScrollPadding?: number;
+        ScrollWhenFocusChanges?: EScrollWhenFocusChanges;
         bAllowRightClickDragScrolling?: boolean;
         WheelScrollMultiplier?: number;
         OnUserScrolled?: (CurrentOffset: number) => void;
@@ -1000,6 +1025,9 @@ declare module "react-umg" {
         Value?: number;
         ValueDelegate?: () => number;
         WidgetStyle?: SpinBoxStyle;
+        MinFractionalDigits?: number;
+        MaxFractionalDigits?: number;
+        bAlwaysUsesDeltaSnap?: boolean;
         Delta?: number;
         SliderExponent?: number;
         Font?: SlateFontInfo;
@@ -1037,6 +1065,7 @@ declare module "react-umg" {
         MinDesiredWidth?: number;
         bWrapWithInvalidationPanel?: boolean;
         bAutoWrapText?: boolean;
+        TextTransformPolicy?: ETextTransformPolicy;
         bSimpleTextMode?: boolean;
     }
 
@@ -1102,7 +1131,10 @@ declare module "react-umg" {
     interface WrapBoxProps extends PanelWidgetProps {
         InnerSlotPadding?: Vector2D;
         WrapWidth?: number;
+        WrapSize?: number;
         bExplicitWrapWidth?: boolean;
+        bExplicitWrapSize?: boolean;
+        Orientation?: EOrientation;
     }
 
     class WrapBox extends React.Component<WrapBoxProps> {}
@@ -1153,6 +1185,11 @@ declare module "react-umg" {
 
     class LevelSequenceBurnIn extends React.Component<LevelSequenceBurnInProps> {}
 
+    interface SoundEffectPresetUserWidgetProps extends UserWidgetProps {
+    }
+
+    class SoundEffectPresetUserWidget extends React.Component<SoundEffectPresetUserWidgetProps> {}
+
     interface SoftObjectPath {
         AssetPathName?: string;
         SubPathString?: string;
@@ -1198,6 +1235,228 @@ declare module "react-umg" {
 
     class EditorUtilityWidget extends React.Component<EditorUtilityWidgetProps> {}
 
+    interface JavascriptSlateWidget {
+    }
+
+    interface JavascriptComboButtonProps extends ContentWidgetProps {
+        ComboButtonStyle?: ComboButtonStyle;
+        ButtonStyle?: ButtonStyle;
+        OnGetMenuContent?: () => JavascriptSlateWidget;
+        OnMenuOpenChanged?: (Value: boolean) => void;
+        OnComboBoxOpened?: () => void;
+        bIsFocusable?: boolean;
+        bHasDownArrow?: boolean;
+        ForegroundColor?: SlateColor;
+        ButtonColorAndOpacity?: SlateColor;
+        ContentPadding?: Margin;
+        MenuPlacement?: EMenuPlacement;
+        HAlign?: EHorizontalAlignment;
+        VAlign?: EVerticalAlignment;
+    }
+
+    class JavascriptComboButton extends React.Component<JavascriptComboButtonProps> {}
+
+    interface JavascriptTextProperty {
+        Key?: string;
+        Namespace?: string;
+        Value?: string;
+        TableId?: string;
+    }
+
+    interface JavascriptFTextBoxProps extends WidgetProps {
+        OnIsReadOnly?: () => boolean;
+        OnIsValidText?: (TextValue: string) => string;
+        OnGetDefaultValue?: () => JavascriptTextProperty;
+        OnTextCommitted?: (TextProperty: JavascriptTextProperty) => void;
+        WidgetStyle?: EditableTextBoxStyle;
+        WrapTextAt?: number;
+        AutoWrapText?: boolean;
+    }
+
+    class JavascriptFTextBox extends React.Component<JavascriptFTextBoxProps> {}
+
+    interface JavascriptGameViewportProps extends ContentWidgetProps {
+        BackgroundColor?: LinearColor;
+    }
+
+    class JavascriptGameViewport extends React.Component<JavascriptGameViewportProps> {}
+
+    interface JavascriptIntSpinBoxProps extends WidgetProps {
+        Value?: number;
+        ValueDelegate?: () => number;
+        WidgetStyle?: SpinBoxStyle;
+        Delta?: number;
+        SliderExponent?: number;
+        Font?: SlateFontInfo;
+        Justification?: ETextJustify;
+        MinDesiredWidth?: number;
+        ClearKeyboardFocusOnCommit?: boolean;
+        SelectAllTextOnCommit?: boolean;
+        ForegroundColor?: SlateColor;
+        OnValueChanged?: (InValue: number) => void;
+        OnValueCommitted?: (InValue: number, CommitMethod: ETextCommit) => void;
+        OnBeginSliderMovement?: () => void;
+        OnEndSliderMovement?: (InValue: number) => void;
+        bOverride_MinValue?: boolean;
+        bOverride_MaxValue?: boolean;
+        bOverride_MinSliderValue?: boolean;
+        bOverride_MaxSliderValue?: boolean;
+        MinValue?: number;
+        MaxValue?: number;
+        MinSliderValue?: number;
+        MaxSliderValue?: number;
+    }
+
+    class JavascriptIntSpinBox extends React.Component<JavascriptIntSpinBoxProps> {}
+
+    interface TableColumnHeaderStyle extends SlateWidgetStyle {
+        SortPrimaryAscendingImage?: SlateBrush;
+        SortPrimaryDescendingImage?: SlateBrush;
+        SortSecondaryAscendingImage?: SlateBrush;
+        SortSecondaryDescendingImage?: SlateBrush;
+        NormalBrush?: SlateBrush;
+        HoveredBrush?: SlateBrush;
+        MenuDropdownImage?: SlateBrush;
+        MenuDropdownNormalBorderBrush?: SlateBrush;
+        MenuDropdownHoveredBorderBrush?: SlateBrush;
+    }
+
+    interface SplitterStyle extends SlateWidgetStyle {
+        HandleNormalBrush?: SlateBrush;
+        HandleHighlightBrush?: SlateBrush;
+    }
+
+    interface HeaderRowStyle extends SlateWidgetStyle {
+        ColumnStyle?: TableColumnHeaderStyle;
+        LastColumnStyle?: TableColumnHeaderStyle;
+        ColumnSplitterStyle?: SplitterStyle;
+        BackgroundBrush?: SlateBrush;
+        ForegroundColor?: SlateColor;
+    }
+
+    interface JavascriptColumn {
+        Id?: string;
+        Width?: number;
+    }
+
+    interface JavascriptTreeViewProps extends ListViewBaseProps {
+        HeaderRowStyle?: HeaderRowStyle;
+        TableRowStyle?: TableRowStyle;
+        ScrollBarStyle?: ScrollBarStyle;
+        SelectionMode?: ESelectionMode;
+        Columns?: TArray<JavascriptColumn>;
+    }
+
+    class JavascriptTreeView extends React.Component<JavascriptTreeViewProps> {}
+
+    interface JavascriptListViewProps extends JavascriptTreeViewProps {
+        ItemHeight?: number;
+    }
+
+    class JavascriptListView extends React.Component<JavascriptListViewProps> {}
+
+    interface JavascriptTextLayout {
+    }
+
+    interface JavascriptMultiLineEditableTextBoxProps extends MultiLineEditableTextBoxProps {
+        OnVScrollBarUserScrolled?: (Offset: number) => void;
+        GetTextDelegate?: (TextLayout: JavascriptTextLayout) => string;
+        SetTextDelegate?: (InText: string, TextLayout: JavascriptTextLayout) => void;
+        bAlwaysShowScrollbars?: boolean;
+    }
+
+    class JavascriptMultiLineEditableTextBox extends React.Component<JavascriptMultiLineEditableTextBoxProps> {}
+
+    interface JavascriptSearchBoxProps extends WidgetProps {
+        OnTextChanged?: (Text: string) => void;
+        OnTextCommitted?: (Text: string, CommitMethod: ETextCommit) => void;
+        Text?: string;
+        TextDelegate?: () => string;
+        HintText?: string;
+        HintTextDelegate?: () => string;
+    }
+
+    class JavascriptSearchBox extends React.Component<JavascriptSearchBoxProps> {}
+
+    interface JavascriptTextBlockProps extends TextBlockProps {
+        HighlightText?: string;
+        HighlightTextDelegate?: () => string;
+    }
+
+    class JavascriptTextBlock extends React.Component<JavascriptTextBlockProps> {}
+
+    interface JavascriptTileViewProps extends TileViewProps {
+    }
+
+    class JavascriptTileView extends React.Component<JavascriptTileViewProps> {}
+
+    interface JavascriptUserObjectListEntryProps extends UserWidgetProps {
+    }
+
+    class JavascriptUserObjectListEntry extends React.Component<JavascriptUserObjectListEntryProps> {}
+
+    interface JavascriptWidgetProps extends UserWidgetProps {
+        OnInputActionEvent?: (ActionName: string) => void;
+        OnReleaseActionEvent?: (ActionName: string) => void;
+        OnInputAxisEvent?: (Axis: number, AxisName: string) => void;
+    }
+
+    class JavascriptWidget extends React.Component<JavascriptWidgetProps> {}
+
+    type EJavascriptWindowType = ue.EJavascriptWindowType;
+    interface WindowStyle extends SlateWidgetStyle {
+        MinimizeButtonStyle?: ButtonStyle;
+        MaximizeButtonStyle?: ButtonStyle;
+        RestoreButtonStyle?: ButtonStyle;
+        CloseButtonStyle?: ButtonStyle;
+        TitleTextStyle?: TextBlockStyle;
+        ActiveTitleBrush?: SlateBrush;
+        InactiveTitleBrush?: SlateBrush;
+        FlashTitleBrush?: SlateBrush;
+        BackgroundColor?: SlateColor;
+        OutlineBrush?: SlateBrush;
+        OutlineColor?: SlateColor;
+        BorderBrush?: SlateBrush;
+        BackgroundBrush?: SlateBrush;
+        ChildBackgroundBrush?: SlateBrush;
+    }
+
+    type EJavascriptAutoCenter = ue.EJavascriptAutoCenter;
+    type EJavascriptWindowTransparency = ue.EJavascriptWindowTransparency;
+    type EJavascriptSizingRule = ue.EJavascriptSizingRule;
+    type EJavascriptWindowActivationPolicy = ue.EJavascriptWindowActivationPolicy;
+    interface JavascriptWindowProps extends ContentWidgetProps {
+        Type?: EJavascriptWindowType;
+        Style?: WindowStyle;
+        Title?: string;
+        bDragAnywhere?: boolean;
+        AutoCenter?: EJavascriptAutoCenter;
+        ScreenPosition?: Vector2D;
+        ClientSize?: Vector2D;
+        SupportsTransparency?: EJavascriptWindowTransparency;
+        InitialOpacity?: number;
+        IsInitiallyMaximized?: boolean;
+        SizingRule?: EJavascriptSizingRule;
+        IsPopupWindow?: boolean;
+        FocusWhenFirstShown?: boolean;
+        ActivateWhenFirstShown?: boolean;
+        UseOSWindowBorder?: boolean;
+        HasCloseButton?: boolean;
+        SupportsMaximize?: boolean;
+        SupportsMinimize?: boolean;
+        CreateTitleBar?: boolean;
+        SaneWindowPlacement?: boolean;
+        LayoutBorder?: Margin;
+        UserResizeBorder?: Margin;
+        OnWindowClosed?: () => void;
+        OnWindowDeactivated?: () => void;
+        IsTopmostWindow?: boolean;
+        AdjustInitialSizeAndPositionForDPIScale?: boolean;
+        ActivationPolicy?: EJavascriptWindowActivationPolicy;
+    }
+
+    class JavascriptWindow extends React.Component<JavascriptWindowProps> {}
+
     interface ReactWidgetProps extends UserWidgetProps {
     }
 
@@ -1209,6 +1468,212 @@ declare module "react-umg" {
     }
 
     class TextureImage extends React.Component<TextureImageProps> {}
+
+    interface TakeRecorderOverlayWidgetProps extends UserWidgetProps {
+    }
+
+    class TakeRecorderOverlayWidget extends React.Component<TakeRecorderOverlayWidgetProps> {}
+
+    interface Synth2DSliderStyle extends SlateWidgetStyle {
+        NormalThumbImage?: SlateBrush;
+        DisabledThumbImage?: SlateBrush;
+        NormalBarImage?: SlateBrush;
+        DisabledBarImage?: SlateBrush;
+        BackgroundImage?: SlateBrush;
+        BarThickness?: number;
+    }
+
+    interface Synth2DSliderProps extends WidgetProps {
+        ValueX?: number;
+        ValueY?: number;
+        ValueXDelegate?: () => number;
+        ValueYDelegate?: () => number;
+        WidgetStyle?: Synth2DSliderStyle;
+        SliderHandleColor?: LinearColor;
+        IndentHandle?: boolean;
+        Locked?: boolean;
+        StepSize?: number;
+        IsFocusable?: boolean;
+        OnMouseCaptureBegin?: () => void;
+        OnMouseCaptureEnd?: () => void;
+        OnControllerCaptureBegin?: () => void;
+        OnControllerCaptureEnd?: () => void;
+        OnValueChangedX?: (Value: number) => void;
+        OnValueChangedY?: (Value: number) => void;
+    }
+
+    class Synth2DSlider extends React.Component<Synth2DSliderProps> {}
+
+    type ESynthKnobSize = ue.ESynthKnobSize;
+    interface SynthKnobStyle extends SlateWidgetStyle {
+        LargeKnob?: SlateBrush;
+        LargeKnobOverlay?: SlateBrush;
+        MediumKnob?: SlateBrush;
+        MediumKnobOverlay?: SlateBrush;
+        MinValueAngle?: number;
+        MaxValueAngle?: number;
+        KnobSize?: ESynthKnobSize;
+    }
+
+    interface SynthKnobProps extends WidgetProps {
+        Value?: number;
+        StepSize?: number;
+        MouseSpeed?: number;
+        MouseFineTuneSpeed?: number;
+        ShowTooltipInfo?: boolean;
+        ParameterName?: string;
+        ParameterUnits?: string;
+        ValueDelegate?: () => number;
+        WidgetStyle?: SynthKnobStyle;
+        Locked?: boolean;
+        IsFocusable?: boolean;
+        OnMouseCaptureBegin?: () => void;
+        OnMouseCaptureEnd?: () => void;
+        OnControllerCaptureBegin?: () => void;
+        OnControllerCaptureEnd?: () => void;
+        OnValueChanged?: (Value: number) => void;
+    }
+
+    class SynthKnob extends React.Component<SynthKnobProps> {}
+
+    interface JavascriptAssetPickerProps extends WidgetProps {
+        OnSetDefaultValue?: (Value: string) => void;
+        AllowedClasses?: string;
+    }
+
+    class JavascriptAssetPicker extends React.Component<JavascriptAssetPickerProps> {}
+
+    interface JavascriptClassViewerProps extends WidgetProps {
+        OnSetDefaultValue?: (Value: string) => void;
+    }
+
+    class JavascriptClassViewer extends React.Component<JavascriptClassViewerProps> {}
+
+    interface JavascriptColorPickerProps extends WidgetProps {
+        OnColorChanged?: (Color: LinearColor) => void;
+        SelectedColor?: LinearColor;
+    }
+
+    class JavascriptColorPicker extends React.Component<JavascriptColorPickerProps> {}
+
+    interface JavascriptCurveTableEditorProps extends WidgetProps {
+    }
+
+    class JavascriptCurveTableEditor extends React.Component<JavascriptCurveTableEditorProps> {}
+
+    interface JavascriptEditorTabManagerProps extends WidgetProps {
+        Layout?: string;
+    }
+
+    class JavascriptEditorTabManager extends React.Component<JavascriptEditorTabManagerProps> {}
+
+    interface JavascriptMenuBuilder {
+    }
+
+    interface JavascriptEditorToolbarProps extends WidgetProps {
+        OnHook?: () => JavascriptMenuBuilder;
+    }
+
+    class JavascriptEditorToolbar extends React.Component<JavascriptEditorToolbarProps> {}
+
+    interface JavascriptEditorViewportProps extends PanelWidgetProps {
+    }
+
+    class JavascriptEditorViewport extends React.Component<JavascriptEditorViewportProps> {}
+
+    interface JavascriptMultiBoxProps extends WidgetProps {
+    }
+
+    class JavascriptMultiBox extends React.Component<JavascriptMultiBoxProps> {}
+
+    type EPropertyEditorNameAreaSettings = ue.EPropertyEditorNameAreaSettings;
+    interface PropertyEditorProps extends WidgetProps {
+        OnChange?: (PropertyName: string, MemberPropertyName: string) => void;
+        bUpdateFromSelection?: boolean;
+        bLockable?: boolean;
+        bAllowSearch?: boolean;
+        bHideSelectionTip?: boolean;
+        bReadOnly?: boolean;
+        bEnablePropertyPath?: boolean;
+        NameAreaSettings?: EPropertyEditorNameAreaSettings;
+        ReadOnlyDelegate?: () => boolean;
+    }
+
+    class PropertyEditor extends React.Component<PropertyEditorProps> {}
+
+    interface JavascriptPropertyTableProps extends WidgetProps {
+        bUseCustomColumns?: boolean;
+    }
+
+    class JavascriptPropertyTable extends React.Component<JavascriptPropertyTableProps> {}
+
+    interface JavascriptScrubControlPanelProps extends WidgetProps {
+        OnClick_Forward_Delegate?: () => void;
+        OnClick_Forward_Step_Delegate?: () => void;
+        OnClick_Forward_End_Delegate?: () => void;
+        OnClick_Backward_Delegate?: () => void;
+        OnClick_Backward_Step_Delegate?: () => void;
+        OnClick_Backward_End_Delegate?: () => void;
+        OnClick_ToggleLoop_Delegate?: () => void;
+        SetPlaybackPosition_Delegate?: () => void;
+    }
+
+    class JavascriptScrubControlPanel extends React.Component<JavascriptScrubControlPanelProps> {}
+
+    interface JavascriptWebBrowserProps extends WidgetProps {
+        OnUrlChanged?: (Text: string) => void;
+        OnBeforePopup?: (URL: string, Frame: string) => void;
+        bShowAddressBar?: boolean;
+        bShowControls?: boolean;
+        bSupportsThumbMouseButtonNavigation?: boolean;
+    }
+
+    class JavascriptWebBrowser extends React.Component<JavascriptWebBrowserProps> {}
+
+    interface JavascriptGraphEdCustomNodeWidgetProps extends WidgetProps {
+    }
+
+    class JavascriptGraphEdCustomNodeWidget extends React.Component<JavascriptGraphEdCustomNodeWidgetProps> {}
+
+    interface JavascriptEdGraphPin {
+    }
+
+    interface JavascriptGraphAppearanceInfo {
+        CornerImage?: SlateBrush;
+        CornerText?: string;
+        PIENotifyText?: string;
+        ReadOnlyText?: string;
+        InstructionText?: string;
+    }
+
+    interface JavascriptUICommandList {
+    }
+
+    interface JavascriptGraphEditorWidgetProps extends WidgetProps {
+        OnDisallowedPinConnection?: (A: JavascriptEdGraphPin, B: JavascriptEdGraphPin) => void;
+        OnSelectedNodesChanged?: (Set: TArray<Object>) => void;
+        OnInitialGraphPanelUpdated?: () => void;
+        AppearanceInfo?: JavascriptGraphAppearanceInfo;
+        CommandList?: JavascriptUICommandList;
+    }
+
+    class JavascriptGraphEditorWidget extends React.Component<JavascriptGraphEditorWidgetProps> {}
+
+    interface JavascriptGraphEdNodeWidgetProps extends WidgetProps {
+    }
+
+    class JavascriptGraphEdNodeWidget extends React.Component<JavascriptGraphEdNodeWidgetProps> {}
+
+    interface JavascriptGraphTextPropertyEditableTextBoxProps extends WidgetProps {
+        OnGetGraphPin?: () => JavascriptEdGraphPin;
+        OnGetDefaultValue?: () => JavascriptTextProperty;
+        OnTextCommitted?: (TextProperty: JavascriptTextProperty) => void;
+        WidgetStyle?: EditableTextBoxStyle;
+        WrapTextAt?: number;
+        AutoWrapText?: boolean;
+    }
+
+    class JavascriptGraphTextPropertyEditableTextBox extends React.Component<JavascriptGraphTextPropertyEditableTextBoxProps> {}
 
     interface TestWidgetBlueprint_CProps extends UserWidgetProps {
     }

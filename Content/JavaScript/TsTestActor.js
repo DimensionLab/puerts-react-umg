@@ -82,7 +82,7 @@ class TsTestActor extends UE.Actor {
     softClass;
 }
 __decorate([
-    ue_1.edit_on_instance()
+    (0, ue_1.edit_on_instance)()
 ], TsTestActor.prototype, "b", void 0);
 __decorate([
     ue_1.rpc.flags(ue_1.rpc.PropertyFlags.CPF_Net | ue_1.rpc.PropertyFlags.CPF_RepNotify),

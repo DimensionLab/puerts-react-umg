@@ -17,9 +17,9 @@ console.log("----------------------------------------------------");
 obj.Bar(new UE.Vector(1, 2, 3));
 //引用类型参数函数
 console.log("----------------------------------------------------");
-let vectorRef = puerts_1.$ref(new UE.Vector(1, 2, 3));
+let vectorRef = (0, puerts_1.$ref)(new UE.Vector(1, 2, 3));
 obj.Bar2(vectorRef);
-obj.Bar(puerts_1.$unref(vectorRef));
+obj.Bar((0, puerts_1.$unref)(vectorRef));
 //静态方法
 console.log("----------------------------------------------------");
 let str1 = UE.JSBlueprintFunctionLibrary.GetName();
@@ -118,7 +118,7 @@ let TestStruct = UE.UserDefinedStruct.Load("UserDefinedStruct'/Game/StarterConte
 let testStruct = UE.NewStruct(TestStruct);
 testStruct.age = 10;
 testStruct.speed = 5;
-bpActor.Bar(testStruct);
+// bpActor.Bar(testStruct);
 //Delegate
 console.log("----------------------------------------------------");
 function MutiCast1(i) {
@@ -134,8 +134,8 @@ console.log("NotifyWithString.IsBound", actor.NotifyWithString.IsBound());
 console.log("NotifyWithRefString.IsBound", actor.NotifyWithRefString.IsBound());
 actor.NotifyWithRefString.Bind((strRef) => {
     //console.error("NotifyWithRefString");
-    console.log("NotifyWithRefString", puerts_1.$unref(strRef));
-    puerts_1.$set(strRef, "out to NotifyWithRefString"); //引用参数输出
+    console.log("NotifyWithRefString", (0, puerts_1.$unref)(strRef));
+    (0, puerts_1.$set)(strRef, "out to NotifyWithRefString"); //引用参数输出
 });
 console.log("NotifyWithString.IsBound", actor.NotifyWithString.IsBound());
 console.log("NotifyWithRefString.IsBound", actor.NotifyWithRefString.IsBound());
@@ -143,9 +143,9 @@ actor.NotifyWithStringRet.Bind((inStr) => {
     return "////" + inStr;
 });
 actor.NotifyWithInt.Broadcast(888999);
-let strRef = puerts_1.$ref("666");
+let strRef = (0, puerts_1.$ref)("666");
 actor.NotifyWithRefString.Execute(strRef);
-console.log("out str:" + puerts_1.$unref(strRef));
+console.log("out str:" + (0, puerts_1.$unref)(strRef));
 let retStr = actor.NotifyWithStringRet.Execute("console.log('hello world')");
 console.log("ret str:" + retStr);
 console.log("waiting native call script...........");
@@ -153,11 +153,11 @@ console.log("waiting native call script...........");
 function IsJohn(str) {
     return str == "John";
 }
-obj.PassJsFunctionAsDelegate(puerts_1.toManualReleaseDelegate(IsJohn));
+obj.PassJsFunctionAsDelegate((0, puerts_1.toManualReleaseDelegate)(IsJohn));
 //release after using
-puerts_1.releaseManualReleaseDelegate(IsJohn);
+(0, puerts_1.releaseManualReleaseDelegate)(IsJohn);
 //unhandledRejection
-puerts_1.on('unhandledRejection', function (reason) {
+(0, puerts_1.on)('unhandledRejection', function (reason) {
     console.log('unhandledRejection~~~', reason.stack);
 });
 new Promise(() => {

@@ -769,10 +769,10 @@ function getCustomSystem() {
         console.log(s);
     }
     function readFile(path, encoding) {
-        let data = puerts_1.$ref(undefined);
+        let data = (0, puerts_1.$ref)(undefined);
         const res = UE.FileSystemOperation.ReadFile(path, data);
         if (res) {
-            return puerts_1.$unref(data);
+            return (0, puerts_1.$unref)(data);
         }
         else {
             console.warn("readFile: read file fail! path=" + path);
@@ -942,7 +942,7 @@ const PropertyFlags = {
     CPF_NativeAccessSpecifierPublic: 0x0010000000000000,
     CPF_NativeAccessSpecifierProtected: 0x0020000000000000,
     CPF_NativeAccessSpecifierPrivate: 0x0040000000000000,
-    CPF_SkipSerialization: 0x0080000000000000,
+    CPF_SkipSerialization: 0x0080000000000000, ///< Property shouldn't be serialized, can still be exported to text
 };
 const ELifetimeCondition = {
     "COND_InitialOnly": 1,
@@ -958,7 +958,7 @@ const ELifetimeCondition = {
     "COND_SimulatedOnlyNoReplay": 11,
     "COND_SimulatedOrPhysicsNoReplay": 12,
     "COND_SkipReplay": 13,
-    "COND_Never": 15,
+    "COND_Never": 15, // This property will never be replicated						
 };
 function readAndParseConfigFile(configFilePath) {
     let readResult = ts.readConfigFile(configFilePath, customSystem.readFile);

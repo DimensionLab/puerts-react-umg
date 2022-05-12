@@ -16,7 +16,7 @@ class TsTestGameInstance extends UE.TypeScriptGameInstance {
         console.warn('TsTestGameInstance.OnStart');
         react_umg_1.ReactUMG.init(this.GetWorld());
         this.root = UI.Load();
-        puerts_1.on('HMR.finish', (moduleName, module) => this.OnReload(moduleName, module));
+        (0, puerts_1.on)('HMR.finish', (moduleName, module) => this.OnReload(moduleName, module));
     }
     //@no-blueprint
     OnReload(moduleName, module) {

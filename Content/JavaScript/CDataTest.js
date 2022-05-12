@@ -28,9 +28,9 @@ obj.Foo(888);
 //pass object
 TestClass.PrintInfo(obj.GetSelf());
 //ref
-let r = puerts_1.$ref(999);
+let r = (0, puerts_1.$ref)(999);
 let ret = obj.Ref(r);
-console.log("$unref:" + puerts_1.$unref(r) + ", ret:" + ret);
+console.log("$unref:" + (0, puerts_1.$unref)(r) + ", ret:" + ret);
 obj.ConstRef(999);
 //js object
 let obj2 = new cpp.AdvanceTestClass(100);

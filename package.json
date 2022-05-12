@@ -2,11 +2,33 @@
   "name": "tsproj",
   "version": "1.0.0",
   "description": "ts project",
-  "scripts": {},
+  "scripts": {
+    "build": "babel src -d dist",
+    "watch": "babel --watch TsProj -d dist",
+    "lint": "prettier --check src"
+  },
+  "eslintConfig": {
+    "extends": [
+      "react-app",
+      "react-app/jest"
+    ]
+  },
   "dependencies": {
+    "@babel/runtime": "^7.17.2",
+    "@types/mocha": "^7.0.1",
     "@types/react": "^16.13.1",
     "@types/react-reconciler": "^0.18.0",
-    "@types/mocha": "^7.0.1"
+    "typescript": "^4.6.3"
   },
-  "devDependencies": {}
+  "devDependencies": {
+    "@babel/cli": "^7.17.6",
+    "@babel/core": "^7.17.5",
+    "@babel/plugin-transform-runtime": "^7.17.0",
+    "@babel/preset-env": "^7.16.11",
+    "@babel/preset-react": "^7.16.7",
+    "cross-env": "^7.0.3",
+    "lint-staged": "^11.1.2",
+    "prettier": "2.4.0",
+    "pretty-quick": "^3.1.1"
+  }
 }
