@@ -135,7 +135,7 @@ let TestStruct = UE.UserDefinedStruct.Load("UserDefinedStruct'/Game/StarterConte
 let testStruct = UE.NewStruct(TestStruct) as UE.TestStruct;
 testStruct.age = 10;
 testStruct.speed = 5;
-bpActor.Bar(testStruct);
+// bpActor.Bar(testStruct);
 
 //Delegate
 console.log("----------------------------------------------------");
