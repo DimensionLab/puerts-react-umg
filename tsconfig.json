@@ -10,7 +10,8 @@
       "Plugins/ReactUMG/Typing",
       "./node_modules/@types"
     ],
-    "outDir": "Content/JavaScript"
+    "outDir": "Content/JavaScript",
+    "resolveJsonModule": true,
   },
   "include": [
     "TsProj/**/*"
