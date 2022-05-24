@@ -2874,6 +2874,462 @@ declare class JavascriptRawMesh {
 	static IsValidOrFixable(RawMesh: JavascriptRawMesh): boolean;
 }
 
+declare type ERuntimeMeshCollisionCookingMode = 'CollisionPerformance' | 'CookingPerformance' | 'ERuntimeMeshCollisionCookingMode_MAX';
+declare var ERuntimeMeshCollisionCookingMode : { CollisionPerformance:'CollisionPerformance',CookingPerformance:'CookingPerformance',ERuntimeMeshCollisionCookingMode_MAX:'ERuntimeMeshCollisionCookingMode_MAX', };
+declare class RuntimeMeshCollisionConvexMesh { 
+	VertexBuffer: Vector[];
+	BoundingBox: Box;
+	clone() : RuntimeMeshCollisionConvexMesh;
+	static C(Other: UObject | any): RuntimeMeshCollisionConvexMesh;
+}
+
+declare class RuntimeMeshCollisionSphere { 
+	Center: Vector;
+	Radius: number;
+	clone() : RuntimeMeshCollisionSphere;
+	static C(Other: UObject | any): RuntimeMeshCollisionSphere;
+}
+
+declare class RuntimeMeshCollisionBox { 
+	Center: Vector;
+	Rotation: Rotator;
+	Extents: Vector;
+	clone() : RuntimeMeshCollisionBox;
+	static C(Other: UObject | any): RuntimeMeshCollisionBox;
+}
+
+declare class RuntimeMeshCollisionCapsule { 
+	Center: Vector;
+	Rotation: Rotator;
+	Radius: number;
+	Length: number;
+	clone() : RuntimeMeshCollisionCapsule;
+	static C(Other: UObject | any): RuntimeMeshCollisionCapsule;
+}
+
+declare class RuntimeMeshCollisionSettings { 
+	bUseComplexAsSimple: boolean;
+	bUseAsyncCooking: boolean;
+	CookingMode: ERuntimeMeshCollisionCookingMode;
+	ConvexElements: RuntimeMeshCollisionConvexMesh[];
+	Spheres: RuntimeMeshCollisionSphere[];
+	Boxes: RuntimeMeshCollisionBox[];
+	Capsules: RuntimeMeshCollisionCapsule[];
+	clone() : RuntimeMeshCollisionSettings;
+	static C(Other: UObject | any): RuntimeMeshCollisionSettings;
+	AddCollisionBox(OutSettings?: RuntimeMeshCollisionSettings,NewBox?: RuntimeMeshCollisionBox): {Settings: RuntimeMeshCollisionSettings, OutSettings: RuntimeMeshCollisionSettings};
+	AddCollisionCapsule(OutSettings?: RuntimeMeshCollisionSettings,NewCapsule?: RuntimeMeshCollisionCapsule): {Settings: RuntimeMeshCollisionSettings, OutSettings: RuntimeMeshCollisionSettings};
+	AddCollisionConvex(OutSettings?: RuntimeMeshCollisionSettings,NewConvex?: RuntimeMeshCollisionConvexMesh): {Settings: RuntimeMeshCollisionSettings, OutSettings: RuntimeMeshCollisionSettings};
+	AddCollisionSphere(OutSettings?: RuntimeMeshCollisionSettings,NewSphere?: RuntimeMeshCollisionSphere): {Settings: RuntimeMeshCollisionSettings, OutSettings: RuntimeMeshCollisionSettings};
+	static AddCollisionBox(Settings?: RuntimeMeshCollisionSettings,OutSettings?: RuntimeMeshCollisionSettings,NewBox?: RuntimeMeshCollisionBox): {Settings: RuntimeMeshCollisionSettings, OutSettings: RuntimeMeshCollisionSettings};
+	static AddCollisionCapsule(Settings?: RuntimeMeshCollisionSettings,OutSettings?: RuntimeMeshCollisionSettings,NewCapsule?: RuntimeMeshCollisionCapsule): {Settings: RuntimeMeshCollisionSettings, OutSettings: RuntimeMeshCollisionSettings};
+	static AddCollisionConvex(Settings?: RuntimeMeshCollisionSettings,OutSettings?: RuntimeMeshCollisionSettings,NewConvex?: RuntimeMeshCollisionConvexMesh): {Settings: RuntimeMeshCollisionSettings, OutSettings: RuntimeMeshCollisionSettings};
+	static AddCollisionSphere(Settings?: RuntimeMeshCollisionSettings,OutSettings?: RuntimeMeshCollisionSettings,NewSphere?: RuntimeMeshCollisionSphere): {Settings: RuntimeMeshCollisionSettings, OutSettings: RuntimeMeshCollisionSettings};
+}
+
+declare class RuntimeMeshCollisionVertexStream { 
+	clone() : RuntimeMeshCollisionVertexStream;
+	static C(Other: UObject | any): RuntimeMeshCollisionVertexStream;
+	AddCollisionVertex(OutStream?: RuntimeMeshCollisionVertexStream,InVertex?: Vector,OutIndex?: number): {Stream: RuntimeMeshCollisionVertexStream, OutStream: RuntimeMeshCollisionVertexStream, OutIndex: number};
+	EmptyCollisionVertices(OutStream?: RuntimeMeshCollisionVertexStream,Slack?: number): {Stream: RuntimeMeshCollisionVertexStream, OutStream: RuntimeMeshCollisionVertexStream};
+	GetCollisionVertex(OutStream?: RuntimeMeshCollisionVertexStream,index?: number,OutVertex?: Vector): {Stream: RuntimeMeshCollisionVertexStream, OutStream: RuntimeMeshCollisionVertexStream, OutVertex: Vector};
+	NumCollisionVertices(OutStream?: RuntimeMeshCollisionVertexStream,OutNumVertices?: number): {Stream: RuntimeMeshCollisionVertexStream, OutStream: RuntimeMeshCollisionVertexStream, OutNumVertices: number};
+	SetCollisionVertex(OutStream?: RuntimeMeshCollisionVertexStream,index?: number,NewVertex?: Vector): {Stream: RuntimeMeshCollisionVertexStream, OutStream: RuntimeMeshCollisionVertexStream};
+	SetNumCollisionVertices(OutStream?: RuntimeMeshCollisionVertexStream,NewNum?: number,bAllowShrinking?: boolean): {Stream: RuntimeMeshCollisionVertexStream, OutStream: RuntimeMeshCollisionVertexStream};
+	static AddCollisionVertex(Stream?: RuntimeMeshCollisionVertexStream,OutStream?: RuntimeMeshCollisionVertexStream,InVertex?: Vector,OutIndex?: number): {Stream: RuntimeMeshCollisionVertexStream, OutStream: RuntimeMeshCollisionVertexStream, OutIndex: number};
+	static EmptyCollisionVertices(Stream?: RuntimeMeshCollisionVertexStream,OutStream?: RuntimeMeshCollisionVertexStream,Slack?: number): {Stream: RuntimeMeshCollisionVertexStream, OutStream: RuntimeMeshCollisionVertexStream};
+	static GetCollisionVertex(Stream?: RuntimeMeshCollisionVertexStream,OutStream?: RuntimeMeshCollisionVertexStream,index?: number,OutVertex?: Vector): {Stream: RuntimeMeshCollisionVertexStream, OutStream: RuntimeMeshCollisionVertexStream, OutVertex: Vector};
+	static NumCollisionVertices(Stream?: RuntimeMeshCollisionVertexStream,OutStream?: RuntimeMeshCollisionVertexStream,OutNumVertices?: number): {Stream: RuntimeMeshCollisionVertexStream, OutStream: RuntimeMeshCollisionVertexStream, OutNumVertices: number};
+	static SetCollisionVertex(Stream?: RuntimeMeshCollisionVertexStream,OutStream?: RuntimeMeshCollisionVertexStream,index?: number,NewVertex?: Vector): {Stream: RuntimeMeshCollisionVertexStream, OutStream: RuntimeMeshCollisionVertexStream};
+	static SetNumCollisionVertices(Stream?: RuntimeMeshCollisionVertexStream,OutStream?: RuntimeMeshCollisionVertexStream,NewNum?: number,bAllowShrinking?: boolean): {Stream: RuntimeMeshCollisionVertexStream, OutStream: RuntimeMeshCollisionVertexStream};
+}
+
+declare class RuntimeMeshCollisionTriangleStream { 
+	clone() : RuntimeMeshCollisionTriangleStream;
+	static C(Other: UObject | any): RuntimeMeshCollisionTriangleStream;
+	AddCollisionTriangle(OutStream?: RuntimeMeshCollisionTriangleStream,NewIndexA?: number,NewIndexB?: number,NewIndexC?: number,OutTriangleIndex?: number): {Stream: RuntimeMeshCollisionTriangleStream, OutStream: RuntimeMeshCollisionTriangleStream, OutTriangleIndex: number};
+	EmptyCollisionTriangles(OutStream?: RuntimeMeshCollisionTriangleStream,Slack?: number): {Stream: RuntimeMeshCollisionTriangleStream, OutStream: RuntimeMeshCollisionTriangleStream};
+	GetCollisionTriangle(OutStream?: RuntimeMeshCollisionTriangleStream,index?: number,OutIndexA?: number,OutIndexB?: number,OutIndexC?: number): {Stream: RuntimeMeshCollisionTriangleStream, OutStream: RuntimeMeshCollisionTriangleStream, OutIndexA: number, OutIndexB: number, OutIndexC: number};
+	NumCollisionTriangles(OutStream?: RuntimeMeshCollisionTriangleStream,OutNumTriangles?: number): {Stream: RuntimeMeshCollisionTriangleStream, OutStream: RuntimeMeshCollisionTriangleStream, OutNumTriangles: number};
+	SetNumCollisionTriangles(OutStream?: RuntimeMeshCollisionTriangleStream,NewNum?: number,bAllowShrinking?: boolean): {Stream: RuntimeMeshCollisionTriangleStream, OutStream: RuntimeMeshCollisionTriangleStream};
+	static AddCollisionTriangle(Stream?: RuntimeMeshCollisionTriangleStream,OutStream?: RuntimeMeshCollisionTriangleStream,NewIndexA?: number,NewIndexB?: number,NewIndexC?: number,OutTriangleIndex?: number): {Stream: RuntimeMeshCollisionTriangleStream, OutStream: RuntimeMeshCollisionTriangleStream, OutTriangleIndex: number};
+	static EmptyCollisionTriangles(Stream?: RuntimeMeshCollisionTriangleStream,OutStream?: RuntimeMeshCollisionTriangleStream,Slack?: number): {Stream: RuntimeMeshCollisionTriangleStream, OutStream: RuntimeMeshCollisionTriangleStream};
+	static GetCollisionTriangle(Stream?: RuntimeMeshCollisionTriangleStream,OutStream?: RuntimeMeshCollisionTriangleStream,index?: number,OutIndexA?: number,OutIndexB?: number,OutIndexC?: number): {Stream: RuntimeMeshCollisionTriangleStream, OutStream: RuntimeMeshCollisionTriangleStream, OutIndexA: number, OutIndexB: number, OutIndexC: number};
+	static NumCollisionTriangles(Stream?: RuntimeMeshCollisionTriangleStream,OutStream?: RuntimeMeshCollisionTriangleStream,OutNumTriangles?: number): {Stream: RuntimeMeshCollisionTriangleStream, OutStream: RuntimeMeshCollisionTriangleStream, OutNumTriangles: number};
+	static SetNumCollisionTriangles(Stream?: RuntimeMeshCollisionTriangleStream,OutStream?: RuntimeMeshCollisionTriangleStream,NewNum?: number,bAllowShrinking?: boolean): {Stream: RuntimeMeshCollisionTriangleStream, OutStream: RuntimeMeshCollisionTriangleStream};
+}
+
+declare class RuntimeMeshCollisionTexCoordStream { 
+	clone() : RuntimeMeshCollisionTexCoordStream;
+	static C(Other: UObject | any): RuntimeMeshCollisionTexCoordStream;
+	NumCollisionTexCoords(OutStream?: RuntimeMeshCollisionTexCoordStream,ChannelId?: number,OutNumTexCoords?: number): {Stream: RuntimeMeshCollisionTexCoordStream, OutStream: RuntimeMeshCollisionTexCoordStream, OutNumTexCoords: number};
+	SetNumCollisionTexCoords(OutStream?: RuntimeMeshCollisionTexCoordStream,NewNumChannels?: number,NewNumTexCoords?: number,bAllowShrinking?: boolean): {Stream: RuntimeMeshCollisionTexCoordStream, OutStream: RuntimeMeshCollisionTexCoordStream};
+	static NumCollisionTexCoords(Stream?: RuntimeMeshCollisionTexCoordStream,OutStream?: RuntimeMeshCollisionTexCoordStream,ChannelId?: number,OutNumTexCoords?: number): {Stream: RuntimeMeshCollisionTexCoordStream, OutStream: RuntimeMeshCollisionTexCoordStream, OutNumTexCoords: number};
+	static SetNumCollisionTexCoords(Stream?: RuntimeMeshCollisionTexCoordStream,OutStream?: RuntimeMeshCollisionTexCoordStream,NewNumChannels?: number,NewNumTexCoords?: number,bAllowShrinking?: boolean): {Stream: RuntimeMeshCollisionTexCoordStream, OutStream: RuntimeMeshCollisionTexCoordStream};
+}
+
+declare class RuntimeMeshCollisionMaterialIndexStream { 
+	clone() : RuntimeMeshCollisionMaterialIndexStream;
+	static C(Other: UObject | any): RuntimeMeshCollisionMaterialIndexStream;
+	AddCollisionMaterialIndex(OutStream?: RuntimeMeshCollisionMaterialIndexStream,NewIndex?: number,OutIndex?: number): {Stream: RuntimeMeshCollisionMaterialIndexStream, OutStream: RuntimeMeshCollisionMaterialIndexStream, OutIndex: number};
+	EmptyCollisionMaterialIndices(OutStream?: RuntimeMeshCollisionMaterialIndexStream,Slack?: number): {Stream: RuntimeMeshCollisionMaterialIndexStream, OutStream: RuntimeMeshCollisionMaterialIndexStream};
+	GetCollisionMaterialIndex(OutStream?: RuntimeMeshCollisionMaterialIndexStream,index?: number,OutIndex?: number): {Stream: RuntimeMeshCollisionMaterialIndexStream, OutStream: RuntimeMeshCollisionMaterialIndexStream, OutIndex: number};
+	NumCollisionMaterialIndices(OutStream?: RuntimeMeshCollisionMaterialIndexStream,OutNumIndices?: number): {Stream: RuntimeMeshCollisionMaterialIndexStream, OutStream: RuntimeMeshCollisionMaterialIndexStream, OutNumIndices: number};
+	SeCollisionMaterialIndex(OutStream?: RuntimeMeshCollisionMaterialIndexStream,index?: number,NewIndex?: number): {Stream: RuntimeMeshCollisionMaterialIndexStream, OutStream: RuntimeMeshCollisionMaterialIndexStream};
+	SetNumCollisionMaterialIndices(OutStream?: RuntimeMeshCollisionMaterialIndexStream,NewNum?: number,bAllowShrinking?: boolean): {Stream: RuntimeMeshCollisionMaterialIndexStream, OutStream: RuntimeMeshCollisionMaterialIndexStream};
+	static AddCollisionMaterialIndex(Stream?: RuntimeMeshCollisionMaterialIndexStream,OutStream?: RuntimeMeshCollisionMaterialIndexStream,NewIndex?: number,OutIndex?: number): {Stream: RuntimeMeshCollisionMaterialIndexStream, OutStream: RuntimeMeshCollisionMaterialIndexStream, OutIndex: number};
+	static EmptyCollisionMaterialIndices(Stream?: RuntimeMeshCollisionMaterialIndexStream,OutStream?: RuntimeMeshCollisionMaterialIndexStream,Slack?: number): {Stream: RuntimeMeshCollisionMaterialIndexStream, OutStream: RuntimeMeshCollisionMaterialIndexStream};
+	static GetCollisionMaterialIndex(Stream?: RuntimeMeshCollisionMaterialIndexStream,OutStream?: RuntimeMeshCollisionMaterialIndexStream,index?: number,OutIndex?: number): {Stream: RuntimeMeshCollisionMaterialIndexStream, OutStream: RuntimeMeshCollisionMaterialIndexStream, OutIndex: number};
+	static NumCollisionMaterialIndices(Stream?: RuntimeMeshCollisionMaterialIndexStream,OutStream?: RuntimeMeshCollisionMaterialIndexStream,OutNumIndices?: number): {Stream: RuntimeMeshCollisionMaterialIndexStream, OutStream: RuntimeMeshCollisionMaterialIndexStream, OutNumIndices: number};
+	static SeCollisionMaterialIndex(Stream?: RuntimeMeshCollisionMaterialIndexStream,OutStream?: RuntimeMeshCollisionMaterialIndexStream,index?: number,NewIndex?: number): {Stream: RuntimeMeshCollisionMaterialIndexStream, OutStream: RuntimeMeshCollisionMaterialIndexStream};
+	static SetNumCollisionMaterialIndices(Stream?: RuntimeMeshCollisionMaterialIndexStream,OutStream?: RuntimeMeshCollisionMaterialIndexStream,NewNum?: number,bAllowShrinking?: boolean): {Stream: RuntimeMeshCollisionMaterialIndexStream, OutStream: RuntimeMeshCollisionMaterialIndexStream};
+}
+
+declare type ERuntimeMeshCollisionFaceSourceType = 'Collision' | 'Renderable' | 'ERuntimeMeshCollisionFaceSourceType_MAX';
+declare var ERuntimeMeshCollisionFaceSourceType : { Collision:'Collision',Renderable:'Renderable',ERuntimeMeshCollisionFaceSourceType_MAX:'ERuntimeMeshCollisionFaceSourceType_MAX', };
+declare class RuntimeMeshCollisionSourceSectionInfo { 
+	StartIndex: number;
+	EndIndex: number;
+	SourceProvider: any;
+	SectionID: number;
+	SourceType: ERuntimeMeshCollisionFaceSourceType;
+	clone() : RuntimeMeshCollisionSourceSectionInfo;
+	static C(Other: UObject | any): RuntimeMeshCollisionSourceSectionInfo;
+}
+
+declare class RuntimeMeshCollisionData { 
+	Vertices: RuntimeMeshCollisionVertexStream;
+	Triangles: RuntimeMeshCollisionTriangleStream;
+	TexCoords: RuntimeMeshCollisionTexCoordStream;
+	MaterialIndices: RuntimeMeshCollisionMaterialIndexStream;
+	CollisionSources: RuntimeMeshCollisionSourceSectionInfo[];
+	bFlipNormals: boolean;
+	bDeformableMesh: boolean;
+	bFastCook: boolean;
+	bDisableActiveEdgePrecompute: boolean;
+	clone() : RuntimeMeshCollisionData;
+	static C(Other: UObject | any): RuntimeMeshCollisionData;
+	GetCollisionMaterialIndexStream(OutCollisionData?: RuntimeMeshCollisionData): {CollisionData: RuntimeMeshCollisionData, OutCollisionData: RuntimeMeshCollisionData, $: RuntimeMeshCollisionMaterialIndexStream};
+	GetCollisionTexCoordStream(OutCollisionData?: RuntimeMeshCollisionData): {CollisionData: RuntimeMeshCollisionData, OutCollisionData: RuntimeMeshCollisionData, $: RuntimeMeshCollisionTexCoordStream};
+	GetCollisionTriangleStream(OutCollisionData?: RuntimeMeshCollisionData): {CollisionData: RuntimeMeshCollisionData, OutCollisionData: RuntimeMeshCollisionData, $: RuntimeMeshCollisionTriangleStream};
+	GetCollisionVertexStream(OutCollisionData?: RuntimeMeshCollisionData): {CollisionData: RuntimeMeshCollisionData, OutCollisionData: RuntimeMeshCollisionData, $: RuntimeMeshCollisionVertexStream};
+	static GetCollisionMaterialIndexStream(CollisionData?: RuntimeMeshCollisionData,OutCollisionData?: RuntimeMeshCollisionData): {CollisionData: RuntimeMeshCollisionData, OutCollisionData: RuntimeMeshCollisionData, $: RuntimeMeshCollisionMaterialIndexStream};
+	static GetCollisionTexCoordStream(CollisionData?: RuntimeMeshCollisionData,OutCollisionData?: RuntimeMeshCollisionData): {CollisionData: RuntimeMeshCollisionData, OutCollisionData: RuntimeMeshCollisionData, $: RuntimeMeshCollisionTexCoordStream};
+	static GetCollisionTriangleStream(CollisionData?: RuntimeMeshCollisionData,OutCollisionData?: RuntimeMeshCollisionData): {CollisionData: RuntimeMeshCollisionData, OutCollisionData: RuntimeMeshCollisionData, $: RuntimeMeshCollisionTriangleStream};
+	static GetCollisionVertexStream(CollisionData?: RuntimeMeshCollisionData,OutCollisionData?: RuntimeMeshCollisionData): {CollisionData: RuntimeMeshCollisionData, OutCollisionData: RuntimeMeshCollisionData, $: RuntimeMeshCollisionVertexStream};
+}
+
+declare class RuntimeMeshVertexPositionStream { 
+	clone() : RuntimeMeshVertexPositionStream;
+	static C(Other: UObject | any): RuntimeMeshVertexPositionStream;
+	AddPosition(OutStream?: RuntimeMeshVertexPositionStream,InPosition?: Vector,OutIndex?: number): {Stream: RuntimeMeshVertexPositionStream, OutStream: RuntimeMeshVertexPositionStream, OutIndex: number};
+	AppendPositions(OutStream?: RuntimeMeshVertexPositionStream,InOther?: RuntimeMeshVertexPositionStream): {Stream: RuntimeMeshVertexPositionStream, OutStream: RuntimeMeshVertexPositionStream};
+	EmptyPositions(OutStream?: RuntimeMeshVertexPositionStream,Slack?: number): {Stream: RuntimeMeshVertexPositionStream, OutStream: RuntimeMeshVertexPositionStream};
+	GetBounds(OutStream?: RuntimeMeshVertexPositionStream,OutBounds?: Box): {Stream: RuntimeMeshVertexPositionStream, OutStream: RuntimeMeshVertexPositionStream, OutBounds: Box};
+	GetPosition(OutStream?: RuntimeMeshVertexPositionStream,index?: number,OutPosition?: Vector): {Stream: RuntimeMeshVertexPositionStream, OutStream: RuntimeMeshVertexPositionStream, OutPosition: Vector};
+	NumPositions(OutStream?: RuntimeMeshVertexPositionStream,OutNumPositions?: number): {Stream: RuntimeMeshVertexPositionStream, OutStream: RuntimeMeshVertexPositionStream, OutNumPositions: number};
+	SetNumPositions(OutStream?: RuntimeMeshVertexPositionStream,NewNum?: number,bAllowShrinking?: boolean): {Stream: RuntimeMeshVertexPositionStream, OutStream: RuntimeMeshVertexPositionStream};
+	SetPosition(OutStream?: RuntimeMeshVertexPositionStream,index?: number,NewPosition?: Vector): {Stream: RuntimeMeshVertexPositionStream, OutStream: RuntimeMeshVertexPositionStream};
+	static AddPosition(Stream?: RuntimeMeshVertexPositionStream,OutStream?: RuntimeMeshVertexPositionStream,InPosition?: Vector,OutIndex?: number): {Stream: RuntimeMeshVertexPositionStream, OutStream: RuntimeMeshVertexPositionStream, OutIndex: number};
+	static AppendPositions(Stream?: RuntimeMeshVertexPositionStream,OutStream?: RuntimeMeshVertexPositionStream,InOther?: RuntimeMeshVertexPositionStream): {Stream: RuntimeMeshVertexPositionStream, OutStream: RuntimeMeshVertexPositionStream};
+	static EmptyPositions(Stream?: RuntimeMeshVertexPositionStream,OutStream?: RuntimeMeshVertexPositionStream,Slack?: number): {Stream: RuntimeMeshVertexPositionStream, OutStream: RuntimeMeshVertexPositionStream};
+	static GetBounds(Stream?: RuntimeMeshVertexPositionStream,OutStream?: RuntimeMeshVertexPositionStream,OutBounds?: Box): {Stream: RuntimeMeshVertexPositionStream, OutStream: RuntimeMeshVertexPositionStream, OutBounds: Box};
+	static GetPosition(Stream?: RuntimeMeshVertexPositionStream,OutStream?: RuntimeMeshVertexPositionStream,index?: number,OutPosition?: Vector): {Stream: RuntimeMeshVertexPositionStream, OutStream: RuntimeMeshVertexPositionStream, OutPosition: Vector};
+	static NumPositions(Stream?: RuntimeMeshVertexPositionStream,OutStream?: RuntimeMeshVertexPositionStream,OutNumPositions?: number): {Stream: RuntimeMeshVertexPositionStream, OutStream: RuntimeMeshVertexPositionStream, OutNumPositions: number};
+	static SetNumPositions(Stream?: RuntimeMeshVertexPositionStream,OutStream?: RuntimeMeshVertexPositionStream,NewNum?: number,bAllowShrinking?: boolean): {Stream: RuntimeMeshVertexPositionStream, OutStream: RuntimeMeshVertexPositionStream};
+	static SetPosition(Stream?: RuntimeMeshVertexPositionStream,OutStream?: RuntimeMeshVertexPositionStream,index?: number,NewPosition?: Vector): {Stream: RuntimeMeshVertexPositionStream, OutStream: RuntimeMeshVertexPositionStream};
+}
+
+declare class RuntimeMeshVertexTangentStream { 
+	clone() : RuntimeMeshVertexTangentStream;
+	static C(Other: UObject | any): RuntimeMeshVertexTangentStream;
+	AddNormalAndTangent(OutStream?: RuntimeMeshVertexTangentStream,InNormal?: Vector,InTangent?: Vector,OutIndex?: number): {Stream: RuntimeMeshVertexTangentStream, OutStream: RuntimeMeshVertexTangentStream, OutIndex: number};
+	AddTangents(OutStream?: RuntimeMeshVertexTangentStream,InTangentX?: Vector,InTangentY?: Vector,InTangentZ?: Vector,OutIndex?: number): {Stream: RuntimeMeshVertexTangentStream, OutStream: RuntimeMeshVertexTangentStream, OutIndex: number};
+	AppendTangents(OutStream?: RuntimeMeshVertexTangentStream,InOther?: RuntimeMeshVertexTangentStream): {Stream: RuntimeMeshVertexTangentStream, OutStream: RuntimeMeshVertexTangentStream};
+	EmptyTangents(OutStream?: RuntimeMeshVertexTangentStream,Slack?: number): {Stream: RuntimeMeshVertexTangentStream, OutStream: RuntimeMeshVertexTangentStream};
+	GetNormal(OutStream?: RuntimeMeshVertexTangentStream,index?: number,OutNormal?: Vector): {Stream: RuntimeMeshVertexTangentStream, OutStream: RuntimeMeshVertexTangentStream, OutNormal: Vector};
+	GetTangent(OutStream?: RuntimeMeshVertexTangentStream,index?: number,OutTangent?: Vector): {Stream: RuntimeMeshVertexTangentStream, OutStream: RuntimeMeshVertexTangentStream, OutTangent: Vector};
+	GetTangents(OutStream?: RuntimeMeshVertexTangentStream,index?: number,OutTangentX?: Vector,OutTangentY?: Vector,OutTangentZ?: Vector): {Stream: RuntimeMeshVertexTangentStream, OutStream: RuntimeMeshVertexTangentStream, OutTangentX: Vector, OutTangentY: Vector, OutTangentZ: Vector};
+	NumTangents(OutStream?: RuntimeMeshVertexTangentStream,OutNumTangents?: number): {Stream: RuntimeMeshVertexTangentStream, OutStream: RuntimeMeshVertexTangentStream, OutNumTangents: number};
+	SetNormal(OutStream?: RuntimeMeshVertexTangentStream,index?: number,NewNormal?: Vector): {Stream: RuntimeMeshVertexTangentStream, OutStream: RuntimeMeshVertexTangentStream};
+	SetNumTangents(OutStream?: RuntimeMeshVertexTangentStream,NewNum?: number,bAllowShrinking?: boolean): {Stream: RuntimeMeshVertexTangentStream, OutStream: RuntimeMeshVertexTangentStream};
+	SetTangent(OutStream?: RuntimeMeshVertexTangentStream,index?: number,NewTangent?: Vector): {Stream: RuntimeMeshVertexTangentStream, OutStream: RuntimeMeshVertexTangentStream};
+	SetTangents(OutStream?: RuntimeMeshVertexTangentStream,index?: number,InTangentX?: Vector,InTangentY?: Vector,InTangentZ?: Vector): {Stream: RuntimeMeshVertexTangentStream, OutStream: RuntimeMeshVertexTangentStream};
+	static AddNormalAndTangent(Stream?: RuntimeMeshVertexTangentStream,OutStream?: RuntimeMeshVertexTangentStream,InNormal?: Vector,InTangent?: Vector,OutIndex?: number): {Stream: RuntimeMeshVertexTangentStream, OutStream: RuntimeMeshVertexTangentStream, OutIndex: number};
+	static AddTangents(Stream?: RuntimeMeshVertexTangentStream,OutStream?: RuntimeMeshVertexTangentStream,InTangentX?: Vector,InTangentY?: Vector,InTangentZ?: Vector,OutIndex?: number): {Stream: RuntimeMeshVertexTangentStream, OutStream: RuntimeMeshVertexTangentStream, OutIndex: number};
+	static AppendTangents(Stream?: RuntimeMeshVertexTangentStream,OutStream?: RuntimeMeshVertexTangentStream,InOther?: RuntimeMeshVertexTangentStream): {Stream: RuntimeMeshVertexTangentStream, OutStream: RuntimeMeshVertexTangentStream};
+	static EmptyTangents(Stream?: RuntimeMeshVertexTangentStream,OutStream?: RuntimeMeshVertexTangentStream,Slack?: number): {Stream: RuntimeMeshVertexTangentStream, OutStream: RuntimeMeshVertexTangentStream};
+	static GetNormal(Stream?: RuntimeMeshVertexTangentStream,OutStream?: RuntimeMeshVertexTangentStream,index?: number,OutNormal?: Vector): {Stream: RuntimeMeshVertexTangentStream, OutStream: RuntimeMeshVertexTangentStream, OutNormal: Vector};
+	static GetTangent(Stream?: RuntimeMeshVertexTangentStream,OutStream?: RuntimeMeshVertexTangentStream,index?: number,OutTangent?: Vector): {Stream: RuntimeMeshVertexTangentStream, OutStream: RuntimeMeshVertexTangentStream, OutTangent: Vector};
+	static GetTangents(Stream?: RuntimeMeshVertexTangentStream,OutStream?: RuntimeMeshVertexTangentStream,index?: number,OutTangentX?: Vector,OutTangentY?: Vector,OutTangentZ?: Vector): {Stream: RuntimeMeshVertexTangentStream, OutStream: RuntimeMeshVertexTangentStream, OutTangentX: Vector, OutTangentY: Vector, OutTangentZ: Vector};
+	static NumTangents(Stream?: RuntimeMeshVertexTangentStream,OutStream?: RuntimeMeshVertexTangentStream,OutNumTangents?: number): {Stream: RuntimeMeshVertexTangentStream, OutStream: RuntimeMeshVertexTangentStream, OutNumTangents: number};
+	static SetNormal(Stream?: RuntimeMeshVertexTangentStream,OutStream?: RuntimeMeshVertexTangentStream,index?: number,NewNormal?: Vector): {Stream: RuntimeMeshVertexTangentStream, OutStream: RuntimeMeshVertexTangentStream};
+	static SetNumTangents(Stream?: RuntimeMeshVertexTangentStream,OutStream?: RuntimeMeshVertexTangentStream,NewNum?: number,bAllowShrinking?: boolean): {Stream: RuntimeMeshVertexTangentStream, OutStream: RuntimeMeshVertexTangentStream};
+	static SetTangent(Stream?: RuntimeMeshVertexTangentStream,OutStream?: RuntimeMeshVertexTangentStream,index?: number,NewTangent?: Vector): {Stream: RuntimeMeshVertexTangentStream, OutStream: RuntimeMeshVertexTangentStream};
+	static SetTangents(Stream?: RuntimeMeshVertexTangentStream,OutStream?: RuntimeMeshVertexTangentStream,index?: number,InTangentX?: Vector,InTangentY?: Vector,InTangentZ?: Vector): {Stream: RuntimeMeshVertexTangentStream, OutStream: RuntimeMeshVertexTangentStream};
+}
+
+declare class RuntimeMeshVertexTexCoordStream { 
+	clone() : RuntimeMeshVertexTexCoordStream;
+	static C(Other: UObject | any): RuntimeMeshVertexTexCoordStream;
+	AddCollisionTexCoord(OutStream?: RuntimeMeshVertexTexCoordStream,InTexCoord?: Vector2D,OutIndex?: number): {Stream: RuntimeMeshVertexTexCoordStream, OutStream: RuntimeMeshVertexTexCoordStream, OutIndex: number};
+	AddTexCoord(OutStream?: RuntimeMeshVertexTexCoordStream,OutIndex?: number,InTexCoord?: Vector2D,ChannelId?: number): {Stream: RuntimeMeshVertexTexCoordStream, OutStream: RuntimeMeshVertexTexCoordStream, OutIndex: number};
+	AppendTexCoords(OutStream?: RuntimeMeshVertexTexCoordStream,InOther?: RuntimeMeshVertexTexCoordStream): {Stream: RuntimeMeshVertexTexCoordStream, OutStream: RuntimeMeshVertexTexCoordStream};
+	EmptyCollisionTexCoords(OutStream?: RuntimeMeshVertexTexCoordStream,Slack?: number): {Stream: RuntimeMeshVertexTexCoordStream, OutStream: RuntimeMeshVertexTexCoordStream};
+	EmptyTexCoords(OutStream?: RuntimeMeshVertexTexCoordStream,Slack?: number): {Stream: RuntimeMeshVertexTexCoordStream, OutStream: RuntimeMeshVertexTexCoordStream};
+	GetCollisionTexCoord(OutStream?: RuntimeMeshVertexTexCoordStream,index?: number,OutTexCoord?: Vector2D,ChannelId?: number): {Stream: RuntimeMeshVertexTexCoordStream, OutStream: RuntimeMeshVertexTexCoordStream, OutTexCoord: Vector2D};
+	GetTexCoord(OutStream?: RuntimeMeshVertexTexCoordStream,index?: number,ChannelId?: number,OutTexCoord?: Vector2D): {Stream: RuntimeMeshVertexTexCoordStream, OutStream: RuntimeMeshVertexTexCoordStream, OutTexCoord: Vector2D};
+	NumCollisionTexCoordChannels(OutStream?: RuntimeMeshVertexTexCoordStream,OutNumTexCoordChannels?: number): {Stream: RuntimeMeshVertexTexCoordStream, OutStream: RuntimeMeshVertexTexCoordStream, OutNumTexCoordChannels: number};
+	NumTexCoordChannels(OutStream?: RuntimeMeshVertexTexCoordStream,OutNumTexCoordChannels?: number): {Stream: RuntimeMeshVertexTexCoordStream, OutStream: RuntimeMeshVertexTexCoordStream, OutNumTexCoordChannels: number};
+	NumTexCoords(OutStream?: RuntimeMeshVertexTexCoordStream,OutNumTexCoords?: number): {Stream: RuntimeMeshVertexTexCoordStream, OutStream: RuntimeMeshVertexTexCoordStream, OutNumTexCoords: number};
+	SetCollisionTexCoord(OutStream?: RuntimeMeshVertexTexCoordStream,index?: number,NewTexCoord?: Vector2D,ChannelId?: number): {Stream: RuntimeMeshVertexTexCoordStream, OutStream: RuntimeMeshVertexTexCoordStream};
+	SetNumTexCoords(OutStream?: RuntimeMeshVertexTexCoordStream,NewNum?: number,bAllowShrinking?: boolean): {Stream: RuntimeMeshVertexTexCoordStream, OutStream: RuntimeMeshVertexTexCoordStream};
+	SetTexCoord(OutStream?: RuntimeMeshVertexTexCoordStream,index?: number,NewTexCoord?: Vector2D,ChannelId?: number): {Stream: RuntimeMeshVertexTexCoordStream, OutStream: RuntimeMeshVertexTexCoordStream};
+	static AddCollisionTexCoord(Stream?: RuntimeMeshVertexTexCoordStream,OutStream?: RuntimeMeshVertexTexCoordStream,InTexCoord?: Vector2D,OutIndex?: number): {Stream: RuntimeMeshVertexTexCoordStream, OutStream: RuntimeMeshVertexTexCoordStream, OutIndex: number};
+	static AddTexCoord(Stream?: RuntimeMeshVertexTexCoordStream,OutStream?: RuntimeMeshVertexTexCoordStream,OutIndex?: number,InTexCoord?: Vector2D,ChannelId?: number): {Stream: RuntimeMeshVertexTexCoordStream, OutStream: RuntimeMeshVertexTexCoordStream, OutIndex: number};
+	static AppendTexCoords(Stream?: RuntimeMeshVertexTexCoordStream,OutStream?: RuntimeMeshVertexTexCoordStream,InOther?: RuntimeMeshVertexTexCoordStream): {Stream: RuntimeMeshVertexTexCoordStream, OutStream: RuntimeMeshVertexTexCoordStream};
+	static EmptyCollisionTexCoords(Stream?: RuntimeMeshVertexTexCoordStream,OutStream?: RuntimeMeshVertexTexCoordStream,Slack?: number): {Stream: RuntimeMeshVertexTexCoordStream, OutStream: RuntimeMeshVertexTexCoordStream};
+	static EmptyTexCoords(Stream?: RuntimeMeshVertexTexCoordStream,OutStream?: RuntimeMeshVertexTexCoordStream,Slack?: number): {Stream: RuntimeMeshVertexTexCoordStream, OutStream: RuntimeMeshVertexTexCoordStream};
+	static GetCollisionTexCoord(Stream?: RuntimeMeshVertexTexCoordStream,OutStream?: RuntimeMeshVertexTexCoordStream,index?: number,OutTexCoord?: Vector2D,ChannelId?: number): {Stream: RuntimeMeshVertexTexCoordStream, OutStream: RuntimeMeshVertexTexCoordStream, OutTexCoord: Vector2D};
+	static GetTexCoord(Stream?: RuntimeMeshVertexTexCoordStream,OutStream?: RuntimeMeshVertexTexCoordStream,index?: number,ChannelId?: number,OutTexCoord?: Vector2D): {Stream: RuntimeMeshVertexTexCoordStream, OutStream: RuntimeMeshVertexTexCoordStream, OutTexCoord: Vector2D};
+	static NumCollisionTexCoordChannels(Stream?: RuntimeMeshVertexTexCoordStream,OutStream?: RuntimeMeshVertexTexCoordStream,OutNumTexCoordChannels?: number): {Stream: RuntimeMeshVertexTexCoordStream, OutStream: RuntimeMeshVertexTexCoordStream, OutNumTexCoordChannels: number};
+	static NumTexCoordChannels(Stream?: RuntimeMeshVertexTexCoordStream,OutStream?: RuntimeMeshVertexTexCoordStream,OutNumTexCoordChannels?: number): {Stream: RuntimeMeshVertexTexCoordStream, OutStream: RuntimeMeshVertexTexCoordStream, OutNumTexCoordChannels: number};
+	static NumTexCoords(Stream?: RuntimeMeshVertexTexCoordStream,OutStream?: RuntimeMeshVertexTexCoordStream,OutNumTexCoords?: number): {Stream: RuntimeMeshVertexTexCoordStream, OutStream: RuntimeMeshVertexTexCoordStream, OutNumTexCoords: number};
+	static SetCollisionTexCoord(Stream?: RuntimeMeshVertexTexCoordStream,OutStream?: RuntimeMeshVertexTexCoordStream,index?: number,NewTexCoord?: Vector2D,ChannelId?: number): {Stream: RuntimeMeshVertexTexCoordStream, OutStream: RuntimeMeshVertexTexCoordStream};
+	static SetNumTexCoords(Stream?: RuntimeMeshVertexTexCoordStream,OutStream?: RuntimeMeshVertexTexCoordStream,NewNum?: number,bAllowShrinking?: boolean): {Stream: RuntimeMeshVertexTexCoordStream, OutStream: RuntimeMeshVertexTexCoordStream};
+	static SetTexCoord(Stream?: RuntimeMeshVertexTexCoordStream,OutStream?: RuntimeMeshVertexTexCoordStream,index?: number,NewTexCoord?: Vector2D,ChannelId?: number): {Stream: RuntimeMeshVertexTexCoordStream, OutStream: RuntimeMeshVertexTexCoordStream};
+}
+
+declare class RuntimeMeshVertexColorStream { 
+	clone() : RuntimeMeshVertexColorStream;
+	static C(Other: UObject | any): RuntimeMeshVertexColorStream;
+	AddColor(OutStream?: RuntimeMeshVertexColorStream,InColor?: LinearColor,OutIndex?: number): {Stream: RuntimeMeshVertexColorStream, OutStream: RuntimeMeshVertexColorStream, OutIndex: number};
+	AppendColors(OutStream?: RuntimeMeshVertexColorStream,InOther?: RuntimeMeshVertexColorStream): {Stream: RuntimeMeshVertexColorStream, OutStream: RuntimeMeshVertexColorStream};
+	EmptyColors(OutStream?: RuntimeMeshVertexColorStream,Slack?: number): {Stream: RuntimeMeshVertexColorStream, OutStream: RuntimeMeshVertexColorStream};
+	GetColor(OutStream?: RuntimeMeshVertexColorStream,index?: number,OutColor?: LinearColor): {Stream: RuntimeMeshVertexColorStream, OutStream: RuntimeMeshVertexColorStream, OutColor: LinearColor};
+	NumColors(OutStream?: RuntimeMeshVertexColorStream,OutNumColors?: number): {Stream: RuntimeMeshVertexColorStream, OutStream: RuntimeMeshVertexColorStream, OutNumColors: number};
+	SetColor(OutStream?: RuntimeMeshVertexColorStream,index?: number,NewColor?: LinearColor): {Stream: RuntimeMeshVertexColorStream, OutStream: RuntimeMeshVertexColorStream};
+	SetNumColors(OutStream?: RuntimeMeshVertexColorStream,NewNum?: number,bAllowShrinking?: boolean): {Stream: RuntimeMeshVertexColorStream, OutStream: RuntimeMeshVertexColorStream};
+	static AddColor(Stream?: RuntimeMeshVertexColorStream,OutStream?: RuntimeMeshVertexColorStream,InColor?: LinearColor,OutIndex?: number): {Stream: RuntimeMeshVertexColorStream, OutStream: RuntimeMeshVertexColorStream, OutIndex: number};
+	static AppendColors(Stream?: RuntimeMeshVertexColorStream,OutStream?: RuntimeMeshVertexColorStream,InOther?: RuntimeMeshVertexColorStream): {Stream: RuntimeMeshVertexColorStream, OutStream: RuntimeMeshVertexColorStream};
+	static EmptyColors(Stream?: RuntimeMeshVertexColorStream,OutStream?: RuntimeMeshVertexColorStream,Slack?: number): {Stream: RuntimeMeshVertexColorStream, OutStream: RuntimeMeshVertexColorStream};
+	static GetColor(Stream?: RuntimeMeshVertexColorStream,OutStream?: RuntimeMeshVertexColorStream,index?: number,OutColor?: LinearColor): {Stream: RuntimeMeshVertexColorStream, OutStream: RuntimeMeshVertexColorStream, OutColor: LinearColor};
+	static NumColors(Stream?: RuntimeMeshVertexColorStream,OutStream?: RuntimeMeshVertexColorStream,OutNumColors?: number): {Stream: RuntimeMeshVertexColorStream, OutStream: RuntimeMeshVertexColorStream, OutNumColors: number};
+	static SetColor(Stream?: RuntimeMeshVertexColorStream,OutStream?: RuntimeMeshVertexColorStream,index?: number,NewColor?: LinearColor): {Stream: RuntimeMeshVertexColorStream, OutStream: RuntimeMeshVertexColorStream};
+	static SetNumColors(Stream?: RuntimeMeshVertexColorStream,OutStream?: RuntimeMeshVertexColorStream,NewNum?: number,bAllowShrinking?: boolean): {Stream: RuntimeMeshVertexColorStream, OutStream: RuntimeMeshVertexColorStream};
+}
+
+declare class RuntimeMeshTriangleStream { 
+	clone() : RuntimeMeshTriangleStream;
+	static C(Other: UObject | any): RuntimeMeshTriangleStream;
+	AddIndex(OutStream?: RuntimeMeshTriangleStream,NewIndex?: number,OutIndex?: number): {Stream: RuntimeMeshTriangleStream, OutStream: RuntimeMeshTriangleStream, OutIndex: number};
+	AddTriangle(OutStream?: RuntimeMeshTriangleStream,NewIndexA?: number,NewIndexB?: number,NewIndexC?: number): {Stream: RuntimeMeshTriangleStream, OutStream: RuntimeMeshTriangleStream};
+	AppendTriangles(OutStream?: RuntimeMeshTriangleStream,InOther?: RuntimeMeshTriangleStream): {Stream: RuntimeMeshTriangleStream, OutStream: RuntimeMeshTriangleStream};
+	EmptyTriangles(OutStream?: RuntimeMeshTriangleStream,Slack?: number): {Stream: RuntimeMeshTriangleStream, OutStream: RuntimeMeshTriangleStream};
+	GetVertexIndex(OutStream?: RuntimeMeshTriangleStream,index?: number,OutIndex?: number): {Stream: RuntimeMeshTriangleStream, OutStream: RuntimeMeshTriangleStream, OutIndex: number};
+	NumIndices(OutStream?: RuntimeMeshTriangleStream,OutNumIndices?: number): {Stream: RuntimeMeshTriangleStream, OutStream: RuntimeMeshTriangleStream, OutNumIndices: number};
+	NumTriangles(OutStream?: RuntimeMeshTriangleStream,OutNumTriangles?: number): {Stream: RuntimeMeshTriangleStream, OutStream: RuntimeMeshTriangleStream, OutNumTriangles: number};
+	SetNumTriangles(OutStream?: RuntimeMeshTriangleStream,NewNum?: number,bAllowShrinking?: boolean): {Stream: RuntimeMeshTriangleStream, OutStream: RuntimeMeshTriangleStream};
+	SetVertexIndex(OutStream?: RuntimeMeshTriangleStream,index?: number,NewIndex?: number): {Stream: RuntimeMeshTriangleStream, OutStream: RuntimeMeshTriangleStream};
+	static AddIndex(Stream?: RuntimeMeshTriangleStream,OutStream?: RuntimeMeshTriangleStream,NewIndex?: number,OutIndex?: number): {Stream: RuntimeMeshTriangleStream, OutStream: RuntimeMeshTriangleStream, OutIndex: number};
+	static AddTriangle(Stream?: RuntimeMeshTriangleStream,OutStream?: RuntimeMeshTriangleStream,NewIndexA?: number,NewIndexB?: number,NewIndexC?: number): {Stream: RuntimeMeshTriangleStream, OutStream: RuntimeMeshTriangleStream};
+	static AppendTriangles(Stream?: RuntimeMeshTriangleStream,OutStream?: RuntimeMeshTriangleStream,InOther?: RuntimeMeshTriangleStream): {Stream: RuntimeMeshTriangleStream, OutStream: RuntimeMeshTriangleStream};
+	static EmptyTriangles(Stream?: RuntimeMeshTriangleStream,OutStream?: RuntimeMeshTriangleStream,Slack?: number): {Stream: RuntimeMeshTriangleStream, OutStream: RuntimeMeshTriangleStream};
+	static GetVertexIndex(Stream?: RuntimeMeshTriangleStream,OutStream?: RuntimeMeshTriangleStream,index?: number,OutIndex?: number): {Stream: RuntimeMeshTriangleStream, OutStream: RuntimeMeshTriangleStream, OutIndex: number};
+	static NumIndices(Stream?: RuntimeMeshTriangleStream,OutStream?: RuntimeMeshTriangleStream,OutNumIndices?: number): {Stream: RuntimeMeshTriangleStream, OutStream: RuntimeMeshTriangleStream, OutNumIndices: number};
+	static NumTriangles(Stream?: RuntimeMeshTriangleStream,OutStream?: RuntimeMeshTriangleStream,OutNumTriangles?: number): {Stream: RuntimeMeshTriangleStream, OutStream: RuntimeMeshTriangleStream, OutNumTriangles: number};
+	static SetNumTriangles(Stream?: RuntimeMeshTriangleStream,OutStream?: RuntimeMeshTriangleStream,NewNum?: number,bAllowShrinking?: boolean): {Stream: RuntimeMeshTriangleStream, OutStream: RuntimeMeshTriangleStream};
+	static SetVertexIndex(Stream?: RuntimeMeshTriangleStream,OutStream?: RuntimeMeshTriangleStream,index?: number,NewIndex?: number): {Stream: RuntimeMeshTriangleStream, OutStream: RuntimeMeshTriangleStream};
+}
+
+declare type ERuntimeMeshSliceCapOption = 'NoCap' | 'CreateNewSectionForCap' | 'UseLastSectionForCap' | 'ERuntimeMeshSliceCapOption_MAX';
+declare var ERuntimeMeshSliceCapOption : { NoCap:'NoCap',CreateNewSectionForCap:'CreateNewSectionForCap',UseLastSectionForCap:'UseLastSectionForCap',ERuntimeMeshSliceCapOption_MAX:'ERuntimeMeshSliceCapOption_MAX', };
+declare class RuntimeMeshRenderableMeshData { 
+	Positions: RuntimeMeshVertexPositionStream;
+	Tangents: RuntimeMeshVertexTangentStream;
+	TexCoords: RuntimeMeshVertexTexCoordStream;
+	Colors: RuntimeMeshVertexColorStream;
+	Triangles: RuntimeMeshTriangleStream;
+	AdjacencyTriangles: RuntimeMeshTriangleStream;
+	clone() : RuntimeMeshRenderableMeshData;
+	static C(Other: UObject | any): RuntimeMeshRenderableMeshData;
+	SliceRuntimeMeshData(SlicePlane?: Plane,CapOption?: ERuntimeMeshSliceCapOption,NewSourceSection?: RuntimeMeshRenderableMeshData,NewSourceSectionCap?: RuntimeMeshRenderableMeshData,bCreateDestination?: boolean,DestinationSection?: RuntimeMeshRenderableMeshData,NewDestinationSectionCap?: RuntimeMeshRenderableMeshData): {SourceSection: RuntimeMeshRenderableMeshData, NewSourceSection: RuntimeMeshRenderableMeshData, NewSourceSectionCap: RuntimeMeshRenderableMeshData, DestinationSection: RuntimeMeshRenderableMeshData, NewDestinationSectionCap: RuntimeMeshRenderableMeshData, $: boolean};
+	GetAdjacencyTriangleStream(OutMeshData?: RuntimeMeshRenderableMeshData): {MeshData: RuntimeMeshRenderableMeshData, OutMeshData: RuntimeMeshRenderableMeshData, $: RuntimeMeshTriangleStream};
+	GetColorStream(OutMeshData?: RuntimeMeshRenderableMeshData): {MeshData: RuntimeMeshRenderableMeshData, OutMeshData: RuntimeMeshRenderableMeshData, $: RuntimeMeshVertexColorStream};
+	GetPositionStream(OutMeshData?: RuntimeMeshRenderableMeshData): {MeshData: RuntimeMeshRenderableMeshData, OutMeshData: RuntimeMeshRenderableMeshData, $: RuntimeMeshVertexPositionStream};
+	GetTangentStream(OutMeshData?: RuntimeMeshRenderableMeshData): {MeshData: RuntimeMeshRenderableMeshData, OutMeshData: RuntimeMeshRenderableMeshData, $: RuntimeMeshVertexTangentStream};
+	GetTexCoordStream(OutMeshData?: RuntimeMeshRenderableMeshData): {MeshData: RuntimeMeshRenderableMeshData, OutMeshData: RuntimeMeshRenderableMeshData, $: RuntimeMeshVertexTexCoordStream};
+	GetTriangleStream(OutMeshData?: RuntimeMeshRenderableMeshData): {MeshData: RuntimeMeshRenderableMeshData, OutMeshData: RuntimeMeshRenderableMeshData, $: RuntimeMeshTriangleStream};
+	static SliceRuntimeMeshData(SourceSection?: RuntimeMeshRenderableMeshData,SlicePlane?: Plane,CapOption?: ERuntimeMeshSliceCapOption,NewSourceSection?: RuntimeMeshRenderableMeshData,NewSourceSectionCap?: RuntimeMeshRenderableMeshData,bCreateDestination?: boolean,DestinationSection?: RuntimeMeshRenderableMeshData,NewDestinationSectionCap?: RuntimeMeshRenderableMeshData): {SourceSection: RuntimeMeshRenderableMeshData, NewSourceSection: RuntimeMeshRenderableMeshData, NewSourceSectionCap: RuntimeMeshRenderableMeshData, DestinationSection: RuntimeMeshRenderableMeshData, NewDestinationSectionCap: RuntimeMeshRenderableMeshData, $: boolean};
+	static GetAdjacencyTriangleStream(MeshData?: RuntimeMeshRenderableMeshData,OutMeshData?: RuntimeMeshRenderableMeshData): {MeshData: RuntimeMeshRenderableMeshData, OutMeshData: RuntimeMeshRenderableMeshData, $: RuntimeMeshTriangleStream};
+	static GetColorStream(MeshData?: RuntimeMeshRenderableMeshData,OutMeshData?: RuntimeMeshRenderableMeshData): {MeshData: RuntimeMeshRenderableMeshData, OutMeshData: RuntimeMeshRenderableMeshData, $: RuntimeMeshVertexColorStream};
+	static GetPositionStream(MeshData?: RuntimeMeshRenderableMeshData,OutMeshData?: RuntimeMeshRenderableMeshData): {MeshData: RuntimeMeshRenderableMeshData, OutMeshData: RuntimeMeshRenderableMeshData, $: RuntimeMeshVertexPositionStream};
+	static GetTangentStream(MeshData?: RuntimeMeshRenderableMeshData,OutMeshData?: RuntimeMeshRenderableMeshData): {MeshData: RuntimeMeshRenderableMeshData, OutMeshData: RuntimeMeshRenderableMeshData, $: RuntimeMeshVertexTangentStream};
+	static GetTexCoordStream(MeshData?: RuntimeMeshRenderableMeshData,OutMeshData?: RuntimeMeshRenderableMeshData): {MeshData: RuntimeMeshRenderableMeshData, OutMeshData: RuntimeMeshRenderableMeshData, $: RuntimeMeshVertexTexCoordStream};
+	static GetTriangleStream(MeshData?: RuntimeMeshRenderableMeshData,OutMeshData?: RuntimeMeshRenderableMeshData): {MeshData: RuntimeMeshRenderableMeshData, OutMeshData: RuntimeMeshRenderableMeshData, $: RuntimeMeshTriangleStream};
+	static CreateRenderableMeshData(bWantsHighPrecisionTangents: boolean,bWantsHighPrecisionTexCoords: boolean,NumTexCoords: number,bWants32BitIndices: boolean): RuntimeMeshRenderableMeshData;
+}
+
+declare type ERuntimeMeshUpdateFrequency = 'Average' | 'Frequent' | 'Infrequent' | 'ERuntimeMeshUpdateFrequency_MAX';
+declare var ERuntimeMeshUpdateFrequency : { Average:'Average',Frequent:'Frequent',Infrequent:'Infrequent',ERuntimeMeshUpdateFrequency_MAX:'ERuntimeMeshUpdateFrequency_MAX', };
+declare class RuntimeMeshSectionProperties { 
+	UpdateFrequency: ERuntimeMeshUpdateFrequency;
+	MaterialSlot: number;
+	bIsVisible: boolean;
+	bIsMainPassRenderable: boolean;
+	bCastsShadow: boolean;
+	bForceOpaque: boolean;
+	bUseHighPrecisionTangents: boolean;
+	bUseHighPrecisionTexCoords: boolean;
+	NumTexCoords: number;
+	bWants32BitIndices: boolean;
+	clone() : RuntimeMeshSectionProperties;
+	static C(Other: UObject | any): RuntimeMeshSectionProperties;
+}
+
+declare class MeshComponent extends PrimitiveComponent { 
+	OverrideMaterials: MaterialInterface[];
+	bEnableMaterialParameterCaching: boolean;
+	static Load(ResourceName: string): MeshComponent;
+	static Find(Outer: UObject, ResourceName: string): MeshComponent;
+	static GetDefaultObject(): MeshComponent;
+	static CreateDefaultSubobject(Name: string, Transient?: boolean, Required?: boolean, Abstract?: boolean): MeshComponent;
+	SetVectorParameterValueOnMaterials(ParameterName: string,ParameterValue: Vector): void;
+	SetScalarParameterValueOnMaterials(ParameterName: string,ParameterValue: number): void;
+	PrestreamTextures(Seconds: number,bPrioritizeCharacterTextures: boolean,CinematicTextureGroups: number): void;
+	IsMaterialSlotNameValid(MaterialSlotName: string): boolean;
+	GetMaterialSlotNames(): string[];
+	GetMaterials(): MaterialInterface[];
+	GetMaterialIndex(MaterialSlotName: string): number;
+	static C(Other: UObject | any): MeshComponent;
+}
+
+declare class RuntimeMeshMaterialSlot { 
+	SlotName: string;
+	Material: MaterialInterface;
+	clone() : RuntimeMeshMaterialSlot;
+	static C(Other: UObject | any): RuntimeMeshMaterialSlot;
+}
+
+declare class RuntimeMeshLODProperties { 
+	ScreenSize: number;
+	bCanGetSectionsIndependently: boolean;
+	bCanGetAllSectionsAtOnce: boolean;
+	bShouldMergeStaticSectionBuffers: boolean;
+	clone() : RuntimeMeshLODProperties;
+	static C(Other: UObject | any): RuntimeMeshLODProperties;
+}
+
+declare class RuntimeMeshProviderTargetInterface extends UObject { 
+	static Load(ResourceName: string): RuntimeMeshProviderTargetInterface;
+	static Find(Outer: UObject, ResourceName: string): RuntimeMeshProviderTargetInterface;
+	static GetDefaultObject(): RuntimeMeshProviderTargetInterface;
+	static CreateDefaultSubobject(Name: string, Transient?: boolean, Required?: boolean, Abstract?: boolean): RuntimeMeshProviderTargetInterface;
+	SetupMaterialSlot(MaterialSlot: number,SlotName: string,InMaterial: MaterialInterface): void;
+	SetSectionVisibility(LODIndex: number,SectionID: number,bIsVisible: boolean): void;
+	SetSectionCastsShadow(LODIndex: number,SectionID: number,bCastsShadow: boolean): void;
+	SetLODScreenSize(LODIndex: number,ScreenSize: number): void;
+	RemoveSection(LODIndex: number,SectionID: number): void;
+	MarkSectionDirty(LODIndex: number,SectionID: number): void;
+	MarkLODDirty(LODIndex: number): void;
+	MarkCollisionDirty(): void;
+	MarkAllLODsDirty(): void;
+	IsMaterialSlotNameValid(MaterialSlotName: string): boolean;
+	GetNumMaterials(): number;
+	GetMaterialSlots(): RuntimeMeshMaterialSlot[];
+	GetMaterialSlotNames(): string[];
+	GetMaterialSlot(SlotIndex: number): RuntimeMeshMaterialSlot;
+	GetMaterialIndex(MaterialSlotName: string): number;
+	GetMaterial(SlotIndex: number): MaterialInterface;
+	CreateSection(LODIndex: number,SectionID: number,SectionProperties: RuntimeMeshSectionProperties): void;
+	ConfigureLODs(InLODs: RuntimeMeshLODProperties[]): void;
+	ClearSection(LODIndex: number,SectionID: number): void;
+	static C(Other: UObject | any): RuntimeMeshProviderTargetInterface;
+}
+
+declare class RuntimeMeshProvider extends RuntimeMeshProviderTargetInterface { 
+	static Load(ResourceName: string): RuntimeMeshProvider;
+	static Find(Outer: UObject, ResourceName: string): RuntimeMeshProvider;
+	static GetDefaultObject(): RuntimeMeshProvider;
+	static CreateDefaultSubobject(Name: string, Transient?: boolean, Required?: boolean, Abstract?: boolean): RuntimeMeshProvider;
+	Shutdown(): void;
+	IsThreadSafe(): boolean;
+	IsBound(): boolean;
+	Initialize(): void;
+	HasCollisionMesh(): boolean;
+	GetSectionMeshForLOD(LODIndex: number,SectionID: number,MeshData?: RuntimeMeshRenderableMeshData): {MeshData: RuntimeMeshRenderableMeshData, $: boolean};
+	GetCollisionSettings(): RuntimeMeshCollisionSettings;
+	GetCollisionMesh(CollisionData?: RuntimeMeshCollisionData): {CollisionData: RuntimeMeshCollisionData, $: boolean};
+	GetBounds(): BoxSphereBounds;
+	GetAllSectionsMeshForLOD(LODIndex: number,MeshDatas?: any): {MeshDatas: any, $: boolean};
+	CollisionUpdateCompleted(): void;
+	static C(Other: UObject | any): RuntimeMeshProvider;
+}
+
+declare class RuntimeMeshAsyncBodySetupData { 
+	BodySetup: BodySetup;
+	CollisionSources: RuntimeMeshCollisionSourceSectionInfo[];
+	clone() : RuntimeMeshAsyncBodySetupData;
+	static C(Other: UObject | any): RuntimeMeshAsyncBodySetupData;
+}
+
+declare class RuntimeMeshCollisionHitInfo { 
+	SourceProvider: any;
+	SourceType: ERuntimeMeshCollisionFaceSourceType;
+	SectionID: number;
+	FaceIndex: number;
+	Material: MaterialInterface;
+	clone() : RuntimeMeshCollisionHitInfo;
+	static C(Other: UObject | any): RuntimeMeshCollisionHitInfo;
+}
+
+declare class RuntimeMesh extends RuntimeMeshProviderTargetInterface { 
+	MeshProviderPtr: RuntimeMeshProvider;
+	BodySetup: BodySetup;
+	CollisionSource: RuntimeMeshCollisionSourceSectionInfo[];
+	AsyncBodySetupQueue: RuntimeMeshAsyncBodySetupData[];
+	MaterialSlots: RuntimeMeshMaterialSlot[];
+	SlotNameLookup: any;
+	CollisionUpdated: UnrealEngineMulticastDelegate<() => void>;
+	static Load(ResourceName: string): RuntimeMesh;
+	static Find(Outer: UObject, ResourceName: string): RuntimeMesh;
+	static GetDefaultObject(): RuntimeMesh;
+	static CreateDefaultSubobject(Name: string, Transient?: boolean, Required?: boolean, Abstract?: boolean): RuntimeMesh;
+	Reset(): void;
+	IsInitialized(): boolean;
+	Initialize(Provider: RuntimeMeshProvider): void;
+	GetProviderPtr(): RuntimeMeshProvider;
+	GetLocalBounds(): BoxSphereBounds;
+	GetHitSource(FaceIndex: number): RuntimeMeshCollisionHitInfo;
+	GetBodySetup(): BodySetup;
+	ForceCollisionUpdate(bForceCookNow: boolean): BodySetup;
+	static C(Other: UObject | any): RuntimeMesh;
+}
+
+declare type ERuntimeMeshMobility = 'Movable' | 'Stationary' | 'Static' | 'ERuntimeMeshMobility_MAX';
+declare var ERuntimeMeshMobility : { Movable:'Movable',Stationary:'Stationary',Static:'Static',ERuntimeMeshMobility_MAX:'ERuntimeMeshMobility_MAX', };
+declare class RuntimeMeshComponent extends MeshComponent { 
+	RuntimeMeshReference: RuntimeMesh;
+	KeepMomentumOnCollisionUpdate: boolean;
+	static Load(ResourceName: string): RuntimeMeshComponent;
+	static Find(Outer: UObject, ResourceName: string): RuntimeMeshComponent;
+	static GetDefaultObject(): RuntimeMeshComponent;
+	static CreateDefaultSubobject(Name: string, Transient?: boolean, Required?: boolean, Abstract?: boolean): RuntimeMeshComponent;
+	SetupMaterialSlot(MaterialSlot: number,SlotName: string,InMaterial: MaterialInterface): void;
+	SetRuntimeMeshMobility(NewMobility: ERuntimeMeshMobility): void;
+	SetRuntimeMesh(NewMesh: RuntimeMesh): void;
+	Initialize(Provider: RuntimeMeshProvider): void;
+	GetRuntimeMeshMobility(): ERuntimeMeshMobility;
+	GetRuntimeMesh(): RuntimeMesh;
+	GetProvider(): RuntimeMeshProvider;
+	GetOrCreateRuntimeMesh(): RuntimeMesh;
+	GetMaterialSlots(): RuntimeMeshMaterialSlot[];
+	GetHitSource(FaceIndex: number): RuntimeMeshCollisionHitInfo;
+	static C(Other: UObject | any): RuntimeMeshComponent;
+	SliceRuntimeMesh(PlanePosition: Vector,PlaneNormal: Vector,bCreateOtherHalf: boolean,OutOtherHalfRuntimeMesh?: RuntimeMeshComponent,CapOption?: ERuntimeMeshSliceCapOption,CapMaterial?: MaterialInterface): {OutOtherHalfRuntimeMesh: RuntimeMeshComponent};
+	static SliceRuntimeMesh(InRuntimeMesh: RuntimeMeshComponent,PlanePosition: Vector,PlaneNormal: Vector,bCreateOtherHalf: boolean,OutOtherHalfRuntimeMesh?: RuntimeMeshComponent,CapOption?: ERuntimeMeshSliceCapOption,CapMaterial?: MaterialInterface): {OutOtherHalfRuntimeMesh: RuntimeMeshComponent};
+}
+
 declare class ProcMeshTangent { 
 	TangentX: Vector;
 	bFlipTangentY: boolean;
@@ -2955,6 +3411,10 @@ declare class StaticMesh extends StreamableRenderAsset {
 	LoadRawMesh(SourceModelIndex: number,OutMesh?: JavascriptRawMesh): {OutMesh: JavascriptRawMesh};
 	SaveRawMesh(SourceModelIndex: number,InMesh?: JavascriptRawMesh): {InMesh: JavascriptRawMesh};
 	SetSectionInfo(LODIndex: number,SectionIndex: number,Info: MeshSectionInfo): void;
+	CopyStaticMeshCollisionToCollisionSettings(OutCollisionSettings?: RuntimeMeshCollisionSettings): {OutCollisionSettings: RuntimeMeshCollisionSettings, $: boolean};
+	CopyStaticMeshLODToCollisionData(LODIndex: number,OutCollisionData?: RuntimeMeshCollisionData): {OutCollisionData: RuntimeMeshCollisionData, $: boolean};
+	CopyStaticMeshSectionToRenderableMeshData(LODIndex: number,SectionID: number,OutMeshData?: RuntimeMeshRenderableMeshData,OutProperties?: RuntimeMeshSectionProperties): {OutMeshData: RuntimeMeshRenderableMeshData, OutProperties: RuntimeMeshSectionProperties, $: boolean};
+	CopyStaticMeshToRuntimeMesh(RuntimeMeshComponent: RuntimeMeshComponent,CollisionLODIndex: number,MaxLODToCopy: number): boolean;
 	GetSectionFromStaticMesh(LODIndex: number,SectionIndex: number,Vertices?: Vector[],Triangles?: number[],Normals?: Vector[],UVs?: Vector2D[],Tangents?: ProcMeshTangent[]): {Vertices: Vector[], Triangles: number[], Normals: Vector[], UVs: Vector2D[], Tangents: ProcMeshTangent[]};
 	static Build(StaticMesh: StaticMesh): void;
 	static GetPhysicsBodySetupFromStaticMesh(InStaticMesh: StaticMesh): BodySetup;
@@ -2962,6 +3422,10 @@ declare class StaticMesh extends StreamableRenderAsset {
 	static LoadRawMesh(StaticMesh: StaticMesh,SourceModelIndex: number,OutMesh?: JavascriptRawMesh): {OutMesh: JavascriptRawMesh};
 	static SaveRawMesh(StaticMesh: StaticMesh,SourceModelIndex: number,InMesh?: JavascriptRawMesh): {InMesh: JavascriptRawMesh};
 	static SetSectionInfo(StaticMesh: StaticMesh,LODIndex: number,SectionIndex: number,Info: MeshSectionInfo): void;
+	static CopyStaticMeshCollisionToCollisionSettings(StaticMesh: StaticMesh,OutCollisionSettings?: RuntimeMeshCollisionSettings): {OutCollisionSettings: RuntimeMeshCollisionSettings, $: boolean};
+	static CopyStaticMeshLODToCollisionData(StaticMesh: StaticMesh,LODIndex: number,OutCollisionData?: RuntimeMeshCollisionData): {OutCollisionData: RuntimeMeshCollisionData, $: boolean};
+	static CopyStaticMeshSectionToRenderableMeshData(StaticMesh: StaticMesh,LODIndex: number,SectionID: number,OutMeshData?: RuntimeMeshRenderableMeshData,OutProperties?: RuntimeMeshSectionProperties): {OutMeshData: RuntimeMeshRenderableMeshData, OutProperties: RuntimeMeshSectionProperties, $: boolean};
+	static CopyStaticMeshToRuntimeMesh(StaticMesh: StaticMesh,RuntimeMeshComponent: RuntimeMeshComponent,CollisionLODIndex: number,MaxLODToCopy: number): boolean;
 	static GetSectionFromStaticMesh(InMesh: StaticMesh,LODIndex: number,SectionIndex: number,Vertices?: Vector[],Triangles?: number[],Normals?: Vector[],UVs?: Vector2D[],Tangents?: ProcMeshTangent[]): {Vertices: Vector[], Triangles: number[], Normals: Vector[], UVs: Vector2D[], Tangents: ProcMeshTangent[]};
 }
 
@@ -3744,23 +4208,6 @@ declare class DamageType extends UObject {
 	static GetDefaultObject(): DamageType;
 	static CreateDefaultSubobject(Name: string, Transient?: boolean, Required?: boolean, Abstract?: boolean): DamageType;
 	static C(Other: UObject | any): DamageType;
-}
-
-declare class MeshComponent extends PrimitiveComponent { 
-	OverrideMaterials: MaterialInterface[];
-	bEnableMaterialParameterCaching: boolean;
-	static Load(ResourceName: string): MeshComponent;
-	static Find(Outer: UObject, ResourceName: string): MeshComponent;
-	static GetDefaultObject(): MeshComponent;
-	static CreateDefaultSubobject(Name: string, Transient?: boolean, Required?: boolean, Abstract?: boolean): MeshComponent;
-	SetVectorParameterValueOnMaterials(ParameterName: string,ParameterValue: Vector): void;
-	SetScalarParameterValueOnMaterials(ParameterName: string,ParameterValue: number): void;
-	PrestreamTextures(Seconds: number,bPrioritizeCharacterTextures: boolean,CinematicTextureGroups: number): void;
-	IsMaterialSlotNameValid(MaterialSlotName: string): boolean;
-	GetMaterialSlotNames(): string[];
-	GetMaterials(): MaterialInterface[];
-	GetMaterialIndex(MaterialSlotName: string): number;
-	static C(Other: UObject | any): MeshComponent;
 }
 
 declare class SkeletalMeshEditorData extends UObject { 
@@ -8566,11 +9013,13 @@ declare class StaticMeshComponent extends MeshComponent {
 	GetLocalBounds(Min?: Vector,Max?: Vector): {Min: Vector, Max: Vector};
 	static C(Other: UObject | any): StaticMeshComponent;
 	GetPhysicsBodySetupFromStaticMeshComponent(): BodySetup;
+	CopyStaticMeshComponentToRuntimeMesh(RuntimeMeshComponent: RuntimeMeshComponent,CollisionLODIndex: number,MaxLODToCopy: number): boolean;
 	CopyProceduralMeshFromStaticMeshComponent(LODIndex: number,ProcMeshComponent: ProceduralMeshComponent,bCreateCollision: boolean): void;
 	PaintVerticesLerpAlongAxis(StartColor: LinearColor,EndColor: LinearColor,Axis: EVertexPaintAxis,bConvertToSRGB: boolean): void;
 	PaintVerticesSingleColor(FillColor: LinearColor,bConvertToSRGB: boolean): void;
 	RemovePaintedVertices(): void;
 	static GetPhysicsBodySetupFromStaticMeshComponent(InStaticMeshComp: StaticMeshComponent): BodySetup;
+	static CopyStaticMeshComponentToRuntimeMesh(StaticMeshComponent: StaticMeshComponent,RuntimeMeshComponent: RuntimeMeshComponent,CollisionLODIndex: number,MaxLODToCopy: number): boolean;
 	static CopyProceduralMeshFromStaticMeshComponent(StaticMeshComponent: StaticMeshComponent,LODIndex: number,ProcMeshComponent: ProceduralMeshComponent,bCreateCollision: boolean): void;
 	static PaintVerticesLerpAlongAxis(StaticMeshComponent: StaticMeshComponent,StartColor: LinearColor,EndColor: LinearColor,Axis: EVertexPaintAxis,bConvertToSRGB: boolean): void;
 	static PaintVerticesSingleColor(StaticMeshComponent: StaticMeshComponent,FillColor: LinearColor,bConvertToSRGB: boolean): void;
@@ -18623,998 +19072,5 @@ declare class UObject {
 	static GetObjectClass(UObject: UObject): UnrealEngineClass;
 	static SetSetPropertyByName(UObject: UObject,PropertyName: string,Value: any): void;
 	static SetMapPropertyByName(UObject: UObject,PropertyName: string,Value: any): void;
-}
-
-declare class GCObjectReferencer extends UObject { 
-	static Load(ResourceName: string): GCObjectReferencer;
-	static Find(Outer: UObject, ResourceName: string): GCObjectReferencer;
-	static GetDefaultObject(): GCObjectReferencer;
-	static CreateDefaultSubobject(Name: string, Transient?: boolean, Required?: boolean, Abstract?: boolean): GCObjectReferencer;
-	static C(Other: UObject | any): GCObjectReferencer;
-}
-
-declare class TextBuffer extends UObject { 
-	static Load(ResourceName: string): TextBuffer;
-	static Find(Outer: UObject, ResourceName: string): TextBuffer;
-	static GetDefaultObject(): TextBuffer;
-	static CreateDefaultSubobject(Name: string, Transient?: boolean, Required?: boolean, Abstract?: boolean): TextBuffer;
-	static C(Other: UObject | any): TextBuffer;
-}
-
-declare class ScriptStruct extends Struct { 
-	static Load(ResourceName: string): ScriptStruct;
-	static Find(Outer: UObject, ResourceName: string): ScriptStruct;
-	static GetDefaultObject(): ScriptStruct;
-	static CreateDefaultSubobject(Name: string, Transient?: boolean, Required?: boolean, Abstract?: boolean): ScriptStruct;
-	static C(Other: UObject | any): ScriptStruct;
-}
-
-declare class DelegateFunction extends UFunction { 
-	static Load(ResourceName: string): DelegateFunction;
-	static Find(Outer: UObject, ResourceName: string): DelegateFunction;
-	static GetDefaultObject(): DelegateFunction;
-	static CreateDefaultSubobject(Name: string, Transient?: boolean, Required?: boolean, Abstract?: boolean): DelegateFunction;
-	static C(Other: UObject | any): DelegateFunction;
-}
-
-declare class SparseDelegateFunction extends DelegateFunction { 
-	static Load(ResourceName: string): SparseDelegateFunction;
-	static Find(Outer: UObject, ResourceName: string): SparseDelegateFunction;
-	static GetDefaultObject(): SparseDelegateFunction;
-	static CreateDefaultSubobject(Name: string, Transient?: boolean, Required?: boolean, Abstract?: boolean): SparseDelegateFunction;
-	static C(Other: UObject | any): SparseDelegateFunction;
-}
-
-declare class DynamicClass extends Class { 
-	static Load(ResourceName: string): DynamicClass;
-	static Find(Outer: UObject, ResourceName: string): DynamicClass;
-	static GetDefaultObject(): DynamicClass;
-	static CreateDefaultSubobject(Name: string, Transient?: boolean, Required?: boolean, Abstract?: boolean): DynamicClass;
-	static C(Other: UObject | any): DynamicClass;
-}
-
-declare class LinkerPlaceholderClass extends Class { 
-	static Load(ResourceName: string): LinkerPlaceholderClass;
-	static Find(Outer: UObject, ResourceName: string): LinkerPlaceholderClass;
-	static GetDefaultObject(): LinkerPlaceholderClass;
-	static CreateDefaultSubobject(Name: string, Transient?: boolean, Required?: boolean, Abstract?: boolean): LinkerPlaceholderClass;
-	static C(Other: UObject | any): LinkerPlaceholderClass;
-}
-
-declare class LinkerPlaceholderExportObject extends UObject { 
-	static Load(ResourceName: string): LinkerPlaceholderExportObject;
-	static Find(Outer: UObject, ResourceName: string): LinkerPlaceholderExportObject;
-	static GetDefaultObject(): LinkerPlaceholderExportObject;
-	static CreateDefaultSubobject(Name: string, Transient?: boolean, Required?: boolean, Abstract?: boolean): LinkerPlaceholderExportObject;
-	static C(Other: UObject | any): LinkerPlaceholderExportObject;
-}
-
-declare class LinkerPlaceholderFunction extends UFunction { 
-	static Load(ResourceName: string): LinkerPlaceholderFunction;
-	static Find(Outer: UObject, ResourceName: string): LinkerPlaceholderFunction;
-	static GetDefaultObject(): LinkerPlaceholderFunction;
-	static CreateDefaultSubobject(Name: string, Transient?: boolean, Required?: boolean, Abstract?: boolean): LinkerPlaceholderFunction;
-	static C(Other: UObject | any): LinkerPlaceholderFunction;
-}
-
-declare class MetaData extends UObject { 
-	static Load(ResourceName: string): MetaData;
-	static Find(Outer: UObject, ResourceName: string): MetaData;
-	static GetDefaultObject(): MetaData;
-	static CreateDefaultSubobject(Name: string, Transient?: boolean, Required?: boolean, Abstract?: boolean): MetaData;
-	static C(Other: UObject | any): MetaData;
-}
-
-declare class ObjectRedirector extends UObject { 
-	static Load(ResourceName: string): ObjectRedirector;
-	static Find(Outer: UObject, ResourceName: string): ObjectRedirector;
-	static GetDefaultObject(): ObjectRedirector;
-	static CreateDefaultSubobject(Name: string, Transient?: boolean, Required?: boolean, Abstract?: boolean): ObjectRedirector;
-	static C(Other: UObject | any): ObjectRedirector;
-}
-
-declare class Property extends Field { 
-	static Load(ResourceName: string): Property;
-	static Find(Outer: UObject, ResourceName: string): Property;
-	static GetDefaultObject(): Property;
-	static CreateDefaultSubobject(Name: string, Transient?: boolean, Required?: boolean, Abstract?: boolean): Property;
-	static C(Other: UObject | any): Property;
-}
-
-declare class EnumProperty extends Property { 
-	static Load(ResourceName: string): EnumProperty;
-	static Find(Outer: UObject, ResourceName: string): EnumProperty;
-	static GetDefaultObject(): EnumProperty;
-	static CreateDefaultSubobject(Name: string, Transient?: boolean, Required?: boolean, Abstract?: boolean): EnumProperty;
-	static C(Other: UObject | any): EnumProperty;
-}
-
-declare class ArrayProperty extends Property { 
-	static Load(ResourceName: string): ArrayProperty;
-	static Find(Outer: UObject, ResourceName: string): ArrayProperty;
-	static GetDefaultObject(): ArrayProperty;
-	static CreateDefaultSubobject(Name: string, Transient?: boolean, Required?: boolean, Abstract?: boolean): ArrayProperty;
-	static C(Other: UObject | any): ArrayProperty;
-}
-
-declare class ObjectPropertyBase extends Property { 
-	static Load(ResourceName: string): ObjectPropertyBase;
-	static Find(Outer: UObject, ResourceName: string): ObjectPropertyBase;
-	static GetDefaultObject(): ObjectPropertyBase;
-	static CreateDefaultSubobject(Name: string, Transient?: boolean, Required?: boolean, Abstract?: boolean): ObjectPropertyBase;
-	static C(Other: UObject | any): ObjectPropertyBase;
-}
-
-declare class BoolProperty extends Property { 
-	static Load(ResourceName: string): BoolProperty;
-	static Find(Outer: UObject, ResourceName: string): BoolProperty;
-	static GetDefaultObject(): BoolProperty;
-	static CreateDefaultSubobject(Name: string, Transient?: boolean, Required?: boolean, Abstract?: boolean): BoolProperty;
-	static C(Other: UObject | any): BoolProperty;
-}
-
-declare class NumericProperty extends Property { 
-	static Load(ResourceName: string): NumericProperty;
-	static Find(Outer: UObject, ResourceName: string): NumericProperty;
-	static GetDefaultObject(): NumericProperty;
-	static CreateDefaultSubobject(Name: string, Transient?: boolean, Required?: boolean, Abstract?: boolean): NumericProperty;
-	static C(Other: UObject | any): NumericProperty;
-}
-
-declare class ByteProperty extends NumericProperty { 
-	static Load(ResourceName: string): ByteProperty;
-	static Find(Outer: UObject, ResourceName: string): ByteProperty;
-	static GetDefaultObject(): ByteProperty;
-	static CreateDefaultSubobject(Name: string, Transient?: boolean, Required?: boolean, Abstract?: boolean): ByteProperty;
-	static C(Other: UObject | any): ByteProperty;
-}
-
-declare class ObjectProperty extends ObjectPropertyBase { 
-	static Load(ResourceName: string): ObjectProperty;
-	static Find(Outer: UObject, ResourceName: string): ObjectProperty;
-	static GetDefaultObject(): ObjectProperty;
-	static CreateDefaultSubobject(Name: string, Transient?: boolean, Required?: boolean, Abstract?: boolean): ObjectProperty;
-	static C(Other: UObject | any): ObjectProperty;
-}
-
-declare class ClassProperty extends ObjectProperty { 
-	static Load(ResourceName: string): ClassProperty;
-	static Find(Outer: UObject, ResourceName: string): ClassProperty;
-	static GetDefaultObject(): ClassProperty;
-	static CreateDefaultSubobject(Name: string, Transient?: boolean, Required?: boolean, Abstract?: boolean): ClassProperty;
-	static C(Other: UObject | any): ClassProperty;
-}
-
-declare class DelegateProperty extends Property { 
-	static Load(ResourceName: string): DelegateProperty;
-	static Find(Outer: UObject, ResourceName: string): DelegateProperty;
-	static GetDefaultObject(): DelegateProperty;
-	static CreateDefaultSubobject(Name: string, Transient?: boolean, Required?: boolean, Abstract?: boolean): DelegateProperty;
-	static C(Other: UObject | any): DelegateProperty;
-}
-
-declare class DoubleProperty extends NumericProperty { 
-	static Load(ResourceName: string): DoubleProperty;
-	static Find(Outer: UObject, ResourceName: string): DoubleProperty;
-	static GetDefaultObject(): DoubleProperty;
-	static CreateDefaultSubobject(Name: string, Transient?: boolean, Required?: boolean, Abstract?: boolean): DoubleProperty;
-	static C(Other: UObject | any): DoubleProperty;
-}
-
-declare class FloatProperty extends NumericProperty { 
-	static Load(ResourceName: string): FloatProperty;
-	static Find(Outer: UObject, ResourceName: string): FloatProperty;
-	static GetDefaultObject(): FloatProperty;
-	static CreateDefaultSubobject(Name: string, Transient?: boolean, Required?: boolean, Abstract?: boolean): FloatProperty;
-	static C(Other: UObject | any): FloatProperty;
-}
-
-declare class IntProperty extends NumericProperty { 
-	static Load(ResourceName: string): IntProperty;
-	static Find(Outer: UObject, ResourceName: string): IntProperty;
-	static GetDefaultObject(): IntProperty;
-	static CreateDefaultSubobject(Name: string, Transient?: boolean, Required?: boolean, Abstract?: boolean): IntProperty;
-	static C(Other: UObject | any): IntProperty;
-}
-
-declare class Int8Property extends NumericProperty { 
-	static Load(ResourceName: string): Int8Property;
-	static Find(Outer: UObject, ResourceName: string): Int8Property;
-	static GetDefaultObject(): Int8Property;
-	static CreateDefaultSubobject(Name: string, Transient?: boolean, Required?: boolean, Abstract?: boolean): Int8Property;
-	static C(Other: UObject | any): Int8Property;
-}
-
-declare class Int16Property extends NumericProperty { 
-	static Load(ResourceName: string): Int16Property;
-	static Find(Outer: UObject, ResourceName: string): Int16Property;
-	static GetDefaultObject(): Int16Property;
-	static CreateDefaultSubobject(Name: string, Transient?: boolean, Required?: boolean, Abstract?: boolean): Int16Property;
-	static C(Other: UObject | any): Int16Property;
-}
-
-declare class Int64Property extends NumericProperty { 
-	static Load(ResourceName: string): Int64Property;
-	static Find(Outer: UObject, ResourceName: string): Int64Property;
-	static GetDefaultObject(): Int64Property;
-	static CreateDefaultSubobject(Name: string, Transient?: boolean, Required?: boolean, Abstract?: boolean): Int64Property;
-	static C(Other: UObject | any): Int64Property;
-}
-
-declare class InterfaceProperty extends Property { 
-	static Load(ResourceName: string): InterfaceProperty;
-	static Find(Outer: UObject, ResourceName: string): InterfaceProperty;
-	static GetDefaultObject(): InterfaceProperty;
-	static CreateDefaultSubobject(Name: string, Transient?: boolean, Required?: boolean, Abstract?: boolean): InterfaceProperty;
-	static C(Other: UObject | any): InterfaceProperty;
-}
-
-declare class LazyObjectProperty extends ObjectPropertyBase { 
-	static Load(ResourceName: string): LazyObjectProperty;
-	static Find(Outer: UObject, ResourceName: string): LazyObjectProperty;
-	static GetDefaultObject(): LazyObjectProperty;
-	static CreateDefaultSubobject(Name: string, Transient?: boolean, Required?: boolean, Abstract?: boolean): LazyObjectProperty;
-	static C(Other: UObject | any): LazyObjectProperty;
-}
-
-declare class MapProperty extends Property { 
-	static Load(ResourceName: string): MapProperty;
-	static Find(Outer: UObject, ResourceName: string): MapProperty;
-	static GetDefaultObject(): MapProperty;
-	static CreateDefaultSubobject(Name: string, Transient?: boolean, Required?: boolean, Abstract?: boolean): MapProperty;
-	static C(Other: UObject | any): MapProperty;
-}
-
-declare class MulticastDelegateProperty extends Property { 
-	static Load(ResourceName: string): MulticastDelegateProperty;
-	static Find(Outer: UObject, ResourceName: string): MulticastDelegateProperty;
-	static GetDefaultObject(): MulticastDelegateProperty;
-	static CreateDefaultSubobject(Name: string, Transient?: boolean, Required?: boolean, Abstract?: boolean): MulticastDelegateProperty;
-	static C(Other: UObject | any): MulticastDelegateProperty;
-}
-
-declare class MulticastInlineDelegateProperty extends MulticastDelegateProperty { 
-	static Load(ResourceName: string): MulticastInlineDelegateProperty;
-	static Find(Outer: UObject, ResourceName: string): MulticastInlineDelegateProperty;
-	static GetDefaultObject(): MulticastInlineDelegateProperty;
-	static CreateDefaultSubobject(Name: string, Transient?: boolean, Required?: boolean, Abstract?: boolean): MulticastInlineDelegateProperty;
-	static C(Other: UObject | any): MulticastInlineDelegateProperty;
-}
-
-declare class MulticastSparseDelegateProperty extends MulticastDelegateProperty { 
-	static Load(ResourceName: string): MulticastSparseDelegateProperty;
-	static Find(Outer: UObject, ResourceName: string): MulticastSparseDelegateProperty;
-	static GetDefaultObject(): MulticastSparseDelegateProperty;
-	static CreateDefaultSubobject(Name: string, Transient?: boolean, Required?: boolean, Abstract?: boolean): MulticastSparseDelegateProperty;
-	static C(Other: UObject | any): MulticastSparseDelegateProperty;
-}
-
-declare class NameProperty extends Property { 
-	static Load(ResourceName: string): NameProperty;
-	static Find(Outer: UObject, ResourceName: string): NameProperty;
-	static GetDefaultObject(): NameProperty;
-	static CreateDefaultSubobject(Name: string, Transient?: boolean, Required?: boolean, Abstract?: boolean): NameProperty;
-	static C(Other: UObject | any): NameProperty;
-}
-
-declare class SetProperty extends Property { 
-	static Load(ResourceName: string): SetProperty;
-	static Find(Outer: UObject, ResourceName: string): SetProperty;
-	static GetDefaultObject(): SetProperty;
-	static CreateDefaultSubobject(Name: string, Transient?: boolean, Required?: boolean, Abstract?: boolean): SetProperty;
-	static C(Other: UObject | any): SetProperty;
-}
-
-declare class SoftObjectProperty extends ObjectPropertyBase { 
-	static Load(ResourceName: string): SoftObjectProperty;
-	static Find(Outer: UObject, ResourceName: string): SoftObjectProperty;
-	static GetDefaultObject(): SoftObjectProperty;
-	static CreateDefaultSubobject(Name: string, Transient?: boolean, Required?: boolean, Abstract?: boolean): SoftObjectProperty;
-	static C(Other: UObject | any): SoftObjectProperty;
-}
-
-declare class SoftClassProperty extends SoftObjectProperty { 
-	static Load(ResourceName: string): SoftClassProperty;
-	static Find(Outer: UObject, ResourceName: string): SoftClassProperty;
-	static GetDefaultObject(): SoftClassProperty;
-	static CreateDefaultSubobject(Name: string, Transient?: boolean, Required?: boolean, Abstract?: boolean): SoftClassProperty;
-	static C(Other: UObject | any): SoftClassProperty;
-}
-
-declare class StrProperty extends Property { 
-	static Load(ResourceName: string): StrProperty;
-	static Find(Outer: UObject, ResourceName: string): StrProperty;
-	static GetDefaultObject(): StrProperty;
-	static CreateDefaultSubobject(Name: string, Transient?: boolean, Required?: boolean, Abstract?: boolean): StrProperty;
-	static C(Other: UObject | any): StrProperty;
-}
-
-declare class StructProperty extends Property { 
-	static Load(ResourceName: string): StructProperty;
-	static Find(Outer: UObject, ResourceName: string): StructProperty;
-	static GetDefaultObject(): StructProperty;
-	static CreateDefaultSubobject(Name: string, Transient?: boolean, Required?: boolean, Abstract?: boolean): StructProperty;
-	static C(Other: UObject | any): StructProperty;
-}
-
-declare class UInt16Property extends NumericProperty { 
-	static Load(ResourceName: string): UInt16Property;
-	static Find(Outer: UObject, ResourceName: string): UInt16Property;
-	static GetDefaultObject(): UInt16Property;
-	static CreateDefaultSubobject(Name: string, Transient?: boolean, Required?: boolean, Abstract?: boolean): UInt16Property;
-	static C(Other: UObject | any): UInt16Property;
-}
-
-declare class UInt32Property extends NumericProperty { 
-	static Load(ResourceName: string): UInt32Property;
-	static Find(Outer: UObject, ResourceName: string): UInt32Property;
-	static GetDefaultObject(): UInt32Property;
-	static CreateDefaultSubobject(Name: string, Transient?: boolean, Required?: boolean, Abstract?: boolean): UInt32Property;
-	static C(Other: UObject | any): UInt32Property;
-}
-
-declare class UInt64Property extends NumericProperty { 
-	static Load(ResourceName: string): UInt64Property;
-	static Find(Outer: UObject, ResourceName: string): UInt64Property;
-	static GetDefaultObject(): UInt64Property;
-	static CreateDefaultSubobject(Name: string, Transient?: boolean, Required?: boolean, Abstract?: boolean): UInt64Property;
-	static C(Other: UObject | any): UInt64Property;
-}
-
-declare class WeakObjectProperty extends ObjectPropertyBase { 
-	static Load(ResourceName: string): WeakObjectProperty;
-	static Find(Outer: UObject, ResourceName: string): WeakObjectProperty;
-	static GetDefaultObject(): WeakObjectProperty;
-	static CreateDefaultSubobject(Name: string, Transient?: boolean, Required?: boolean, Abstract?: boolean): WeakObjectProperty;
-	static C(Other: UObject | any): WeakObjectProperty;
-}
-
-declare class TextProperty extends Property { 
-	static Load(ResourceName: string): TextProperty;
-	static Find(Outer: UObject, ResourceName: string): TextProperty;
-	static GetDefaultObject(): TextProperty;
-	static CreateDefaultSubobject(Name: string, Transient?: boolean, Required?: boolean, Abstract?: boolean): TextProperty;
-	static C(Other: UObject | any): TextProperty;
-}
-
-declare class PropertyWrapper extends UObject { 
-	static Load(ResourceName: string): PropertyWrapper;
-	static Find(Outer: UObject, ResourceName: string): PropertyWrapper;
-	static GetDefaultObject(): PropertyWrapper;
-	static CreateDefaultSubobject(Name: string, Transient?: boolean, Required?: boolean, Abstract?: boolean): PropertyWrapper;
-	static C(Other: UObject | any): PropertyWrapper;
-}
-
-declare class MulticastDelegatePropertyWrapper extends PropertyWrapper { 
-	static Load(ResourceName: string): MulticastDelegatePropertyWrapper;
-	static Find(Outer: UObject, ResourceName: string): MulticastDelegatePropertyWrapper;
-	static GetDefaultObject(): MulticastDelegatePropertyWrapper;
-	static CreateDefaultSubobject(Name: string, Transient?: boolean, Required?: boolean, Abstract?: boolean): MulticastDelegatePropertyWrapper;
-	static C(Other: UObject | any): MulticastDelegatePropertyWrapper;
-}
-
-declare class MulticastInlineDelegatePropertyWrapper extends MulticastDelegatePropertyWrapper { 
-	static Load(ResourceName: string): MulticastInlineDelegatePropertyWrapper;
-	static Find(Outer: UObject, ResourceName: string): MulticastInlineDelegatePropertyWrapper;
-	static GetDefaultObject(): MulticastInlineDelegatePropertyWrapper;
-	static CreateDefaultSubobject(Name: string, Transient?: boolean, Required?: boolean, Abstract?: boolean): MulticastInlineDelegatePropertyWrapper;
-	static C(Other: UObject | any): MulticastInlineDelegatePropertyWrapper;
-}
-
-declare class InputCoreTypes extends UObject { 
-	static Load(ResourceName: string): InputCoreTypes;
-	static Find(Outer: UObject, ResourceName: string): InputCoreTypes;
-	static GetDefaultObject(): InputCoreTypes;
-	static CreateDefaultSubobject(Name: string, Transient?: boolean, Required?: boolean, Abstract?: boolean): InputCoreTypes;
-	static C(Other: UObject | any): InputCoreTypes;
-}
-
-declare class FontFaceInterface extends Interface { 
-	static Load(ResourceName: string): FontFaceInterface;
-	static Find(Outer: UObject, ResourceName: string): FontFaceInterface;
-	static GetDefaultObject(): FontFaceInterface;
-	static CreateDefaultSubobject(Name: string, Transient?: boolean, Required?: boolean, Abstract?: boolean): FontFaceInterface;
-	static C(Other: UObject | any): FontFaceInterface;
-}
-
-declare class FontProviderInterface extends Interface { 
-	static Load(ResourceName: string): FontProviderInterface;
-	static Find(Outer: UObject, ResourceName: string): FontProviderInterface;
-	static GetDefaultObject(): FontProviderInterface;
-	static CreateDefaultSubobject(Name: string, Transient?: boolean, Required?: boolean, Abstract?: boolean): FontProviderInterface;
-	static C(Other: UObject | any): FontProviderInterface;
-}
-
-declare class SlateTypes extends UObject { 
-	static Load(ResourceName: string): SlateTypes;
-	static Find(Outer: UObject, ResourceName: string): SlateTypes;
-	static GetDefaultObject(): SlateTypes;
-	static CreateDefaultSubobject(Name: string, Transient?: boolean, Required?: boolean, Abstract?: boolean): SlateTypes;
-	static C(Other: UObject | any): SlateTypes;
-}
-
-declare class SlateWidgetStyleContainerBase extends UObject { 
-	static Load(ResourceName: string): SlateWidgetStyleContainerBase;
-	static Find(Outer: UObject, ResourceName: string): SlateWidgetStyleContainerBase;
-	static GetDefaultObject(): SlateWidgetStyleContainerBase;
-	static CreateDefaultSubobject(Name: string, Transient?: boolean, Required?: boolean, Abstract?: boolean): SlateWidgetStyleContainerBase;
-	static C(Other: UObject | any): SlateWidgetStyleContainerBase;
-}
-
-declare class SlateWidgetStyleAsset extends UObject { 
-	CustomStyle: SlateWidgetStyleContainerBase;
-	static Load(ResourceName: string): SlateWidgetStyleAsset;
-	static Find(Outer: UObject, ResourceName: string): SlateWidgetStyleAsset;
-	static GetDefaultObject(): SlateWidgetStyleAsset;
-	static CreateDefaultSubobject(Name: string, Transient?: boolean, Required?: boolean, Abstract?: boolean): SlateWidgetStyleAsset;
-	static C(Other: UObject | any): SlateWidgetStyleAsset;
-}
-
-declare class SlateWidgetStyleContainerInterface extends Interface { 
-	static Load(ResourceName: string): SlateWidgetStyleContainerInterface;
-	static Find(Outer: UObject, ResourceName: string): SlateWidgetStyleContainerInterface;
-	static GetDefaultObject(): SlateWidgetStyleContainerInterface;
-	static CreateDefaultSubobject(Name: string, Transient?: boolean, Required?: boolean, Abstract?: boolean): SlateWidgetStyleContainerInterface;
-	static C(Other: UObject | any): SlateWidgetStyleContainerInterface;
-}
-
-declare class SlateWidgetStyle { 
-	clone() : SlateWidgetStyle;
-	static C(Other: UObject | any): SlateWidgetStyle;
-}
-
-declare class SlateSound { 
-	ResourceObject: UObject;
-	clone() : SlateSound;
-	static C(Other: UObject | any): SlateSound;
-}
-
-declare class ButtonStyle extends SlateWidgetStyle { 
-	Normal: SlateBrush;
-	Hovered: SlateBrush;
-	Pressed: SlateBrush;
-	Disabled: SlateBrush;
-	NormalPadding: Margin;
-	PressedPadding: Margin;
-	PressedSlateSound: SlateSound;
-	HoveredSlateSound: SlateSound;
-	PressedSound: string;
-	HoveredSound: string;
-	clone() : ButtonStyle;
-	static C(Other: UObject | any): ButtonStyle;
-}
-
-declare class ButtonWidgetStyle extends SlateWidgetStyleContainerBase { 
-	ButtonStyle: ButtonStyle;
-	static Load(ResourceName: string): ButtonWidgetStyle;
-	static Find(Outer: UObject, ResourceName: string): ButtonWidgetStyle;
-	static GetDefaultObject(): ButtonWidgetStyle;
-	static CreateDefaultSubobject(Name: string, Transient?: boolean, Required?: boolean, Abstract?: boolean): ButtonWidgetStyle;
-	static C(Other: UObject | any): ButtonWidgetStyle;
-}
-
-declare type ESlateCheckBoxType = 'CheckBox' | 'ToggleButton' | 'ESlateCheckBoxType_MAX';
-declare var ESlateCheckBoxType : { CheckBox:'CheckBox',ToggleButton:'ToggleButton',ESlateCheckBoxType_MAX:'ESlateCheckBoxType_MAX', };
-declare class CheckBoxStyle extends SlateWidgetStyle { 
-	CheckBoxType: ESlateCheckBoxType;
-	UncheckedImage: SlateBrush;
-	UncheckedHoveredImage: SlateBrush;
-	UncheckedPressedImage: SlateBrush;
-	CheckedImage: SlateBrush;
-	CheckedHoveredImage: SlateBrush;
-	CheckedPressedImage: SlateBrush;
-	UndeterminedImage: SlateBrush;
-	UndeterminedHoveredImage: SlateBrush;
-	UndeterminedPressedImage: SlateBrush;
-	Padding: Margin;
-	ForegroundColor: SlateColor;
-	BorderBackgroundColor: SlateColor;
-	CheckedSlateSound: SlateSound;
-	UncheckedSlateSound: SlateSound;
-	HoveredSlateSound: SlateSound;
-	CheckedSound: string;
-	UncheckedSound: string;
-	HoveredSound: string;
-	clone() : CheckBoxStyle;
-	static C(Other: UObject | any): CheckBoxStyle;
-}
-
-declare class CheckBoxWidgetStyle extends SlateWidgetStyleContainerBase { 
-	CheckBoxStyle: CheckBoxStyle;
-	static Load(ResourceName: string): CheckBoxWidgetStyle;
-	static Find(Outer: UObject, ResourceName: string): CheckBoxWidgetStyle;
-	static GetDefaultObject(): CheckBoxWidgetStyle;
-	static CreateDefaultSubobject(Name: string, Transient?: boolean, Required?: boolean, Abstract?: boolean): CheckBoxWidgetStyle;
-	static C(Other: UObject | any): CheckBoxWidgetStyle;
-}
-
-declare class ComboButtonStyle extends SlateWidgetStyle { 
-	ButtonStyle: ButtonStyle;
-	DownArrowImage: SlateBrush;
-	ShadowOffset: Vector2D;
-	ShadowColorAndOpacity: LinearColor;
-	MenuBorderBrush: SlateBrush;
-	MenuBorderPadding: Margin;
-	clone() : ComboButtonStyle;
-	static C(Other: UObject | any): ComboButtonStyle;
-}
-
-declare class ComboBoxStyle extends SlateWidgetStyle { 
-	ComboButtonStyle: ComboButtonStyle;
-	PressedSlateSound: SlateSound;
-	SelectionChangeSlateSound: SlateSound;
-	PressedSound: string;
-	SelectionChangeSound: string;
-	clone() : ComboBoxStyle;
-	static C(Other: UObject | any): ComboBoxStyle;
-}
-
-declare class ComboBoxWidgetStyle extends SlateWidgetStyleContainerBase { 
-	ComboBoxStyle: ComboBoxStyle;
-	static Load(ResourceName: string): ComboBoxWidgetStyle;
-	static Find(Outer: UObject, ResourceName: string): ComboBoxWidgetStyle;
-	static GetDefaultObject(): ComboBoxWidgetStyle;
-	static CreateDefaultSubobject(Name: string, Transient?: boolean, Required?: boolean, Abstract?: boolean): ComboBoxWidgetStyle;
-	static C(Other: UObject | any): ComboBoxWidgetStyle;
-}
-
-declare class ComboButtonWidgetStyle extends SlateWidgetStyleContainerBase { 
-	ComboButtonStyle: ComboButtonStyle;
-	static Load(ResourceName: string): ComboButtonWidgetStyle;
-	static Find(Outer: UObject, ResourceName: string): ComboButtonWidgetStyle;
-	static GetDefaultObject(): ComboButtonWidgetStyle;
-	static CreateDefaultSubobject(Name: string, Transient?: boolean, Required?: boolean, Abstract?: boolean): ComboButtonWidgetStyle;
-	static C(Other: UObject | any): ComboButtonWidgetStyle;
-}
-
-declare class FontOutlineSettings { 
-	OutlineSize: number;
-	bSeparateFillAlpha: boolean;
-	bApplyOutlineToDropShadows: boolean;
-	OutlineMaterial: UObject;
-	OutlineColor: LinearColor;
-	clone() : FontOutlineSettings;
-	static C(Other: UObject | any): FontOutlineSettings;
-}
-
-declare class SlateFontInfo { 
-	FontObject: UObject;
-	FontMaterial: UObject;
-	OutlineSettings: FontOutlineSettings;
-	TypefaceFontName: string;
-	Size: number;
-	LetterSpacing: number;
-	FontName: string;
-	Hinting: EFontHinting;
-	clone() : SlateFontInfo;
-	static C(Other: UObject | any): SlateFontInfo;
-}
-
-declare class ScrollBarStyle extends SlateWidgetStyle { 
-	HorizontalBackgroundImage: SlateBrush;
-	VerticalBackgroundImage: SlateBrush;
-	VerticalTopSlotImage: SlateBrush;
-	HorizontalTopSlotImage: SlateBrush;
-	VerticalBottomSlotImage: SlateBrush;
-	HorizontalBottomSlotImage: SlateBrush;
-	NormalThumbImage: SlateBrush;
-	HoveredThumbImage: SlateBrush;
-	DraggedThumbImage: SlateBrush;
-	clone() : ScrollBarStyle;
-	static C(Other: UObject | any): ScrollBarStyle;
-}
-
-declare class EditableTextBoxStyle extends SlateWidgetStyle { 
-	BackgroundImageNormal: SlateBrush;
-	BackgroundImageHovered: SlateBrush;
-	BackgroundImageFocused: SlateBrush;
-	BackgroundImageReadOnly: SlateBrush;
-	Padding: Margin;
-	Font: SlateFontInfo;
-	ForegroundColor: SlateColor;
-	BackgroundColor: SlateColor;
-	ReadOnlyForegroundColor: SlateColor;
-	HScrollBarPadding: Margin;
-	VScrollBarPadding: Margin;
-	ScrollBarStyle: ScrollBarStyle;
-	clone() : EditableTextBoxStyle;
-	static C(Other: UObject | any): EditableTextBoxStyle;
-}
-
-declare class EditableTextBoxWidgetStyle extends SlateWidgetStyleContainerBase { 
-	EditableTextBoxStyle: EditableTextBoxStyle;
-	static Load(ResourceName: string): EditableTextBoxWidgetStyle;
-	static Find(Outer: UObject, ResourceName: string): EditableTextBoxWidgetStyle;
-	static GetDefaultObject(): EditableTextBoxWidgetStyle;
-	static CreateDefaultSubobject(Name: string, Transient?: boolean, Required?: boolean, Abstract?: boolean): EditableTextBoxWidgetStyle;
-	static C(Other: UObject | any): EditableTextBoxWidgetStyle;
-}
-
-declare class EditableTextStyle extends SlateWidgetStyle { 
-	Font: SlateFontInfo;
-	ColorAndOpacity: SlateColor;
-	BackgroundImageSelected: SlateBrush;
-	BackgroundImageComposing: SlateBrush;
-	CaretImage: SlateBrush;
-	clone() : EditableTextStyle;
-	static C(Other: UObject | any): EditableTextStyle;
-}
-
-declare class EditableTextWidgetStyle extends SlateWidgetStyleContainerBase { 
-	EditableTextStyle: EditableTextStyle;
-	static Load(ResourceName: string): EditableTextWidgetStyle;
-	static Find(Outer: UObject, ResourceName: string): EditableTextWidgetStyle;
-	static GetDefaultObject(): EditableTextWidgetStyle;
-	static CreateDefaultSubobject(Name: string, Transient?: boolean, Required?: boolean, Abstract?: boolean): EditableTextWidgetStyle;
-	static C(Other: UObject | any): EditableTextWidgetStyle;
-}
-
-declare class ProgressBarStyle extends SlateWidgetStyle { 
-	BackgroundImage: SlateBrush;
-	FillImage: SlateBrush;
-	MarqueeImage: SlateBrush;
-	clone() : ProgressBarStyle;
-	static C(Other: UObject | any): ProgressBarStyle;
-}
-
-declare class ProgressWidgetStyle extends SlateWidgetStyleContainerBase { 
-	ProgressBarStyle: ProgressBarStyle;
-	static Load(ResourceName: string): ProgressWidgetStyle;
-	static Find(Outer: UObject, ResourceName: string): ProgressWidgetStyle;
-	static GetDefaultObject(): ProgressWidgetStyle;
-	static CreateDefaultSubobject(Name: string, Transient?: boolean, Required?: boolean, Abstract?: boolean): ProgressWidgetStyle;
-	static C(Other: UObject | any): ProgressWidgetStyle;
-}
-
-declare class ScrollBarWidgetStyle extends SlateWidgetStyleContainerBase { 
-	ScrollBarStyle: ScrollBarStyle;
-	static Load(ResourceName: string): ScrollBarWidgetStyle;
-	static Find(Outer: UObject, ResourceName: string): ScrollBarWidgetStyle;
-	static GetDefaultObject(): ScrollBarWidgetStyle;
-	static CreateDefaultSubobject(Name: string, Transient?: boolean, Required?: boolean, Abstract?: boolean): ScrollBarWidgetStyle;
-	static C(Other: UObject | any): ScrollBarWidgetStyle;
-}
-
-declare class ScrollBoxStyle extends SlateWidgetStyle { 
-	TopShadowBrush: SlateBrush;
-	BottomShadowBrush: SlateBrush;
-	LeftShadowBrush: SlateBrush;
-	RightShadowBrush: SlateBrush;
-	clone() : ScrollBoxStyle;
-	static C(Other: UObject | any): ScrollBoxStyle;
-}
-
-declare class ScrollBoxWidgetStyle extends SlateWidgetStyleContainerBase { 
-	ScrollBoxStyle: ScrollBoxStyle;
-	static Load(ResourceName: string): ScrollBoxWidgetStyle;
-	static Find(Outer: UObject, ResourceName: string): ScrollBoxWidgetStyle;
-	static GetDefaultObject(): ScrollBoxWidgetStyle;
-	static CreateDefaultSubobject(Name: string, Transient?: boolean, Required?: boolean, Abstract?: boolean): ScrollBoxWidgetStyle;
-	static C(Other: UObject | any): ScrollBoxWidgetStyle;
-}
-
-declare class SlateSettings extends UObject { 
-	bExplicitCanvasChildZOrder: boolean;
-	static Load(ResourceName: string): SlateSettings;
-	static Find(Outer: UObject, ResourceName: string): SlateSettings;
-	static GetDefaultObject(): SlateSettings;
-	static CreateDefaultSubobject(Name: string, Transient?: boolean, Required?: boolean, Abstract?: boolean): SlateSettings;
-	static C(Other: UObject | any): SlateSettings;
-}
-
-declare class SpinBoxStyle extends SlateWidgetStyle { 
-	BackgroundBrush: SlateBrush;
-	HoveredBackgroundBrush: SlateBrush;
-	ActiveFillBrush: SlateBrush;
-	InactiveFillBrush: SlateBrush;
-	ArrowsImage: SlateBrush;
-	ForegroundColor: SlateColor;
-	TextPadding: Margin;
-	clone() : SpinBoxStyle;
-	static C(Other: UObject | any): SpinBoxStyle;
-}
-
-declare class SpinBoxWidgetStyle extends SlateWidgetStyleContainerBase { 
-	SpinBoxStyle: SpinBoxStyle;
-	static Load(ResourceName: string): SpinBoxWidgetStyle;
-	static Find(Outer: UObject, ResourceName: string): SpinBoxWidgetStyle;
-	static GetDefaultObject(): SpinBoxWidgetStyle;
-	static CreateDefaultSubobject(Name: string, Transient?: boolean, Required?: boolean, Abstract?: boolean): SpinBoxWidgetStyle;
-	static C(Other: UObject | any): SpinBoxWidgetStyle;
-}
-
-declare class TextBlockStyle extends SlateWidgetStyle { 
-	Font: SlateFontInfo;
-	ColorAndOpacity: SlateColor;
-	ShadowOffset: Vector2D;
-	ShadowColorAndOpacity: LinearColor;
-	SelectedBackgroundColor: SlateColor;
-	HighlightColor: LinearColor;
-	HighlightShape: SlateBrush;
-	StrikeBrush: SlateBrush;
-	UnderlineBrush: SlateBrush;
-	clone() : TextBlockStyle;
-	static C(Other: UObject | any): TextBlockStyle;
-}
-
-declare class TextBlockWidgetStyle extends SlateWidgetStyleContainerBase { 
-	TextBlockStyle: TextBlockStyle;
-	static Load(ResourceName: string): TextBlockWidgetStyle;
-	static Find(Outer: UObject, ResourceName: string): TextBlockWidgetStyle;
-	static GetDefaultObject(): TextBlockWidgetStyle;
-	static CreateDefaultSubobject(Name: string, Transient?: boolean, Required?: boolean, Abstract?: boolean): TextBlockWidgetStyle;
-	static C(Other: UObject | any): TextBlockWidgetStyle;
-}
-
-declare class ToolMenuBase extends UObject { 
-	static Load(ResourceName: string): ToolMenuBase;
-	static Find(Outer: UObject, ResourceName: string): ToolMenuBase;
-	static GetDefaultObject(): ToolMenuBase;
-	static CreateDefaultSubobject(Name: string, Transient?: boolean, Required?: boolean, Abstract?: boolean): ToolMenuBase;
-	static C(Other: UObject | any): ToolMenuBase;
-}
-
-declare type EColorVisionDeficiency = 'NormalVision' | 'Deuteranope' | 'Protanope' | 'Tritanope' | 'EColorVisionDeficiency_MAX';
-declare var EColorVisionDeficiency : { NormalVision:'NormalVision',Deuteranope:'Deuteranope',Protanope:'Protanope',Tritanope:'Tritanope',EColorVisionDeficiency_MAX:'EColorVisionDeficiency_MAX', };
-declare type ELogTimes = 'None' | 'UTC' | 'SinceGStartTime' | 'Local' | 'ELogTimes_MAX';
-declare var ELogTimes : { None:'None',UTC:'UTC',SinceGStartTime:'SinceGStartTime',Local:'Local',ELogTimes_MAX:'ELogTimes_MAX', };
-declare type EAssetEditorOpenLocation = 'Default' | 'NewWindow' | 'MainWindow' | 'ContentBrowser' | 'LastDockedWindowOrNewWindow' | 'LastDockedWindowOrMainWindow' | 'LastDockedWindowOrContentBrowser' | 'EAssetEditorOpenLocation_MAX';
-declare var EAssetEditorOpenLocation : { Default:'Default',NewWindow:'NewWindow',MainWindow:'MainWindow',ContentBrowser:'ContentBrowser',LastDockedWindowOrNewWindow:'LastDockedWindowOrNewWindow',LastDockedWindowOrMainWindow:'LastDockedWindowOrMainWindow',LastDockedWindowOrContentBrowser:'LastDockedWindowOrContentBrowser',EAssetEditorOpenLocation_MAX:'EAssetEditorOpenLocation_MAX', };
-declare class EditorStyleSettings extends UObject { 
-	bEnableHighDPIAwareness: boolean;
-	bEnableUserEditorLayoutManagement: boolean;
-	ColorVisionDeficiencyPreviewType: EColorVisionDeficiency;
-	ColorVisionDeficiencySeverity: number;
-	bColorVisionDeficiencyCorrection: boolean;
-	bColorVisionDeficiencyCorrectionPreviewWithDeficiency: boolean;
-	SelectionColor: LinearColor;
-	PressedSelectionColor: LinearColor;
-	InactiveSelectionColor: LinearColor;
-	KeyboardFocusColor: LinearColor;
-	EditorWindowBackgroundColor: LinearColor;
-	EditorMainWindowBackgroundOverride: SlateBrush;
-	EditorChildWindowBackgroundOverride: SlateBrush;
-	bResetEditorWindowBackgroundSettings: boolean;
-	bUseSmallToolBarIcons: boolean;
-	bUseGrid: boolean;
-	RegularColor: LinearColor;
-	RuleColor: LinearColor;
-	CenterColor: LinearColor;
-	GridSnapSize: any;
-	GraphBackgroundBrush: SlateBrush;
-	bEnableWindowAnimations: boolean;
-	bShowFriendlyNames: boolean;
-	bShowNativeComponentNames: boolean;
-	bExpandConfigurationMenus: boolean;
-	bShowProjectMenus: boolean;
-	bShowLaunchMenus: boolean;
-	LogBackgroundColor: LinearColor;
-	LogSelectionBackgroundColor: LinearColor;
-	LogNormalColor: LinearColor;
-	LogCommandColor: LinearColor;
-	LogWarningColor: LinearColor;
-	LogErrorColor: LinearColor;
-	bShowAllAdvancedDetails: boolean;
-	bShowHiddenPropertiesWhilePlaying: boolean;
-	LogFontSize: number;
-	LogTimestampMode: ELogTimes;
-	bPromoteOutputLogWarningsDuringPIE: boolean;
-	AssetEditorOpenLocation: EAssetEditorOpenLocation;
-	bEnableColorizedEditorTabs: boolean;
-	bEnableLegacyEditorModeUI: boolean;
-	static Load(ResourceName: string): EditorStyleSettings;
-	static Find(Outer: UObject, ResourceName: string): EditorStyleSettings;
-	static GetDefaultObject(): EditorStyleSettings;
-	static CreateDefaultSubobject(Name: string, Transient?: boolean, Required?: boolean, Abstract?: boolean): EditorStyleSettings;
-	static C(Other: UObject | any): EditorStyleSettings;
-}
-
-declare class MaterialShaderQualitySettings extends UObject { 
-	ForwardSettingMap: any;
-	static Load(ResourceName: string): MaterialShaderQualitySettings;
-	static Find(Outer: UObject, ResourceName: string): MaterialShaderQualitySettings;
-	static GetDefaultObject(): MaterialShaderQualitySettings;
-	static CreateDefaultSubobject(Name: string, Transient?: boolean, Required?: boolean, Abstract?: boolean): MaterialShaderQualitySettings;
-	static C(Other: UObject | any): MaterialShaderQualitySettings;
-}
-
-declare type EMobileShadowQuality = 'NoFiltering' | 'PCF_1x1' | 'PCF_2x2' | 'PCF_3x3' | 'EMobileShadowQuality_MAX';
-declare var EMobileShadowQuality : { NoFiltering:'NoFiltering',PCF_1x1:'PCF_1x1',PCF_2x2:'PCF_2x2',PCF_3x3:'PCF_3x3',EMobileShadowQuality_MAX:'EMobileShadowQuality_MAX', };
-declare class MaterialQualityOverrides { 
-	bDiscardQualityDuringCook: boolean;
-	bEnableOverride: boolean;
-	bForceFullyRough: boolean;
-	bForceNonMetal: boolean;
-	bForceDisableLMDirectionality: boolean;
-	bForceLQReflections: boolean;
-	bForceDisablePreintegratedGF: boolean;
-	bDisableMaterialNormalCalculation: boolean;
-	MobileShadowQuality: EMobileShadowQuality;
-	clone() : MaterialQualityOverrides;
-	static C(Other: UObject | any): MaterialQualityOverrides;
-}
-
-declare class ShaderPlatformQualitySettings extends UObject { 
-	QualityOverrides: MaterialQualityOverrides;
-	static Load(ResourceName: string): ShaderPlatformQualitySettings;
-	static Find(Outer: UObject, ResourceName: string): ShaderPlatformQualitySettings;
-	static GetDefaultObject(): ShaderPlatformQualitySettings;
-	static CreateDefaultSubobject(Name: string, Transient?: boolean, Required?: boolean, Abstract?: boolean): ShaderPlatformQualitySettings;
-	static C(Other: UObject | any): ShaderPlatformQualitySettings;
-}
-
-declare class ClothingAssetFactoryBase extends UObject { 
-	static Load(ResourceName: string): ClothingAssetFactoryBase;
-	static Find(Outer: UObject, ResourceName: string): ClothingAssetFactoryBase;
-	static GetDefaultObject(): ClothingAssetFactoryBase;
-	static CreateDefaultSubobject(Name: string, Transient?: boolean, Required?: boolean, Abstract?: boolean): ClothingAssetFactoryBase;
-	static C(Other: UObject | any): ClothingAssetFactoryBase;
-}
-
-declare class NetAnalyticsDataConfig { 
-	DataName: string;
-	bEnabled: boolean;
-	clone() : NetAnalyticsDataConfig;
-	static C(Other: UObject | any): NetAnalyticsDataConfig;
-}
-
-declare class NetAnalyticsAggregatorConfig extends UObject { 
-	NetAnalyticsData: NetAnalyticsDataConfig[];
-	static Load(ResourceName: string): NetAnalyticsAggregatorConfig;
-	static Find(Outer: UObject, ResourceName: string): NetAnalyticsAggregatorConfig;
-	static GetDefaultObject(): NetAnalyticsAggregatorConfig;
-	static CreateDefaultSubobject(Name: string, Transient?: boolean, Required?: boolean, Abstract?: boolean): NetAnalyticsAggregatorConfig;
-	static C(Other: UObject | any): NetAnalyticsAggregatorConfig;
-}
-
-declare class AssetRegistryImpl extends UObject { 
-	static Load(ResourceName: string): AssetRegistryImpl;
-	static Find(Outer: UObject, ResourceName: string): AssetRegistryImpl;
-	static GetDefaultObject(): AssetRegistryImpl;
-	static CreateDefaultSubobject(Name: string, Transient?: boolean, Required?: boolean, Abstract?: boolean): AssetRegistryImpl;
-	static C(Other: UObject | any): AssetRegistryImpl;
-}
-
-declare class ARFilter { 
-	PackageNames: string[];
-	PackagePaths: string[];
-	ObjectPaths: string[];
-	ClassNames: string[];
-	RecursiveClassesExclusionSet: any;
-	bRecursivePaths: boolean;
-	bRecursiveClasses: boolean;
-	bIncludeOnlyOnDiskAssets: boolean;
-	clone() : ARFilter;
-	static C(Other: UObject | any): ARFilter;
-}
-
-declare class TagAndValue { 
-	Tag: string;
-	Value: string;
-	clone() : TagAndValue;
-	static C(Other: UObject | any): TagAndValue;
-}
-
-declare class AssetRegistryHelpers extends UObject { 
-	static Load(ResourceName: string): AssetRegistryHelpers;
-	static Find(Outer: UObject, ResourceName: string): AssetRegistryHelpers;
-	static GetDefaultObject(): AssetRegistryHelpers;
-	static CreateDefaultSubobject(Name: string, Transient?: boolean, Required?: boolean, Abstract?: boolean): AssetRegistryHelpers;
-	static ToSoftObjectPath(InAssetData: AssetData): SoftObjectPath;
-	static SetFilterTagsAndValues(InFilter: ARFilter,InTagsAndValues: TagAndValue[]): ARFilter;
-	static IsValid(InAssetData: AssetData): boolean;
-	static IsUAsset(InAssetData: AssetData): boolean;
-	static IsRedirector(InAssetData: AssetData): boolean;
-	static IsAssetLoaded(InAssetData: AssetData): boolean;
-	static GetTagValue(InAssetData: AssetData,InTagName: string,OutTagValue?: string): {OutTagValue: string, $: boolean};
-	static GetFullName(InAssetData: AssetData): string;
-	static GetExportTextName(InAssetData: AssetData): string;
-	static GetClass(InAssetData: AssetData): UnrealEngineClass;
-	static GetAsset(InAssetData: AssetData): UObject;
-	static CreateAssetData(InAsset: UObject,bAllowBlueprintClass: boolean): AssetData;
-	static C(Other: UObject | any): AssetRegistryHelpers;
-}
-
-declare class AssetRegistryDependencyOptions { 
-	bIncludeSoftPackageReferences: boolean;
-	bIncludeHardPackageReferences: boolean;
-	bIncludeSearchableNames: boolean;
-	bIncludeSoftManagementReferences: boolean;
-	bIncludeHardManagementReferences: boolean;
-	clone() : AssetRegistryDependencyOptions;
-	static C(Other: UObject | any): AssetRegistryDependencyOptions;
-}
-
-declare class AssetRegistry extends Interface { 
-	static Load(ResourceName: string): AssetRegistry;
-	static Find(Outer: UObject, ResourceName: string): AssetRegistry;
-	static GetDefaultObject(): AssetRegistry;
-	static CreateDefaultSubobject(Name: string, Transient?: boolean, Required?: boolean, Abstract?: boolean): AssetRegistry;
-	WaitForCompletion(): void;
-	UseFilterToExcludeAssets(AssetDataList?: AssetData[],Filter?: ARFilter): {AssetDataList: AssetData[]};
-	SearchAllAssets(bSynchronousSearch: boolean): void;
-	ScanPathsSynchronous(InPaths: string[],bForceRescan: boolean): void;
-	ScanModifiedAssetFiles(InFilePaths: string[]): void;
-	ScanFilesSynchronous(InFilePaths: string[],bForceRescan: boolean): void;
-	RunAssetsThroughFilter(AssetDataList?: AssetData[],Filter?: ARFilter): {AssetDataList: AssetData[]};
-	PrioritizeSearchPath(PathToPrioritize: string): void;
-	K2_GetReferencers(PackageName: string,ReferenceOptions: AssetRegistryDependencyOptions,OutReferencers?: string[]): {OutReferencers: string[], $: boolean};
-	K2_GetDependencies(PackageName: string,DependencyOptions: AssetRegistryDependencyOptions,OutDependencies?: string[]): {OutDependencies: string[], $: boolean};
-	IsLoadingAssets(): boolean;
-	HasAssets(PackagePath: string,bRecursive: boolean): boolean;
-	GetSubPaths(InBasePath: string,OutPathList?: string[],bInRecurse?: boolean): {OutPathList: string[]};
-	GetAssetsByPath(PackagePath: string,OutAssetData?: AssetData[],bRecursive?: boolean,bIncludeOnlyOnDiskAssets?: boolean): {OutAssetData: AssetData[], $: boolean};
-	GetAssetsByPackageName(PackageName: string,OutAssetData?: AssetData[],bIncludeOnlyOnDiskAssets?: boolean): {OutAssetData: AssetData[], $: boolean};
-	GetAssetsByClass(ClassName: string,OutAssetData?: AssetData[],bSearchSubClasses?: boolean): {OutAssetData: AssetData[], $: boolean};
-	GetAssets(Filter: ARFilter,OutAssetData?: AssetData[]): {OutAssetData: AssetData[], $: boolean};
-	GetAssetByObjectPath(ObjectPath: string,bIncludeOnlyOnDiskAssets: boolean): AssetData;
-	GetAllCachedPaths(OutPathList?: string[]): {OutPathList: string[]};
-	GetAllAssets(OutAssetData?: AssetData[],bIncludeOnlyOnDiskAssets?: boolean): {OutAssetData: AssetData[], $: boolean};
-	static C(Other: UObject | any): AssetRegistry;
-}
-
-declare class AutoCompleteCommand { 
-	Command: string;
-	Desc: string;
-	clone() : AutoCompleteCommand;
-	static C(Other: UObject | any): AutoCompleteCommand;
-}
-
-declare class ConsoleSettings extends UObject { 
-	MaxScrollbackSize: number;
-	ManualAutoCompleteList: AutoCompleteCommand[];
-	AutoCompleteMapPaths: string[];
-	BackgroundOpacityPercentage: number;
-	bOrderTopToBottom: boolean;
-	bDisplayHelpInAutoComplete: boolean;
-	InputColor: Color;
-	HistoryColor: Color;
-	AutoCompleteCommandColor: Color;
-	AutoCompleteCVarColor: Color;
-	AutoCompleteFadedColor: Color;
-	static Load(ResourceName: string): ConsoleSettings;
-	static Find(Outer: UObject, ResourceName: string): ConsoleSettings;
-	static GetDefaultObject(): ConsoleSettings;
-	static CreateDefaultSubobject(Name: string, Transient?: boolean, Required?: boolean, Abstract?: boolean): ConsoleSettings;
-	static C(Other: UObject | any): ConsoleSettings;
-}
-
-declare type ETwoPlayerSplitScreenType = 'Horizontal' | 'Vertical' | 'ETwoPlayerSplitScreenType_MAX';
-declare var ETwoPlayerSplitScreenType : { Horizontal:'Horizontal',Vertical:'Vertical',ETwoPlayerSplitScreenType_MAX:'ETwoPlayerSplitScreenType_MAX', };
-declare type EThreePlayerSplitScreenType = 'FavorTop' | 'FavorBottom' | 'Vertical' | 'Horizontal' | 'EThreePlayerSplitScreenType_MAX';
-declare var EThreePlayerSplitScreenType : { FavorTop:'FavorTop',FavorBottom:'FavorBottom',Vertical:'Vertical',Horizontal:'Horizontal',EThreePlayerSplitScreenType_MAX:'EThreePlayerSplitScreenType_MAX', };
-declare type EFourPlayerSplitScreenType = 'Grid' | 'Vertical' | 'Horizontal' | 'EFourPlayerSplitScreenType_MAX';
-declare var EFourPlayerSplitScreenType : { Grid:'Grid',Vertical:'Vertical',Horizontal:'Horizontal',EFourPlayerSplitScreenType_MAX:'EFourPlayerSplitScreenType_MAX', };
-declare class GameModeName { 
-	Name: string;
-	GameMode: SoftClassPath;
-	clone() : GameModeName;
-	static C(Other: UObject | any): GameModeName;
-}
-
-declare class GameMapsSettings extends UObject { 
-	EditorStartupMap: SoftObjectPath;
-	LocalMapOptions: string;
-	TransitionMap: SoftObjectPath;
-	bUseSplitscreen: boolean;
-	TwoPlayerSplitscreenLayout: ETwoPlayerSplitScreenType;
-	ThreePlayerSplitscreenLayout: EThreePlayerSplitScreenType;
-	FourPlayerSplitscreenLayout: EFourPlayerSplitScreenType;
-	bOffsetPlayerGamepadIds: boolean;
-	GameInstanceClass: SoftClassPath;
-	GameDefaultMap: SoftObjectPath;
-	ServerDefaultMap: SoftObjectPath;
-	GlobalDefaultGameMode: SoftClassPath;
-	GlobalDefaultServerGameMode: SoftClassPath;
-	GameModeMapPrefixes: GameModeName[];
-	GameModeClassAliases: GameModeName[];
-	static Load(ResourceName: string): GameMapsSettings;
-	static Find(Outer: UObject, ResourceName: string): GameMapsSettings;
-	static GetDefaultObject(): GameMapsSettings;
-	static CreateDefaultSubobject(Name: string, Transient?: boolean, Required?: boolean, Abstract?: boolean): GameMapsSettings;
-	SetSkipAssigningGamepadToPlayer1(bSkipFirstPlayer: boolean): void;
-	GetSkipAssigningGamepadToPlayer1(): boolean;
-	static GetGameMapsSettings(): GameMapsSettings;
-	static C(Other: UObject | any): GameMapsSettings;
 }
 

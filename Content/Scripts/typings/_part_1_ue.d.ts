@@ -1,3 +1,996 @@
+declare class GCObjectReferencer extends UObject { 
+	static Load(ResourceName: string): GCObjectReferencer;
+	static Find(Outer: UObject, ResourceName: string): GCObjectReferencer;
+	static GetDefaultObject(): GCObjectReferencer;
+	static CreateDefaultSubobject(Name: string, Transient?: boolean, Required?: boolean, Abstract?: boolean): GCObjectReferencer;
+	static C(Other: UObject | any): GCObjectReferencer;
+}
+
+declare class TextBuffer extends UObject { 
+	static Load(ResourceName: string): TextBuffer;
+	static Find(Outer: UObject, ResourceName: string): TextBuffer;
+	static GetDefaultObject(): TextBuffer;
+	static CreateDefaultSubobject(Name: string, Transient?: boolean, Required?: boolean, Abstract?: boolean): TextBuffer;
+	static C(Other: UObject | any): TextBuffer;
+}
+
+declare class ScriptStruct extends Struct { 
+	static Load(ResourceName: string): ScriptStruct;
+	static Find(Outer: UObject, ResourceName: string): ScriptStruct;
+	static GetDefaultObject(): ScriptStruct;
+	static CreateDefaultSubobject(Name: string, Transient?: boolean, Required?: boolean, Abstract?: boolean): ScriptStruct;
+	static C(Other: UObject | any): ScriptStruct;
+}
+
+declare class DelegateFunction extends UFunction { 
+	static Load(ResourceName: string): DelegateFunction;
+	static Find(Outer: UObject, ResourceName: string): DelegateFunction;
+	static GetDefaultObject(): DelegateFunction;
+	static CreateDefaultSubobject(Name: string, Transient?: boolean, Required?: boolean, Abstract?: boolean): DelegateFunction;
+	static C(Other: UObject | any): DelegateFunction;
+}
+
+declare class SparseDelegateFunction extends DelegateFunction { 
+	static Load(ResourceName: string): SparseDelegateFunction;
+	static Find(Outer: UObject, ResourceName: string): SparseDelegateFunction;
+	static GetDefaultObject(): SparseDelegateFunction;
+	static CreateDefaultSubobject(Name: string, Transient?: boolean, Required?: boolean, Abstract?: boolean): SparseDelegateFunction;
+	static C(Other: UObject | any): SparseDelegateFunction;
+}
+
+declare class DynamicClass extends Class { 
+	static Load(ResourceName: string): DynamicClass;
+	static Find(Outer: UObject, ResourceName: string): DynamicClass;
+	static GetDefaultObject(): DynamicClass;
+	static CreateDefaultSubobject(Name: string, Transient?: boolean, Required?: boolean, Abstract?: boolean): DynamicClass;
+	static C(Other: UObject | any): DynamicClass;
+}
+
+declare class LinkerPlaceholderClass extends Class { 
+	static Load(ResourceName: string): LinkerPlaceholderClass;
+	static Find(Outer: UObject, ResourceName: string): LinkerPlaceholderClass;
+	static GetDefaultObject(): LinkerPlaceholderClass;
+	static CreateDefaultSubobject(Name: string, Transient?: boolean, Required?: boolean, Abstract?: boolean): LinkerPlaceholderClass;
+	static C(Other: UObject | any): LinkerPlaceholderClass;
+}
+
+declare class LinkerPlaceholderExportObject extends UObject { 
+	static Load(ResourceName: string): LinkerPlaceholderExportObject;
+	static Find(Outer: UObject, ResourceName: string): LinkerPlaceholderExportObject;
+	static GetDefaultObject(): LinkerPlaceholderExportObject;
+	static CreateDefaultSubobject(Name: string, Transient?: boolean, Required?: boolean, Abstract?: boolean): LinkerPlaceholderExportObject;
+	static C(Other: UObject | any): LinkerPlaceholderExportObject;
+}
+
+declare class LinkerPlaceholderFunction extends UFunction { 
+	static Load(ResourceName: string): LinkerPlaceholderFunction;
+	static Find(Outer: UObject, ResourceName: string): LinkerPlaceholderFunction;
+	static GetDefaultObject(): LinkerPlaceholderFunction;
+	static CreateDefaultSubobject(Name: string, Transient?: boolean, Required?: boolean, Abstract?: boolean): LinkerPlaceholderFunction;
+	static C(Other: UObject | any): LinkerPlaceholderFunction;
+}
+
+declare class MetaData extends UObject { 
+	static Load(ResourceName: string): MetaData;
+	static Find(Outer: UObject, ResourceName: string): MetaData;
+	static GetDefaultObject(): MetaData;
+	static CreateDefaultSubobject(Name: string, Transient?: boolean, Required?: boolean, Abstract?: boolean): MetaData;
+	static C(Other: UObject | any): MetaData;
+}
+
+declare class ObjectRedirector extends UObject { 
+	static Load(ResourceName: string): ObjectRedirector;
+	static Find(Outer: UObject, ResourceName: string): ObjectRedirector;
+	static GetDefaultObject(): ObjectRedirector;
+	static CreateDefaultSubobject(Name: string, Transient?: boolean, Required?: boolean, Abstract?: boolean): ObjectRedirector;
+	static C(Other: UObject | any): ObjectRedirector;
+}
+
+declare class Property extends Field { 
+	static Load(ResourceName: string): Property;
+	static Find(Outer: UObject, ResourceName: string): Property;
+	static GetDefaultObject(): Property;
+	static CreateDefaultSubobject(Name: string, Transient?: boolean, Required?: boolean, Abstract?: boolean): Property;
+	static C(Other: UObject | any): Property;
+}
+
+declare class EnumProperty extends Property { 
+	static Load(ResourceName: string): EnumProperty;
+	static Find(Outer: UObject, ResourceName: string): EnumProperty;
+	static GetDefaultObject(): EnumProperty;
+	static CreateDefaultSubobject(Name: string, Transient?: boolean, Required?: boolean, Abstract?: boolean): EnumProperty;
+	static C(Other: UObject | any): EnumProperty;
+}
+
+declare class ArrayProperty extends Property { 
+	static Load(ResourceName: string): ArrayProperty;
+	static Find(Outer: UObject, ResourceName: string): ArrayProperty;
+	static GetDefaultObject(): ArrayProperty;
+	static CreateDefaultSubobject(Name: string, Transient?: boolean, Required?: boolean, Abstract?: boolean): ArrayProperty;
+	static C(Other: UObject | any): ArrayProperty;
+}
+
+declare class ObjectPropertyBase extends Property { 
+	static Load(ResourceName: string): ObjectPropertyBase;
+	static Find(Outer: UObject, ResourceName: string): ObjectPropertyBase;
+	static GetDefaultObject(): ObjectPropertyBase;
+	static CreateDefaultSubobject(Name: string, Transient?: boolean, Required?: boolean, Abstract?: boolean): ObjectPropertyBase;
+	static C(Other: UObject | any): ObjectPropertyBase;
+}
+
+declare class BoolProperty extends Property { 
+	static Load(ResourceName: string): BoolProperty;
+	static Find(Outer: UObject, ResourceName: string): BoolProperty;
+	static GetDefaultObject(): BoolProperty;
+	static CreateDefaultSubobject(Name: string, Transient?: boolean, Required?: boolean, Abstract?: boolean): BoolProperty;
+	static C(Other: UObject | any): BoolProperty;
+}
+
+declare class NumericProperty extends Property { 
+	static Load(ResourceName: string): NumericProperty;
+	static Find(Outer: UObject, ResourceName: string): NumericProperty;
+	static GetDefaultObject(): NumericProperty;
+	static CreateDefaultSubobject(Name: string, Transient?: boolean, Required?: boolean, Abstract?: boolean): NumericProperty;
+	static C(Other: UObject | any): NumericProperty;
+}
+
+declare class ByteProperty extends NumericProperty { 
+	static Load(ResourceName: string): ByteProperty;
+	static Find(Outer: UObject, ResourceName: string): ByteProperty;
+	static GetDefaultObject(): ByteProperty;
+	static CreateDefaultSubobject(Name: string, Transient?: boolean, Required?: boolean, Abstract?: boolean): ByteProperty;
+	static C(Other: UObject | any): ByteProperty;
+}
+
+declare class ObjectProperty extends ObjectPropertyBase { 
+	static Load(ResourceName: string): ObjectProperty;
+	static Find(Outer: UObject, ResourceName: string): ObjectProperty;
+	static GetDefaultObject(): ObjectProperty;
+	static CreateDefaultSubobject(Name: string, Transient?: boolean, Required?: boolean, Abstract?: boolean): ObjectProperty;
+	static C(Other: UObject | any): ObjectProperty;
+}
+
+declare class ClassProperty extends ObjectProperty { 
+	static Load(ResourceName: string): ClassProperty;
+	static Find(Outer: UObject, ResourceName: string): ClassProperty;
+	static GetDefaultObject(): ClassProperty;
+	static CreateDefaultSubobject(Name: string, Transient?: boolean, Required?: boolean, Abstract?: boolean): ClassProperty;
+	static C(Other: UObject | any): ClassProperty;
+}
+
+declare class DelegateProperty extends Property { 
+	static Load(ResourceName: string): DelegateProperty;
+	static Find(Outer: UObject, ResourceName: string): DelegateProperty;
+	static GetDefaultObject(): DelegateProperty;
+	static CreateDefaultSubobject(Name: string, Transient?: boolean, Required?: boolean, Abstract?: boolean): DelegateProperty;
+	static C(Other: UObject | any): DelegateProperty;
+}
+
+declare class DoubleProperty extends NumericProperty { 
+	static Load(ResourceName: string): DoubleProperty;
+	static Find(Outer: UObject, ResourceName: string): DoubleProperty;
+	static GetDefaultObject(): DoubleProperty;
+	static CreateDefaultSubobject(Name: string, Transient?: boolean, Required?: boolean, Abstract?: boolean): DoubleProperty;
+	static C(Other: UObject | any): DoubleProperty;
+}
+
+declare class FloatProperty extends NumericProperty { 
+	static Load(ResourceName: string): FloatProperty;
+	static Find(Outer: UObject, ResourceName: string): FloatProperty;
+	static GetDefaultObject(): FloatProperty;
+	static CreateDefaultSubobject(Name: string, Transient?: boolean, Required?: boolean, Abstract?: boolean): FloatProperty;
+	static C(Other: UObject | any): FloatProperty;
+}
+
+declare class IntProperty extends NumericProperty { 
+	static Load(ResourceName: string): IntProperty;
+	static Find(Outer: UObject, ResourceName: string): IntProperty;
+	static GetDefaultObject(): IntProperty;
+	static CreateDefaultSubobject(Name: string, Transient?: boolean, Required?: boolean, Abstract?: boolean): IntProperty;
+	static C(Other: UObject | any): IntProperty;
+}
+
+declare class Int8Property extends NumericProperty { 
+	static Load(ResourceName: string): Int8Property;
+	static Find(Outer: UObject, ResourceName: string): Int8Property;
+	static GetDefaultObject(): Int8Property;
+	static CreateDefaultSubobject(Name: string, Transient?: boolean, Required?: boolean, Abstract?: boolean): Int8Property;
+	static C(Other: UObject | any): Int8Property;
+}
+
+declare class Int16Property extends NumericProperty { 
+	static Load(ResourceName: string): Int16Property;
+	static Find(Outer: UObject, ResourceName: string): Int16Property;
+	static GetDefaultObject(): Int16Property;
+	static CreateDefaultSubobject(Name: string, Transient?: boolean, Required?: boolean, Abstract?: boolean): Int16Property;
+	static C(Other: UObject | any): Int16Property;
+}
+
+declare class Int64Property extends NumericProperty { 
+	static Load(ResourceName: string): Int64Property;
+	static Find(Outer: UObject, ResourceName: string): Int64Property;
+	static GetDefaultObject(): Int64Property;
+	static CreateDefaultSubobject(Name: string, Transient?: boolean, Required?: boolean, Abstract?: boolean): Int64Property;
+	static C(Other: UObject | any): Int64Property;
+}
+
+declare class InterfaceProperty extends Property { 
+	static Load(ResourceName: string): InterfaceProperty;
+	static Find(Outer: UObject, ResourceName: string): InterfaceProperty;
+	static GetDefaultObject(): InterfaceProperty;
+	static CreateDefaultSubobject(Name: string, Transient?: boolean, Required?: boolean, Abstract?: boolean): InterfaceProperty;
+	static C(Other: UObject | any): InterfaceProperty;
+}
+
+declare class LazyObjectProperty extends ObjectPropertyBase { 
+	static Load(ResourceName: string): LazyObjectProperty;
+	static Find(Outer: UObject, ResourceName: string): LazyObjectProperty;
+	static GetDefaultObject(): LazyObjectProperty;
+	static CreateDefaultSubobject(Name: string, Transient?: boolean, Required?: boolean, Abstract?: boolean): LazyObjectProperty;
+	static C(Other: UObject | any): LazyObjectProperty;
+}
+
+declare class MapProperty extends Property { 
+	static Load(ResourceName: string): MapProperty;
+	static Find(Outer: UObject, ResourceName: string): MapProperty;
+	static GetDefaultObject(): MapProperty;
+	static CreateDefaultSubobject(Name: string, Transient?: boolean, Required?: boolean, Abstract?: boolean): MapProperty;
+	static C(Other: UObject | any): MapProperty;
+}
+
+declare class MulticastDelegateProperty extends Property { 
+	static Load(ResourceName: string): MulticastDelegateProperty;
+	static Find(Outer: UObject, ResourceName: string): MulticastDelegateProperty;
+	static GetDefaultObject(): MulticastDelegateProperty;
+	static CreateDefaultSubobject(Name: string, Transient?: boolean, Required?: boolean, Abstract?: boolean): MulticastDelegateProperty;
+	static C(Other: UObject | any): MulticastDelegateProperty;
+}
+
+declare class MulticastInlineDelegateProperty extends MulticastDelegateProperty { 
+	static Load(ResourceName: string): MulticastInlineDelegateProperty;
+	static Find(Outer: UObject, ResourceName: string): MulticastInlineDelegateProperty;
+	static GetDefaultObject(): MulticastInlineDelegateProperty;
+	static CreateDefaultSubobject(Name: string, Transient?: boolean, Required?: boolean, Abstract?: boolean): MulticastInlineDelegateProperty;
+	static C(Other: UObject | any): MulticastInlineDelegateProperty;
+}
+
+declare class MulticastSparseDelegateProperty extends MulticastDelegateProperty { 
+	static Load(ResourceName: string): MulticastSparseDelegateProperty;
+	static Find(Outer: UObject, ResourceName: string): MulticastSparseDelegateProperty;
+	static GetDefaultObject(): MulticastSparseDelegateProperty;
+	static CreateDefaultSubobject(Name: string, Transient?: boolean, Required?: boolean, Abstract?: boolean): MulticastSparseDelegateProperty;
+	static C(Other: UObject | any): MulticastSparseDelegateProperty;
+}
+
+declare class NameProperty extends Property { 
+	static Load(ResourceName: string): NameProperty;
+	static Find(Outer: UObject, ResourceName: string): NameProperty;
+	static GetDefaultObject(): NameProperty;
+	static CreateDefaultSubobject(Name: string, Transient?: boolean, Required?: boolean, Abstract?: boolean): NameProperty;
+	static C(Other: UObject | any): NameProperty;
+}
+
+declare class SetProperty extends Property { 
+	static Load(ResourceName: string): SetProperty;
+	static Find(Outer: UObject, ResourceName: string): SetProperty;
+	static GetDefaultObject(): SetProperty;
+	static CreateDefaultSubobject(Name: string, Transient?: boolean, Required?: boolean, Abstract?: boolean): SetProperty;
+	static C(Other: UObject | any): SetProperty;
+}
+
+declare class SoftObjectProperty extends ObjectPropertyBase { 
+	static Load(ResourceName: string): SoftObjectProperty;
+	static Find(Outer: UObject, ResourceName: string): SoftObjectProperty;
+	static GetDefaultObject(): SoftObjectProperty;
+	static CreateDefaultSubobject(Name: string, Transient?: boolean, Required?: boolean, Abstract?: boolean): SoftObjectProperty;
+	static C(Other: UObject | any): SoftObjectProperty;
+}
+
+declare class SoftClassProperty extends SoftObjectProperty { 
+	static Load(ResourceName: string): SoftClassProperty;
+	static Find(Outer: UObject, ResourceName: string): SoftClassProperty;
+	static GetDefaultObject(): SoftClassProperty;
+	static CreateDefaultSubobject(Name: string, Transient?: boolean, Required?: boolean, Abstract?: boolean): SoftClassProperty;
+	static C(Other: UObject | any): SoftClassProperty;
+}
+
+declare class StrProperty extends Property { 
+	static Load(ResourceName: string): StrProperty;
+	static Find(Outer: UObject, ResourceName: string): StrProperty;
+	static GetDefaultObject(): StrProperty;
+	static CreateDefaultSubobject(Name: string, Transient?: boolean, Required?: boolean, Abstract?: boolean): StrProperty;
+	static C(Other: UObject | any): StrProperty;
+}
+
+declare class StructProperty extends Property { 
+	static Load(ResourceName: string): StructProperty;
+	static Find(Outer: UObject, ResourceName: string): StructProperty;
+	static GetDefaultObject(): StructProperty;
+	static CreateDefaultSubobject(Name: string, Transient?: boolean, Required?: boolean, Abstract?: boolean): StructProperty;
+	static C(Other: UObject | any): StructProperty;
+}
+
+declare class UInt16Property extends NumericProperty { 
+	static Load(ResourceName: string): UInt16Property;
+	static Find(Outer: UObject, ResourceName: string): UInt16Property;
+	static GetDefaultObject(): UInt16Property;
+	static CreateDefaultSubobject(Name: string, Transient?: boolean, Required?: boolean, Abstract?: boolean): UInt16Property;
+	static C(Other: UObject | any): UInt16Property;
+}
+
+declare class UInt32Property extends NumericProperty { 
+	static Load(ResourceName: string): UInt32Property;
+	static Find(Outer: UObject, ResourceName: string): UInt32Property;
+	static GetDefaultObject(): UInt32Property;
+	static CreateDefaultSubobject(Name: string, Transient?: boolean, Required?: boolean, Abstract?: boolean): UInt32Property;
+	static C(Other: UObject | any): UInt32Property;
+}
+
+declare class UInt64Property extends NumericProperty { 
+	static Load(ResourceName: string): UInt64Property;
+	static Find(Outer: UObject, ResourceName: string): UInt64Property;
+	static GetDefaultObject(): UInt64Property;
+	static CreateDefaultSubobject(Name: string, Transient?: boolean, Required?: boolean, Abstract?: boolean): UInt64Property;
+	static C(Other: UObject | any): UInt64Property;
+}
+
+declare class WeakObjectProperty extends ObjectPropertyBase { 
+	static Load(ResourceName: string): WeakObjectProperty;
+	static Find(Outer: UObject, ResourceName: string): WeakObjectProperty;
+	static GetDefaultObject(): WeakObjectProperty;
+	static CreateDefaultSubobject(Name: string, Transient?: boolean, Required?: boolean, Abstract?: boolean): WeakObjectProperty;
+	static C(Other: UObject | any): WeakObjectProperty;
+}
+
+declare class TextProperty extends Property { 
+	static Load(ResourceName: string): TextProperty;
+	static Find(Outer: UObject, ResourceName: string): TextProperty;
+	static GetDefaultObject(): TextProperty;
+	static CreateDefaultSubobject(Name: string, Transient?: boolean, Required?: boolean, Abstract?: boolean): TextProperty;
+	static C(Other: UObject | any): TextProperty;
+}
+
+declare class PropertyWrapper extends UObject { 
+	static Load(ResourceName: string): PropertyWrapper;
+	static Find(Outer: UObject, ResourceName: string): PropertyWrapper;
+	static GetDefaultObject(): PropertyWrapper;
+	static CreateDefaultSubobject(Name: string, Transient?: boolean, Required?: boolean, Abstract?: boolean): PropertyWrapper;
+	static C(Other: UObject | any): PropertyWrapper;
+}
+
+declare class MulticastDelegatePropertyWrapper extends PropertyWrapper { 
+	static Load(ResourceName: string): MulticastDelegatePropertyWrapper;
+	static Find(Outer: UObject, ResourceName: string): MulticastDelegatePropertyWrapper;
+	static GetDefaultObject(): MulticastDelegatePropertyWrapper;
+	static CreateDefaultSubobject(Name: string, Transient?: boolean, Required?: boolean, Abstract?: boolean): MulticastDelegatePropertyWrapper;
+	static C(Other: UObject | any): MulticastDelegatePropertyWrapper;
+}
+
+declare class MulticastInlineDelegatePropertyWrapper extends MulticastDelegatePropertyWrapper { 
+	static Load(ResourceName: string): MulticastInlineDelegatePropertyWrapper;
+	static Find(Outer: UObject, ResourceName: string): MulticastInlineDelegatePropertyWrapper;
+	static GetDefaultObject(): MulticastInlineDelegatePropertyWrapper;
+	static CreateDefaultSubobject(Name: string, Transient?: boolean, Required?: boolean, Abstract?: boolean): MulticastInlineDelegatePropertyWrapper;
+	static C(Other: UObject | any): MulticastInlineDelegatePropertyWrapper;
+}
+
+declare class InputCoreTypes extends UObject { 
+	static Load(ResourceName: string): InputCoreTypes;
+	static Find(Outer: UObject, ResourceName: string): InputCoreTypes;
+	static GetDefaultObject(): InputCoreTypes;
+	static CreateDefaultSubobject(Name: string, Transient?: boolean, Required?: boolean, Abstract?: boolean): InputCoreTypes;
+	static C(Other: UObject | any): InputCoreTypes;
+}
+
+declare class FontFaceInterface extends Interface { 
+	static Load(ResourceName: string): FontFaceInterface;
+	static Find(Outer: UObject, ResourceName: string): FontFaceInterface;
+	static GetDefaultObject(): FontFaceInterface;
+	static CreateDefaultSubobject(Name: string, Transient?: boolean, Required?: boolean, Abstract?: boolean): FontFaceInterface;
+	static C(Other: UObject | any): FontFaceInterface;
+}
+
+declare class FontProviderInterface extends Interface { 
+	static Load(ResourceName: string): FontProviderInterface;
+	static Find(Outer: UObject, ResourceName: string): FontProviderInterface;
+	static GetDefaultObject(): FontProviderInterface;
+	static CreateDefaultSubobject(Name: string, Transient?: boolean, Required?: boolean, Abstract?: boolean): FontProviderInterface;
+	static C(Other: UObject | any): FontProviderInterface;
+}
+
+declare class SlateTypes extends UObject { 
+	static Load(ResourceName: string): SlateTypes;
+	static Find(Outer: UObject, ResourceName: string): SlateTypes;
+	static GetDefaultObject(): SlateTypes;
+	static CreateDefaultSubobject(Name: string, Transient?: boolean, Required?: boolean, Abstract?: boolean): SlateTypes;
+	static C(Other: UObject | any): SlateTypes;
+}
+
+declare class SlateWidgetStyleContainerBase extends UObject { 
+	static Load(ResourceName: string): SlateWidgetStyleContainerBase;
+	static Find(Outer: UObject, ResourceName: string): SlateWidgetStyleContainerBase;
+	static GetDefaultObject(): SlateWidgetStyleContainerBase;
+	static CreateDefaultSubobject(Name: string, Transient?: boolean, Required?: boolean, Abstract?: boolean): SlateWidgetStyleContainerBase;
+	static C(Other: UObject | any): SlateWidgetStyleContainerBase;
+}
+
+declare class SlateWidgetStyleAsset extends UObject { 
+	CustomStyle: SlateWidgetStyleContainerBase;
+	static Load(ResourceName: string): SlateWidgetStyleAsset;
+	static Find(Outer: UObject, ResourceName: string): SlateWidgetStyleAsset;
+	static GetDefaultObject(): SlateWidgetStyleAsset;
+	static CreateDefaultSubobject(Name: string, Transient?: boolean, Required?: boolean, Abstract?: boolean): SlateWidgetStyleAsset;
+	static C(Other: UObject | any): SlateWidgetStyleAsset;
+}
+
+declare class SlateWidgetStyleContainerInterface extends Interface { 
+	static Load(ResourceName: string): SlateWidgetStyleContainerInterface;
+	static Find(Outer: UObject, ResourceName: string): SlateWidgetStyleContainerInterface;
+	static GetDefaultObject(): SlateWidgetStyleContainerInterface;
+	static CreateDefaultSubobject(Name: string, Transient?: boolean, Required?: boolean, Abstract?: boolean): SlateWidgetStyleContainerInterface;
+	static C(Other: UObject | any): SlateWidgetStyleContainerInterface;
+}
+
+declare class SlateWidgetStyle { 
+	clone() : SlateWidgetStyle;
+	static C(Other: UObject | any): SlateWidgetStyle;
+}
+
+declare class SlateSound { 
+	ResourceObject: UObject;
+	clone() : SlateSound;
+	static C(Other: UObject | any): SlateSound;
+}
+
+declare class ButtonStyle extends SlateWidgetStyle { 
+	Normal: SlateBrush;
+	Hovered: SlateBrush;
+	Pressed: SlateBrush;
+	Disabled: SlateBrush;
+	NormalPadding: Margin;
+	PressedPadding: Margin;
+	PressedSlateSound: SlateSound;
+	HoveredSlateSound: SlateSound;
+	PressedSound: string;
+	HoveredSound: string;
+	clone() : ButtonStyle;
+	static C(Other: UObject | any): ButtonStyle;
+}
+
+declare class ButtonWidgetStyle extends SlateWidgetStyleContainerBase { 
+	ButtonStyle: ButtonStyle;
+	static Load(ResourceName: string): ButtonWidgetStyle;
+	static Find(Outer: UObject, ResourceName: string): ButtonWidgetStyle;
+	static GetDefaultObject(): ButtonWidgetStyle;
+	static CreateDefaultSubobject(Name: string, Transient?: boolean, Required?: boolean, Abstract?: boolean): ButtonWidgetStyle;
+	static C(Other: UObject | any): ButtonWidgetStyle;
+}
+
+declare type ESlateCheckBoxType = 'CheckBox' | 'ToggleButton' | 'ESlateCheckBoxType_MAX';
+declare var ESlateCheckBoxType : { CheckBox:'CheckBox',ToggleButton:'ToggleButton',ESlateCheckBoxType_MAX:'ESlateCheckBoxType_MAX', };
+declare class CheckBoxStyle extends SlateWidgetStyle { 
+	CheckBoxType: ESlateCheckBoxType;
+	UncheckedImage: SlateBrush;
+	UncheckedHoveredImage: SlateBrush;
+	UncheckedPressedImage: SlateBrush;
+	CheckedImage: SlateBrush;
+	CheckedHoveredImage: SlateBrush;
+	CheckedPressedImage: SlateBrush;
+	UndeterminedImage: SlateBrush;
+	UndeterminedHoveredImage: SlateBrush;
+	UndeterminedPressedImage: SlateBrush;
+	Padding: Margin;
+	ForegroundColor: SlateColor;
+	BorderBackgroundColor: SlateColor;
+	CheckedSlateSound: SlateSound;
+	UncheckedSlateSound: SlateSound;
+	HoveredSlateSound: SlateSound;
+	CheckedSound: string;
+	UncheckedSound: string;
+	HoveredSound: string;
+	clone() : CheckBoxStyle;
+	static C(Other: UObject | any): CheckBoxStyle;
+}
+
+declare class CheckBoxWidgetStyle extends SlateWidgetStyleContainerBase { 
+	CheckBoxStyle: CheckBoxStyle;
+	static Load(ResourceName: string): CheckBoxWidgetStyle;
+	static Find(Outer: UObject, ResourceName: string): CheckBoxWidgetStyle;
+	static GetDefaultObject(): CheckBoxWidgetStyle;
+	static CreateDefaultSubobject(Name: string, Transient?: boolean, Required?: boolean, Abstract?: boolean): CheckBoxWidgetStyle;
+	static C(Other: UObject | any): CheckBoxWidgetStyle;
+}
+
+declare class ComboButtonStyle extends SlateWidgetStyle { 
+	ButtonStyle: ButtonStyle;
+	DownArrowImage: SlateBrush;
+	ShadowOffset: Vector2D;
+	ShadowColorAndOpacity: LinearColor;
+	MenuBorderBrush: SlateBrush;
+	MenuBorderPadding: Margin;
+	clone() : ComboButtonStyle;
+	static C(Other: UObject | any): ComboButtonStyle;
+}
+
+declare class ComboBoxStyle extends SlateWidgetStyle { 
+	ComboButtonStyle: ComboButtonStyle;
+	PressedSlateSound: SlateSound;
+	SelectionChangeSlateSound: SlateSound;
+	PressedSound: string;
+	SelectionChangeSound: string;
+	clone() : ComboBoxStyle;
+	static C(Other: UObject | any): ComboBoxStyle;
+}
+
+declare class ComboBoxWidgetStyle extends SlateWidgetStyleContainerBase { 
+	ComboBoxStyle: ComboBoxStyle;
+	static Load(ResourceName: string): ComboBoxWidgetStyle;
+	static Find(Outer: UObject, ResourceName: string): ComboBoxWidgetStyle;
+	static GetDefaultObject(): ComboBoxWidgetStyle;
+	static CreateDefaultSubobject(Name: string, Transient?: boolean, Required?: boolean, Abstract?: boolean): ComboBoxWidgetStyle;
+	static C(Other: UObject | any): ComboBoxWidgetStyle;
+}
+
+declare class ComboButtonWidgetStyle extends SlateWidgetStyleContainerBase { 
+	ComboButtonStyle: ComboButtonStyle;
+	static Load(ResourceName: string): ComboButtonWidgetStyle;
+	static Find(Outer: UObject, ResourceName: string): ComboButtonWidgetStyle;
+	static GetDefaultObject(): ComboButtonWidgetStyle;
+	static CreateDefaultSubobject(Name: string, Transient?: boolean, Required?: boolean, Abstract?: boolean): ComboButtonWidgetStyle;
+	static C(Other: UObject | any): ComboButtonWidgetStyle;
+}
+
+declare class FontOutlineSettings { 
+	OutlineSize: number;
+	bSeparateFillAlpha: boolean;
+	bApplyOutlineToDropShadows: boolean;
+	OutlineMaterial: UObject;
+	OutlineColor: LinearColor;
+	clone() : FontOutlineSettings;
+	static C(Other: UObject | any): FontOutlineSettings;
+}
+
+declare class SlateFontInfo { 
+	FontObject: UObject;
+	FontMaterial: UObject;
+	OutlineSettings: FontOutlineSettings;
+	TypefaceFontName: string;
+	Size: number;
+	LetterSpacing: number;
+	FontName: string;
+	Hinting: EFontHinting;
+	clone() : SlateFontInfo;
+	static C(Other: UObject | any): SlateFontInfo;
+}
+
+declare class ScrollBarStyle extends SlateWidgetStyle { 
+	HorizontalBackgroundImage: SlateBrush;
+	VerticalBackgroundImage: SlateBrush;
+	VerticalTopSlotImage: SlateBrush;
+	HorizontalTopSlotImage: SlateBrush;
+	VerticalBottomSlotImage: SlateBrush;
+	HorizontalBottomSlotImage: SlateBrush;
+	NormalThumbImage: SlateBrush;
+	HoveredThumbImage: SlateBrush;
+	DraggedThumbImage: SlateBrush;
+	clone() : ScrollBarStyle;
+	static C(Other: UObject | any): ScrollBarStyle;
+}
+
+declare class EditableTextBoxStyle extends SlateWidgetStyle { 
+	BackgroundImageNormal: SlateBrush;
+	BackgroundImageHovered: SlateBrush;
+	BackgroundImageFocused: SlateBrush;
+	BackgroundImageReadOnly: SlateBrush;
+	Padding: Margin;
+	Font: SlateFontInfo;
+	ForegroundColor: SlateColor;
+	BackgroundColor: SlateColor;
+	ReadOnlyForegroundColor: SlateColor;
+	HScrollBarPadding: Margin;
+	VScrollBarPadding: Margin;
+	ScrollBarStyle: ScrollBarStyle;
+	clone() : EditableTextBoxStyle;
+	static C(Other: UObject | any): EditableTextBoxStyle;
+}
+
+declare class EditableTextBoxWidgetStyle extends SlateWidgetStyleContainerBase { 
+	EditableTextBoxStyle: EditableTextBoxStyle;
+	static Load(ResourceName: string): EditableTextBoxWidgetStyle;
+	static Find(Outer: UObject, ResourceName: string): EditableTextBoxWidgetStyle;
+	static GetDefaultObject(): EditableTextBoxWidgetStyle;
+	static CreateDefaultSubobject(Name: string, Transient?: boolean, Required?: boolean, Abstract?: boolean): EditableTextBoxWidgetStyle;
+	static C(Other: UObject | any): EditableTextBoxWidgetStyle;
+}
+
+declare class EditableTextStyle extends SlateWidgetStyle { 
+	Font: SlateFontInfo;
+	ColorAndOpacity: SlateColor;
+	BackgroundImageSelected: SlateBrush;
+	BackgroundImageComposing: SlateBrush;
+	CaretImage: SlateBrush;
+	clone() : EditableTextStyle;
+	static C(Other: UObject | any): EditableTextStyle;
+}
+
+declare class EditableTextWidgetStyle extends SlateWidgetStyleContainerBase { 
+	EditableTextStyle: EditableTextStyle;
+	static Load(ResourceName: string): EditableTextWidgetStyle;
+	static Find(Outer: UObject, ResourceName: string): EditableTextWidgetStyle;
+	static GetDefaultObject(): EditableTextWidgetStyle;
+	static CreateDefaultSubobject(Name: string, Transient?: boolean, Required?: boolean, Abstract?: boolean): EditableTextWidgetStyle;
+	static C(Other: UObject | any): EditableTextWidgetStyle;
+}
+
+declare class ProgressBarStyle extends SlateWidgetStyle { 
+	BackgroundImage: SlateBrush;
+	FillImage: SlateBrush;
+	MarqueeImage: SlateBrush;
+	clone() : ProgressBarStyle;
+	static C(Other: UObject | any): ProgressBarStyle;
+}
+
+declare class ProgressWidgetStyle extends SlateWidgetStyleContainerBase { 
+	ProgressBarStyle: ProgressBarStyle;
+	static Load(ResourceName: string): ProgressWidgetStyle;
+	static Find(Outer: UObject, ResourceName: string): ProgressWidgetStyle;
+	static GetDefaultObject(): ProgressWidgetStyle;
+	static CreateDefaultSubobject(Name: string, Transient?: boolean, Required?: boolean, Abstract?: boolean): ProgressWidgetStyle;
+	static C(Other: UObject | any): ProgressWidgetStyle;
+}
+
+declare class ScrollBarWidgetStyle extends SlateWidgetStyleContainerBase { 
+	ScrollBarStyle: ScrollBarStyle;
+	static Load(ResourceName: string): ScrollBarWidgetStyle;
+	static Find(Outer: UObject, ResourceName: string): ScrollBarWidgetStyle;
+	static GetDefaultObject(): ScrollBarWidgetStyle;
+	static CreateDefaultSubobject(Name: string, Transient?: boolean, Required?: boolean, Abstract?: boolean): ScrollBarWidgetStyle;
+	static C(Other: UObject | any): ScrollBarWidgetStyle;
+}
+
+declare class ScrollBoxStyle extends SlateWidgetStyle { 
+	TopShadowBrush: SlateBrush;
+	BottomShadowBrush: SlateBrush;
+	LeftShadowBrush: SlateBrush;
+	RightShadowBrush: SlateBrush;
+	clone() : ScrollBoxStyle;
+	static C(Other: UObject | any): ScrollBoxStyle;
+}
+
+declare class ScrollBoxWidgetStyle extends SlateWidgetStyleContainerBase { 
+	ScrollBoxStyle: ScrollBoxStyle;
+	static Load(ResourceName: string): ScrollBoxWidgetStyle;
+	static Find(Outer: UObject, ResourceName: string): ScrollBoxWidgetStyle;
+	static GetDefaultObject(): ScrollBoxWidgetStyle;
+	static CreateDefaultSubobject(Name: string, Transient?: boolean, Required?: boolean, Abstract?: boolean): ScrollBoxWidgetStyle;
+	static C(Other: UObject | any): ScrollBoxWidgetStyle;
+}
+
+declare class SlateSettings extends UObject { 
+	bExplicitCanvasChildZOrder: boolean;
+	static Load(ResourceName: string): SlateSettings;
+	static Find(Outer: UObject, ResourceName: string): SlateSettings;
+	static GetDefaultObject(): SlateSettings;
+	static CreateDefaultSubobject(Name: string, Transient?: boolean, Required?: boolean, Abstract?: boolean): SlateSettings;
+	static C(Other: UObject | any): SlateSettings;
+}
+
+declare class SpinBoxStyle extends SlateWidgetStyle { 
+	BackgroundBrush: SlateBrush;
+	HoveredBackgroundBrush: SlateBrush;
+	ActiveFillBrush: SlateBrush;
+	InactiveFillBrush: SlateBrush;
+	ArrowsImage: SlateBrush;
+	ForegroundColor: SlateColor;
+	TextPadding: Margin;
+	clone() : SpinBoxStyle;
+	static C(Other: UObject | any): SpinBoxStyle;
+}
+
+declare class SpinBoxWidgetStyle extends SlateWidgetStyleContainerBase { 
+	SpinBoxStyle: SpinBoxStyle;
+	static Load(ResourceName: string): SpinBoxWidgetStyle;
+	static Find(Outer: UObject, ResourceName: string): SpinBoxWidgetStyle;
+	static GetDefaultObject(): SpinBoxWidgetStyle;
+	static CreateDefaultSubobject(Name: string, Transient?: boolean, Required?: boolean, Abstract?: boolean): SpinBoxWidgetStyle;
+	static C(Other: UObject | any): SpinBoxWidgetStyle;
+}
+
+declare class TextBlockStyle extends SlateWidgetStyle { 
+	Font: SlateFontInfo;
+	ColorAndOpacity: SlateColor;
+	ShadowOffset: Vector2D;
+	ShadowColorAndOpacity: LinearColor;
+	SelectedBackgroundColor: SlateColor;
+	HighlightColor: LinearColor;
+	HighlightShape: SlateBrush;
+	StrikeBrush: SlateBrush;
+	UnderlineBrush: SlateBrush;
+	clone() : TextBlockStyle;
+	static C(Other: UObject | any): TextBlockStyle;
+}
+
+declare class TextBlockWidgetStyle extends SlateWidgetStyleContainerBase { 
+	TextBlockStyle: TextBlockStyle;
+	static Load(ResourceName: string): TextBlockWidgetStyle;
+	static Find(Outer: UObject, ResourceName: string): TextBlockWidgetStyle;
+	static GetDefaultObject(): TextBlockWidgetStyle;
+	static CreateDefaultSubobject(Name: string, Transient?: boolean, Required?: boolean, Abstract?: boolean): TextBlockWidgetStyle;
+	static C(Other: UObject | any): TextBlockWidgetStyle;
+}
+
+declare class ToolMenuBase extends UObject { 
+	static Load(ResourceName: string): ToolMenuBase;
+	static Find(Outer: UObject, ResourceName: string): ToolMenuBase;
+	static GetDefaultObject(): ToolMenuBase;
+	static CreateDefaultSubobject(Name: string, Transient?: boolean, Required?: boolean, Abstract?: boolean): ToolMenuBase;
+	static C(Other: UObject | any): ToolMenuBase;
+}
+
+declare type EColorVisionDeficiency = 'NormalVision' | 'Deuteranope' | 'Protanope' | 'Tritanope' | 'EColorVisionDeficiency_MAX';
+declare var EColorVisionDeficiency : { NormalVision:'NormalVision',Deuteranope:'Deuteranope',Protanope:'Protanope',Tritanope:'Tritanope',EColorVisionDeficiency_MAX:'EColorVisionDeficiency_MAX', };
+declare type ELogTimes = 'None' | 'UTC' | 'SinceGStartTime' | 'Local' | 'ELogTimes_MAX';
+declare var ELogTimes : { None:'None',UTC:'UTC',SinceGStartTime:'SinceGStartTime',Local:'Local',ELogTimes_MAX:'ELogTimes_MAX', };
+declare type EAssetEditorOpenLocation = 'Default' | 'NewWindow' | 'MainWindow' | 'ContentBrowser' | 'LastDockedWindowOrNewWindow' | 'LastDockedWindowOrMainWindow' | 'LastDockedWindowOrContentBrowser' | 'EAssetEditorOpenLocation_MAX';
+declare var EAssetEditorOpenLocation : { Default:'Default',NewWindow:'NewWindow',MainWindow:'MainWindow',ContentBrowser:'ContentBrowser',LastDockedWindowOrNewWindow:'LastDockedWindowOrNewWindow',LastDockedWindowOrMainWindow:'LastDockedWindowOrMainWindow',LastDockedWindowOrContentBrowser:'LastDockedWindowOrContentBrowser',EAssetEditorOpenLocation_MAX:'EAssetEditorOpenLocation_MAX', };
+declare class EditorStyleSettings extends UObject { 
+	bEnableHighDPIAwareness: boolean;
+	bEnableUserEditorLayoutManagement: boolean;
+	ColorVisionDeficiencyPreviewType: EColorVisionDeficiency;
+	ColorVisionDeficiencySeverity: number;
+	bColorVisionDeficiencyCorrection: boolean;
+	bColorVisionDeficiencyCorrectionPreviewWithDeficiency: boolean;
+	SelectionColor: LinearColor;
+	PressedSelectionColor: LinearColor;
+	InactiveSelectionColor: LinearColor;
+	KeyboardFocusColor: LinearColor;
+	EditorWindowBackgroundColor: LinearColor;
+	EditorMainWindowBackgroundOverride: SlateBrush;
+	EditorChildWindowBackgroundOverride: SlateBrush;
+	bResetEditorWindowBackgroundSettings: boolean;
+	bUseSmallToolBarIcons: boolean;
+	bUseGrid: boolean;
+	RegularColor: LinearColor;
+	RuleColor: LinearColor;
+	CenterColor: LinearColor;
+	GridSnapSize: any;
+	GraphBackgroundBrush: SlateBrush;
+	bEnableWindowAnimations: boolean;
+	bShowFriendlyNames: boolean;
+	bShowNativeComponentNames: boolean;
+	bExpandConfigurationMenus: boolean;
+	bShowProjectMenus: boolean;
+	bShowLaunchMenus: boolean;
+	LogBackgroundColor: LinearColor;
+	LogSelectionBackgroundColor: LinearColor;
+	LogNormalColor: LinearColor;
+	LogCommandColor: LinearColor;
+	LogWarningColor: LinearColor;
+	LogErrorColor: LinearColor;
+	bShowAllAdvancedDetails: boolean;
+	bShowHiddenPropertiesWhilePlaying: boolean;
+	LogFontSize: number;
+	LogTimestampMode: ELogTimes;
+	bPromoteOutputLogWarningsDuringPIE: boolean;
+	AssetEditorOpenLocation: EAssetEditorOpenLocation;
+	bEnableColorizedEditorTabs: boolean;
+	bEnableLegacyEditorModeUI: boolean;
+	static Load(ResourceName: string): EditorStyleSettings;
+	static Find(Outer: UObject, ResourceName: string): EditorStyleSettings;
+	static GetDefaultObject(): EditorStyleSettings;
+	static CreateDefaultSubobject(Name: string, Transient?: boolean, Required?: boolean, Abstract?: boolean): EditorStyleSettings;
+	static C(Other: UObject | any): EditorStyleSettings;
+}
+
+declare class MaterialShaderQualitySettings extends UObject { 
+	ForwardSettingMap: any;
+	static Load(ResourceName: string): MaterialShaderQualitySettings;
+	static Find(Outer: UObject, ResourceName: string): MaterialShaderQualitySettings;
+	static GetDefaultObject(): MaterialShaderQualitySettings;
+	static CreateDefaultSubobject(Name: string, Transient?: boolean, Required?: boolean, Abstract?: boolean): MaterialShaderQualitySettings;
+	static C(Other: UObject | any): MaterialShaderQualitySettings;
+}
+
+declare type EMobileShadowQuality = 'NoFiltering' | 'PCF_1x1' | 'PCF_2x2' | 'PCF_3x3' | 'EMobileShadowQuality_MAX';
+declare var EMobileShadowQuality : { NoFiltering:'NoFiltering',PCF_1x1:'PCF_1x1',PCF_2x2:'PCF_2x2',PCF_3x3:'PCF_3x3',EMobileShadowQuality_MAX:'EMobileShadowQuality_MAX', };
+declare class MaterialQualityOverrides { 
+	bDiscardQualityDuringCook: boolean;
+	bEnableOverride: boolean;
+	bForceFullyRough: boolean;
+	bForceNonMetal: boolean;
+	bForceDisableLMDirectionality: boolean;
+	bForceLQReflections: boolean;
+	bForceDisablePreintegratedGF: boolean;
+	bDisableMaterialNormalCalculation: boolean;
+	MobileShadowQuality: EMobileShadowQuality;
+	clone() : MaterialQualityOverrides;
+	static C(Other: UObject | any): MaterialQualityOverrides;
+}
+
+declare class ShaderPlatformQualitySettings extends UObject { 
+	QualityOverrides: MaterialQualityOverrides;
+	static Load(ResourceName: string): ShaderPlatformQualitySettings;
+	static Find(Outer: UObject, ResourceName: string): ShaderPlatformQualitySettings;
+	static GetDefaultObject(): ShaderPlatformQualitySettings;
+	static CreateDefaultSubobject(Name: string, Transient?: boolean, Required?: boolean, Abstract?: boolean): ShaderPlatformQualitySettings;
+	static C(Other: UObject | any): ShaderPlatformQualitySettings;
+}
+
+declare class ClothingAssetFactoryBase extends UObject { 
+	static Load(ResourceName: string): ClothingAssetFactoryBase;
+	static Find(Outer: UObject, ResourceName: string): ClothingAssetFactoryBase;
+	static GetDefaultObject(): ClothingAssetFactoryBase;
+	static CreateDefaultSubobject(Name: string, Transient?: boolean, Required?: boolean, Abstract?: boolean): ClothingAssetFactoryBase;
+	static C(Other: UObject | any): ClothingAssetFactoryBase;
+}
+
+declare class NetAnalyticsDataConfig { 
+	DataName: string;
+	bEnabled: boolean;
+	clone() : NetAnalyticsDataConfig;
+	static C(Other: UObject | any): NetAnalyticsDataConfig;
+}
+
+declare class NetAnalyticsAggregatorConfig extends UObject { 
+	NetAnalyticsData: NetAnalyticsDataConfig[];
+	static Load(ResourceName: string): NetAnalyticsAggregatorConfig;
+	static Find(Outer: UObject, ResourceName: string): NetAnalyticsAggregatorConfig;
+	static GetDefaultObject(): NetAnalyticsAggregatorConfig;
+	static CreateDefaultSubobject(Name: string, Transient?: boolean, Required?: boolean, Abstract?: boolean): NetAnalyticsAggregatorConfig;
+	static C(Other: UObject | any): NetAnalyticsAggregatorConfig;
+}
+
+declare class AssetRegistryImpl extends UObject { 
+	static Load(ResourceName: string): AssetRegistryImpl;
+	static Find(Outer: UObject, ResourceName: string): AssetRegistryImpl;
+	static GetDefaultObject(): AssetRegistryImpl;
+	static CreateDefaultSubobject(Name: string, Transient?: boolean, Required?: boolean, Abstract?: boolean): AssetRegistryImpl;
+	static C(Other: UObject | any): AssetRegistryImpl;
+}
+
+declare class ARFilter { 
+	PackageNames: string[];
+	PackagePaths: string[];
+	ObjectPaths: string[];
+	ClassNames: string[];
+	RecursiveClassesExclusionSet: any;
+	bRecursivePaths: boolean;
+	bRecursiveClasses: boolean;
+	bIncludeOnlyOnDiskAssets: boolean;
+	clone() : ARFilter;
+	static C(Other: UObject | any): ARFilter;
+}
+
+declare class TagAndValue { 
+	Tag: string;
+	Value: string;
+	clone() : TagAndValue;
+	static C(Other: UObject | any): TagAndValue;
+}
+
+declare class AssetRegistryHelpers extends UObject { 
+	static Load(ResourceName: string): AssetRegistryHelpers;
+	static Find(Outer: UObject, ResourceName: string): AssetRegistryHelpers;
+	static GetDefaultObject(): AssetRegistryHelpers;
+	static CreateDefaultSubobject(Name: string, Transient?: boolean, Required?: boolean, Abstract?: boolean): AssetRegistryHelpers;
+	static ToSoftObjectPath(InAssetData: AssetData): SoftObjectPath;
+	static SetFilterTagsAndValues(InFilter: ARFilter,InTagsAndValues: TagAndValue[]): ARFilter;
+	static IsValid(InAssetData: AssetData): boolean;
+	static IsUAsset(InAssetData: AssetData): boolean;
+	static IsRedirector(InAssetData: AssetData): boolean;
+	static IsAssetLoaded(InAssetData: AssetData): boolean;
+	static GetTagValue(InAssetData: AssetData,InTagName: string,OutTagValue?: string): {OutTagValue: string, $: boolean};
+	static GetFullName(InAssetData: AssetData): string;
+	static GetExportTextName(InAssetData: AssetData): string;
+	static GetClass(InAssetData: AssetData): UnrealEngineClass;
+	static GetAsset(InAssetData: AssetData): UObject;
+	static CreateAssetData(InAsset: UObject,bAllowBlueprintClass: boolean): AssetData;
+	static C(Other: UObject | any): AssetRegistryHelpers;
+}
+
+declare class AssetRegistryDependencyOptions { 
+	bIncludeSoftPackageReferences: boolean;
+	bIncludeHardPackageReferences: boolean;
+	bIncludeSearchableNames: boolean;
+	bIncludeSoftManagementReferences: boolean;
+	bIncludeHardManagementReferences: boolean;
+	clone() : AssetRegistryDependencyOptions;
+	static C(Other: UObject | any): AssetRegistryDependencyOptions;
+}
+
+declare class AssetRegistry extends Interface { 
+	static Load(ResourceName: string): AssetRegistry;
+	static Find(Outer: UObject, ResourceName: string): AssetRegistry;
+	static GetDefaultObject(): AssetRegistry;
+	static CreateDefaultSubobject(Name: string, Transient?: boolean, Required?: boolean, Abstract?: boolean): AssetRegistry;
+	WaitForCompletion(): void;
+	UseFilterToExcludeAssets(AssetDataList?: AssetData[],Filter?: ARFilter): {AssetDataList: AssetData[]};
+	SearchAllAssets(bSynchronousSearch: boolean): void;
+	ScanPathsSynchronous(InPaths: string[],bForceRescan: boolean): void;
+	ScanModifiedAssetFiles(InFilePaths: string[]): void;
+	ScanFilesSynchronous(InFilePaths: string[],bForceRescan: boolean): void;
+	RunAssetsThroughFilter(AssetDataList?: AssetData[],Filter?: ARFilter): {AssetDataList: AssetData[]};
+	PrioritizeSearchPath(PathToPrioritize: string): void;
+	K2_GetReferencers(PackageName: string,ReferenceOptions: AssetRegistryDependencyOptions,OutReferencers?: string[]): {OutReferencers: string[], $: boolean};
+	K2_GetDependencies(PackageName: string,DependencyOptions: AssetRegistryDependencyOptions,OutDependencies?: string[]): {OutDependencies: string[], $: boolean};
+	IsLoadingAssets(): boolean;
+	HasAssets(PackagePath: string,bRecursive: boolean): boolean;
+	GetSubPaths(InBasePath: string,OutPathList?: string[],bInRecurse?: boolean): {OutPathList: string[]};
+	GetAssetsByPath(PackagePath: string,OutAssetData?: AssetData[],bRecursive?: boolean,bIncludeOnlyOnDiskAssets?: boolean): {OutAssetData: AssetData[], $: boolean};
+	GetAssetsByPackageName(PackageName: string,OutAssetData?: AssetData[],bIncludeOnlyOnDiskAssets?: boolean): {OutAssetData: AssetData[], $: boolean};
+	GetAssetsByClass(ClassName: string,OutAssetData?: AssetData[],bSearchSubClasses?: boolean): {OutAssetData: AssetData[], $: boolean};
+	GetAssets(Filter: ARFilter,OutAssetData?: AssetData[]): {OutAssetData: AssetData[], $: boolean};
+	GetAssetByObjectPath(ObjectPath: string,bIncludeOnlyOnDiskAssets: boolean): AssetData;
+	GetAllCachedPaths(OutPathList?: string[]): {OutPathList: string[]};
+	GetAllAssets(OutAssetData?: AssetData[],bIncludeOnlyOnDiskAssets?: boolean): {OutAssetData: AssetData[], $: boolean};
+	static C(Other: UObject | any): AssetRegistry;
+}
+
+declare class AutoCompleteCommand { 
+	Command: string;
+	Desc: string;
+	clone() : AutoCompleteCommand;
+	static C(Other: UObject | any): AutoCompleteCommand;
+}
+
+declare class ConsoleSettings extends UObject { 
+	MaxScrollbackSize: number;
+	ManualAutoCompleteList: AutoCompleteCommand[];
+	AutoCompleteMapPaths: string[];
+	BackgroundOpacityPercentage: number;
+	bOrderTopToBottom: boolean;
+	bDisplayHelpInAutoComplete: boolean;
+	InputColor: Color;
+	HistoryColor: Color;
+	AutoCompleteCommandColor: Color;
+	AutoCompleteCVarColor: Color;
+	AutoCompleteFadedColor: Color;
+	static Load(ResourceName: string): ConsoleSettings;
+	static Find(Outer: UObject, ResourceName: string): ConsoleSettings;
+	static GetDefaultObject(): ConsoleSettings;
+	static CreateDefaultSubobject(Name: string, Transient?: boolean, Required?: boolean, Abstract?: boolean): ConsoleSettings;
+	static C(Other: UObject | any): ConsoleSettings;
+}
+
+declare type ETwoPlayerSplitScreenType = 'Horizontal' | 'Vertical' | 'ETwoPlayerSplitScreenType_MAX';
+declare var ETwoPlayerSplitScreenType : { Horizontal:'Horizontal',Vertical:'Vertical',ETwoPlayerSplitScreenType_MAX:'ETwoPlayerSplitScreenType_MAX', };
+declare type EThreePlayerSplitScreenType = 'FavorTop' | 'FavorBottom' | 'Vertical' | 'Horizontal' | 'EThreePlayerSplitScreenType_MAX';
+declare var EThreePlayerSplitScreenType : { FavorTop:'FavorTop',FavorBottom:'FavorBottom',Vertical:'Vertical',Horizontal:'Horizontal',EThreePlayerSplitScreenType_MAX:'EThreePlayerSplitScreenType_MAX', };
+declare type EFourPlayerSplitScreenType = 'Grid' | 'Vertical' | 'Horizontal' | 'EFourPlayerSplitScreenType_MAX';
+declare var EFourPlayerSplitScreenType : { Grid:'Grid',Vertical:'Vertical',Horizontal:'Horizontal',EFourPlayerSplitScreenType_MAX:'EFourPlayerSplitScreenType_MAX', };
+declare class GameModeName { 
+	Name: string;
+	GameMode: SoftClassPath;
+	clone() : GameModeName;
+	static C(Other: UObject | any): GameModeName;
+}
+
+declare class GameMapsSettings extends UObject { 
+	EditorStartupMap: SoftObjectPath;
+	LocalMapOptions: string;
+	TransitionMap: SoftObjectPath;
+	bUseSplitscreen: boolean;
+	TwoPlayerSplitscreenLayout: ETwoPlayerSplitScreenType;
+	ThreePlayerSplitscreenLayout: EThreePlayerSplitScreenType;
+	FourPlayerSplitscreenLayout: EFourPlayerSplitScreenType;
+	bOffsetPlayerGamepadIds: boolean;
+	GameInstanceClass: SoftClassPath;
+	GameDefaultMap: SoftObjectPath;
+	ServerDefaultMap: SoftObjectPath;
+	GlobalDefaultGameMode: SoftClassPath;
+	GlobalDefaultServerGameMode: SoftClassPath;
+	GameModeMapPrefixes: GameModeName[];
+	GameModeClassAliases: GameModeName[];
+	static Load(ResourceName: string): GameMapsSettings;
+	static Find(Outer: UObject, ResourceName: string): GameMapsSettings;
+	static GetDefaultObject(): GameMapsSettings;
+	static CreateDefaultSubobject(Name: string, Transient?: boolean, Required?: boolean, Abstract?: boolean): GameMapsSettings;
+	SetSkipAssigningGamepadToPlayer1(bSkipFirstPlayer: boolean): void;
+	GetSkipAssigningGamepadToPlayer1(): boolean;
+	static GetGameMapsSettings(): GameMapsSettings;
+	static C(Other: UObject | any): GameMapsSettings;
+}
+
 declare class GameNetworkManagerSettings extends UObject { 
 	MinDynamicBandwidth: number;
 	MaxDynamicBandwidth: number;
@@ -19670,946 +20663,5 @@ declare class MaterialGraphNode_Comment extends EdGraphNode_Comment {
 	static GetDefaultObject(): MaterialGraphNode_Comment;
 	static CreateDefaultSubobject(Name: string, Transient?: boolean, Required?: boolean, Abstract?: boolean): MaterialGraphNode_Comment;
 	static C(Other: UObject | any): MaterialGraphNode_Comment;
-}
-
-declare class MaterialGraphNode_Knot extends MaterialGraphNode { 
-	static Load(ResourceName: string): MaterialGraphNode_Knot;
-	static Find(Outer: UObject, ResourceName: string): MaterialGraphNode_Knot;
-	static GetDefaultObject(): MaterialGraphNode_Knot;
-	static CreateDefaultSubobject(Name: string, Transient?: boolean, Required?: boolean, Abstract?: boolean): MaterialGraphNode_Knot;
-	static C(Other: UObject | any): MaterialGraphNode_Knot;
-}
-
-declare class MaterialGraphSchema extends EdGraphSchema { 
-	static Load(ResourceName: string): MaterialGraphSchema;
-	static Find(Outer: UObject, ResourceName: string): MaterialGraphSchema;
-	static GetDefaultObject(): MaterialGraphSchema;
-	static CreateDefaultSubobject(Name: string, Transient?: boolean, Required?: boolean, Abstract?: boolean): MaterialGraphSchema;
-	static C(Other: UObject | any): MaterialGraphSchema;
-}
-
-declare class MaterialImportHelpers extends UObject { 
-	static Load(ResourceName: string): MaterialImportHelpers;
-	static Find(Outer: UObject, ResourceName: string): MaterialImportHelpers;
-	static GetDefaultObject(): MaterialImportHelpers;
-	static CreateDefaultSubobject(Name: string, Transient?: boolean, Required?: boolean, Abstract?: boolean): MaterialImportHelpers;
-	static FindExistingMaterialFromSearchLocation(MaterialFullName: string,BasePackagePath: string,SearchLocation: EMaterialSearchLocation,OutError?: string): {OutError: string, $: MaterialInterface};
-	static FindExistingMaterial(BasePath: string,MaterialFullName: string,bRecursivePaths: boolean,OutError?: string): {OutError: string, $: MaterialInterface};
-	static C(Other: UObject | any): MaterialImportHelpers;
-}
-
-declare class MaterialInstanceConstantFactoryNew extends Factory { 
-	InitialParent: MaterialInterface;
-	static Load(ResourceName: string): MaterialInstanceConstantFactoryNew;
-	static Find(Outer: UObject, ResourceName: string): MaterialInstanceConstantFactoryNew;
-	static GetDefaultObject(): MaterialInstanceConstantFactoryNew;
-	static CreateDefaultSubobject(Name: string, Transient?: boolean, Required?: boolean, Abstract?: boolean): MaterialInstanceConstantFactoryNew;
-	static C(Other: UObject | any): MaterialInstanceConstantFactoryNew;
-}
-
-declare class MaterialInstanceThumbnailRenderer extends DefaultSizedThumbnailRenderer { 
-	static Load(ResourceName: string): MaterialInstanceThumbnailRenderer;
-	static Find(Outer: UObject, ResourceName: string): MaterialInstanceThumbnailRenderer;
-	static GetDefaultObject(): MaterialInstanceThumbnailRenderer;
-	static CreateDefaultSubobject(Name: string, Transient?: boolean, Required?: boolean, Abstract?: boolean): MaterialInstanceThumbnailRenderer;
-	static C(Other: UObject | any): MaterialInstanceThumbnailRenderer;
-}
-
-declare class MaterialParameterCollectionFactoryNew extends Factory { 
-	static Load(ResourceName: string): MaterialParameterCollectionFactoryNew;
-	static Find(Outer: UObject, ResourceName: string): MaterialParameterCollectionFactoryNew;
-	static GetDefaultObject(): MaterialParameterCollectionFactoryNew;
-	static CreateDefaultSubobject(Name: string, Transient?: boolean, Required?: boolean, Abstract?: boolean): MaterialParameterCollectionFactoryNew;
-	static C(Other: UObject | any): MaterialParameterCollectionFactoryNew;
-}
-
-declare class MaterialStatsOptions extends UObject { 
-	bPlatformUsed: number;
-	bMaterialQualityUsed: number;
-	static Load(ResourceName: string): MaterialStatsOptions;
-	static Find(Outer: UObject, ResourceName: string): MaterialStatsOptions;
-	static GetDefaultObject(): MaterialStatsOptions;
-	static CreateDefaultSubobject(Name: string, Transient?: boolean, Required?: boolean, Abstract?: boolean): MaterialStatsOptions;
-	static C(Other: UObject | any): MaterialStatsOptions;
-}
-
-declare class MergeShaderPipelineCachesCommandlet extends Commandlet { 
-	static Load(ResourceName: string): MergeShaderPipelineCachesCommandlet;
-	static Find(Outer: UObject, ResourceName: string): MergeShaderPipelineCachesCommandlet;
-	static GetDefaultObject(): MergeShaderPipelineCachesCommandlet;
-	static CreateDefaultSubobject(Name: string, Transient?: boolean, Required?: boolean, Abstract?: boolean): MergeShaderPipelineCachesCommandlet;
-	static C(Other: UObject | any): MergeShaderPipelineCachesCommandlet;
-}
-
-declare class ModelExporterT3D extends Exporter { 
-	static Load(ResourceName: string): ModelExporterT3D;
-	static Find(Outer: UObject, ResourceName: string): ModelExporterT3D;
-	static GetDefaultObject(): ModelExporterT3D;
-	static CreateDefaultSubobject(Name: string, Transient?: boolean, Required?: boolean, Abstract?: boolean): ModelExporterT3D;
-	static C(Other: UObject | any): ModelExporterT3D;
-}
-
-declare class ModelFactory extends Factory { 
-	static Load(ResourceName: string): ModelFactory;
-	static Find(Outer: UObject, ResourceName: string): ModelFactory;
-	static GetDefaultObject(): ModelFactory;
-	static CreateDefaultSubobject(Name: string, Transient?: boolean, Required?: boolean, Abstract?: boolean): ModelFactory;
-	static C(Other: UObject | any): ModelFactory;
-}
-
-declare class NativeCodeGenCommandlet extends Commandlet { 
-	static Load(ResourceName: string): NativeCodeGenCommandlet;
-	static Find(Outer: UObject, ResourceName: string): NativeCodeGenCommandlet;
-	static GetDefaultObject(): NativeCodeGenCommandlet;
-	static CreateDefaultSubobject(Name: string, Transient?: boolean, Required?: boolean, Abstract?: boolean): NativeCodeGenCommandlet;
-	static C(Other: UObject | any): NativeCodeGenCommandlet;
-}
-
-declare class ObjectExporterT3D extends Exporter { 
-	static Load(ResourceName: string): ObjectExporterT3D;
-	static Find(Outer: UObject, ResourceName: string): ObjectExporterT3D;
-	static GetDefaultObject(): ObjectExporterT3D;
-	static CreateDefaultSubobject(Name: string, Transient?: boolean, Required?: boolean, Abstract?: boolean): ObjectExporterT3D;
-	static C(Other: UObject | any): ObjectExporterT3D;
-}
-
-declare class ObjectLibraryFactory extends Factory { 
-	static Load(ResourceName: string): ObjectLibraryFactory;
-	static Find(Outer: UObject, ResourceName: string): ObjectLibraryFactory;
-	static GetDefaultObject(): ObjectLibraryFactory;
-	static CreateDefaultSubobject(Name: string, Transient?: boolean, Required?: boolean, Abstract?: boolean): ObjectLibraryFactory;
-	static C(Other: UObject | any): ObjectLibraryFactory;
-}
-
-declare class PackageFactory extends Factory { 
-	static Load(ResourceName: string): PackageFactory;
-	static Find(Outer: UObject, ResourceName: string): PackageFactory;
-	static GetDefaultObject(): PackageFactory;
-	static CreateDefaultSubobject(Name: string, Transient?: boolean, Required?: boolean, Abstract?: boolean): PackageFactory;
-	static C(Other: UObject | any): PackageFactory;
-}
-
-declare class PackageTools extends UObject { 
-	static Load(ResourceName: string): PackageTools;
-	static Find(Outer: UObject, ResourceName: string): PackageTools;
-	static GetDefaultObject(): PackageTools;
-	static CreateDefaultSubobject(Name: string, Transient?: boolean, Required?: boolean, Abstract?: boolean): PackageTools;
-	static SanitizePackageName(InPackageName: string): string;
-	static C(Other: UObject | any): PackageTools;
-}
-
-declare class PackFactory extends Factory { 
-	static Load(ResourceName: string): PackFactory;
-	static Find(Outer: UObject, ResourceName: string): PackFactory;
-	static GetDefaultObject(): PackFactory;
-	static CreateDefaultSubobject(Name: string, Transient?: boolean, Required?: boolean, Abstract?: boolean): PackFactory;
-	static C(Other: UObject | any): PackFactory;
-}
-
-declare class PanelExtensionSubsystem extends EditorSubsystem { 
-	static Load(ResourceName: string): PanelExtensionSubsystem;
-	static Find(Outer: UObject, ResourceName: string): PanelExtensionSubsystem;
-	static GetDefaultObject(): PanelExtensionSubsystem;
-	static CreateDefaultSubobject(Name: string, Transient?: boolean, Required?: boolean, Abstract?: boolean): PanelExtensionSubsystem;
-	static C(Other: UObject | any): PanelExtensionSubsystem;
-}
-
-declare class ParticleSystemAuditCommandlet extends Commandlet { 
-	HighSpawnRateOrBurstThreshold: number;
-	FarLODDistanceTheshold: number;
-	static Load(ResourceName: string): ParticleSystemAuditCommandlet;
-	static Find(Outer: UObject, ResourceName: string): ParticleSystemAuditCommandlet;
-	static GetDefaultObject(): ParticleSystemAuditCommandlet;
-	static CreateDefaultSubobject(Name: string, Transient?: boolean, Required?: boolean, Abstract?: boolean): ParticleSystemAuditCommandlet;
-	static C(Other: UObject | any): ParticleSystemAuditCommandlet;
-}
-
-declare class ParticleSystemFactoryNew extends Factory { 
-	static Load(ResourceName: string): ParticleSystemFactoryNew;
-	static Find(Outer: UObject, ResourceName: string): ParticleSystemFactoryNew;
-	static GetDefaultObject(): ParticleSystemFactoryNew;
-	static CreateDefaultSubobject(Name: string, Transient?: boolean, Required?: boolean, Abstract?: boolean): ParticleSystemFactoryNew;
-	static C(Other: UObject | any): ParticleSystemFactoryNew;
-}
-
-declare class ParticleSystemThumbnailRenderer extends TextureThumbnailRenderer { 
-	NoImage: Texture2D;
-	OutOfDate: Texture2D;
-	static Load(ResourceName: string): ParticleSystemThumbnailRenderer;
-	static Find(Outer: UObject, ResourceName: string): ParticleSystemThumbnailRenderer;
-	static GetDefaultObject(): ParticleSystemThumbnailRenderer;
-	static CreateDefaultSubobject(Name: string, Transient?: boolean, Required?: boolean, Abstract?: boolean): ParticleSystemThumbnailRenderer;
-	static C(Other: UObject | any): ParticleSystemThumbnailRenderer;
-}
-
-declare type EAnimationViewportCameraFollowMode = 'None' | 'Bounds' | 'Bone' | 'EAnimationViewportCameraFollowMode_MAX';
-declare var EAnimationViewportCameraFollowMode : { None:'None',Bounds:'Bounds',Bone:'Bone',EAnimationViewportCameraFollowMode_MAX:'EAnimationViewportCameraFollowMode_MAX', };
-declare class ViewportConfigOptions { 
-	ViewModeIndex: EViewModeIndex;
-	ViewFOV: number;
-	CameraSpeedSetting: number;
-	CameraSpeedScalar: number;
-	CameraFollowMode: EAnimationViewportCameraFollowMode;
-	CameraFollowBoneName: string;
-	clone() : ViewportConfigOptions;
-	static C(Other: UObject | any): ViewportConfigOptions;
-}
-
-declare class AssetEditorOptions { 
-	Context: string;
-	ViewportConfigs: ViewportConfigOptions;
-	clone() : AssetEditorOptions;
-	static C(Other: UObject | any): AssetEditorOptions;
-}
-
-declare class PersonaOptions extends UObject { 
-	bAutoAlignFloorToMesh: boolean;
-	bShowGrid: boolean;
-	bHighlightOrigin: boolean;
-	bMuteAudio: boolean;
-	bUseAudioAttenuation: boolean;
-	ShowMeshStats: number;
-	DefaultLocalAxesSelection: any;
-	DefaultBoneDrawSelection: any;
-	SectionTimingNodeColor: LinearColor;
-	NotifyTimingNodeColor: LinearColor;
-	BranchingPointTimingNodeColor: LinearColor;
-	bUseInlineSocketEditor: boolean;
-	bFlattenSkeletonHierarchyWhenFiltering: boolean;
-	bHideParentsWhenFiltering: boolean;
-	bAllowPreviewMeshCollectionsToSelectFromDifferentSkeletons: boolean;
-	bAllowPreviewMeshCollectionsToUseCustomAnimBP: boolean;
-	bAllowMeshSectionSelection: boolean;
-	NumFolderFiltersInAssetBrowser: any;
-	AssetEditorOptions: AssetEditorOptions[];
-	CurveEditorSnapInterval: number;
-	TimelineScrubSnapValue: number;
-	TimelineDisplayFormat: EFrameNumberDisplayFormats;
-	bTimelineDisplayPercentage: boolean;
-	bTimelineDisplayFormatSecondary: boolean;
-	bTimelineDisplayCurveKeys: boolean;
-	TimelineEnabledSnaps: string[];
-	static Load(ResourceName: string): PersonaOptions;
-	static Find(Outer: UObject, ResourceName: string): PersonaOptions;
-	static GetDefaultObject(): PersonaOptions;
-	static CreateDefaultSubobject(Name: string, Transient?: boolean, Required?: boolean, Abstract?: boolean): PersonaOptions;
-	static C(Other: UObject | any): PersonaOptions;
-}
-
-declare class PhysicalMaterialFactoryNew extends Factory { 
-	PhysicalMaterialClass: UnrealEngineClass;
-	static Load(ResourceName: string): PhysicalMaterialFactoryNew;
-	static Find(Outer: UObject, ResourceName: string): PhysicalMaterialFactoryNew;
-	static GetDefaultObject(): PhysicalMaterialFactoryNew;
-	static CreateDefaultSubobject(Name: string, Transient?: boolean, Required?: boolean, Abstract?: boolean): PhysicalMaterialFactoryNew;
-	static C(Other: UObject | any): PhysicalMaterialFactoryNew;
-}
-
-declare class PhysicalMaterialMaskFactory extends Factory { 
-	PhysicalMaterialMaskClass: UnrealEngineClass;
-	static Load(ResourceName: string): PhysicalMaterialMaskFactory;
-	static Find(Outer: UObject, ResourceName: string): PhysicalMaterialMaskFactory;
-	static GetDefaultObject(): PhysicalMaterialMaskFactory;
-	static CreateDefaultSubobject(Name: string, Transient?: boolean, Required?: boolean, Abstract?: boolean): PhysicalMaterialMaskFactory;
-	static C(Other: UObject | any): PhysicalMaterialMaskFactory;
-}
-
-declare class PhysicalMaterialMaskThumbnailRenderer extends TextureThumbnailRenderer { 
-	static Load(ResourceName: string): PhysicalMaterialMaskThumbnailRenderer;
-	static Find(Outer: UObject, ResourceName: string): PhysicalMaterialMaskThumbnailRenderer;
-	static GetDefaultObject(): PhysicalMaterialMaskThumbnailRenderer;
-	static CreateDefaultSubobject(Name: string, Transient?: boolean, Required?: boolean, Abstract?: boolean): PhysicalMaterialMaskThumbnailRenderer;
-	static C(Other: UObject | any): PhysicalMaterialMaskThumbnailRenderer;
-}
-
-declare type EPhysicsAssetEditorRenderMode = 'Solid' | 'Wireframe' | 'None' | 'EPhysicsAssetEditorRenderMode_MAX';
-declare var EPhysicsAssetEditorRenderMode : { Solid:'Solid',Wireframe:'Wireframe',None:'None',EPhysicsAssetEditorRenderMode_MAX:'EPhysicsAssetEditorRenderMode_MAX', };
-declare type EPhysicsAssetEditorConstraintViewMode = 'None' | 'AllPositions' | 'AllLimits' | 'EPhysicsAssetEditorConstraintViewMode_MAX';
-declare var EPhysicsAssetEditorConstraintViewMode : { None:'None',AllPositions:'AllPositions',AllLimits:'AllLimits',EPhysicsAssetEditorConstraintViewMode_MAX:'EPhysicsAssetEditorConstraintViewMode_MAX', };
-declare class PhysicsAssetEditorOptions extends UObject { 
-	PhysicsBlend: number;
-	bUpdateJointsFromAnimation: boolean;
-	PhysicsUpdateMode: EPhysicsTransformUpdateMode;
-	PokePauseTime: number;
-	PokeBlendTime: number;
-	GravScale: number;
-	GravityOverrideZ: number;
-	bUseGravityOverride: boolean;
-	MaxFPS: number;
-	HandleLinearDamping: number;
-	HandleLinearStiffness: number;
-	HandleAngularDamping: number;
-	HandleAngularStiffness: number;
-	InterpolationSpeed: number;
-	PokeStrength: number;
-	bShowConstraintsAsPoints: boolean;
-	bRenderOnlySelectedConstraints: boolean;
-	ConstraintDrawSize: number;
-	MeshViewMode: EPhysicsAssetEditorRenderMode;
-	CollisionViewMode: EPhysicsAssetEditorRenderMode;
-	ConstraintViewMode: EPhysicsAssetEditorConstraintViewMode;
-	SimulationMeshViewMode: EPhysicsAssetEditorRenderMode;
-	SimulationCollisionViewMode: EPhysicsAssetEditorRenderMode;
-	SimulationConstraintViewMode: EPhysicsAssetEditorConstraintViewMode;
-	CollisionOpacity: number;
-	bSolidRenderingForSelectedOnly: boolean;
-	bHideSimulatedBodies: boolean;
-	bHideKinematicBodies: boolean;
-	bResetClothWhenSimulating: boolean;
-	static Load(ResourceName: string): PhysicsAssetEditorOptions;
-	static Find(Outer: UObject, ResourceName: string): PhysicsAssetEditorOptions;
-	static GetDefaultObject(): PhysicsAssetEditorOptions;
-	static CreateDefaultSubobject(Name: string, Transient?: boolean, Required?: boolean, Abstract?: boolean): PhysicsAssetEditorOptions;
-	static C(Other: UObject | any): PhysicsAssetEditorOptions;
-}
-
-declare class PhysicsAssetFactory extends Factory { 
-	TargetSkeletalMesh: SkeletalMesh;
-	static Load(ResourceName: string): PhysicsAssetFactory;
-	static Find(Outer: UObject, ResourceName: string): PhysicsAssetFactory;
-	static GetDefaultObject(): PhysicsAssetFactory;
-	static CreateDefaultSubobject(Name: string, Transient?: boolean, Required?: boolean, Abstract?: boolean): PhysicsAssetFactory;
-	static C(Other: UObject | any): PhysicsAssetFactory;
-}
-
-declare type EPhysAssetFitGeomType = 'EFG_Box' | 'EFG_Sphyl' | 'EFG_Sphere' | 'EFG_TaperedCapsule' | 'EFG_SingleConvexHull' | 'EFG_MultiConvexHull' | 'EFG_MAX';
-declare var EPhysAssetFitGeomType : { EFG_Box:'EFG_Box',EFG_Sphyl:'EFG_Sphyl',EFG_Sphere:'EFG_Sphere',EFG_TaperedCapsule:'EFG_TaperedCapsule',EFG_SingleConvexHull:'EFG_SingleConvexHull',EFG_MultiConvexHull:'EFG_MultiConvexHull',EFG_MAX:'EFG_MAX', };
-declare type EPhysAssetFitVertWeight = 'EVW_AnyWeight' | 'EVW_DominantWeight' | 'EVW_MAX';
-declare var EPhysAssetFitVertWeight : { EVW_AnyWeight:'EVW_AnyWeight',EVW_DominantWeight:'EVW_DominantWeight',EVW_MAX:'EVW_MAX', };
-declare class PhysAssetCreateParams { 
-	MinBoneSize: number;
-	MinWeldSize: number;
-	GeomType: EPhysAssetFitGeomType;
-	VertWeight: EPhysAssetFitVertWeight;
-	bAutoOrientToBone: boolean;
-	bCreateConstraints: boolean;
-	bWalkPastSmall: boolean;
-	bBodyForAll: boolean;
-	bDisableCollisionsByDefault: boolean;
-	AngularConstraintMode: EAngularConstraintMotion;
-	HullCount: number;
-	MaxHullVerts: number;
-	clone() : PhysAssetCreateParams;
-	static C(Other: UObject | any): PhysAssetCreateParams;
-}
-
-declare class PhysicsAssetGenerationSettings extends UObject { 
-	CreateParams: PhysAssetCreateParams;
-	static Load(ResourceName: string): PhysicsAssetGenerationSettings;
-	static Find(Outer: UObject, ResourceName: string): PhysicsAssetGenerationSettings;
-	static GetDefaultObject(): PhysicsAssetGenerationSettings;
-	static CreateDefaultSubobject(Name: string, Transient?: boolean, Required?: boolean, Abstract?: boolean): PhysicsAssetGenerationSettings;
-	static C(Other: UObject | any): PhysicsAssetGenerationSettings;
-}
-
-declare class PhysicsAssetThumbnailRenderer extends DefaultSizedThumbnailRenderer { 
-	static Load(ResourceName: string): PhysicsAssetThumbnailRenderer;
-	static Find(Outer: UObject, ResourceName: string): PhysicsAssetThumbnailRenderer;
-	static GetDefaultObject(): PhysicsAssetThumbnailRenderer;
-	static CreateDefaultSubobject(Name: string, Transient?: boolean, Required?: boolean, Abstract?: boolean): PhysicsAssetThumbnailRenderer;
-	static C(Other: UObject | any): PhysicsAssetThumbnailRenderer;
-}
-
-declare class PkgInfoCommandlet extends Commandlet { 
-	static Load(ResourceName: string): PkgInfoCommandlet;
-	static Find(Outer: UObject, ResourceName: string): PkgInfoCommandlet;
-	static GetDefaultObject(): PkgInfoCommandlet;
-	static CreateDefaultSubobject(Name: string, Transient?: boolean, Required?: boolean, Abstract?: boolean): PkgInfoCommandlet;
-	static C(Other: UObject | any): PkgInfoCommandlet;
-}
-
-declare class PolysExporterOBJ extends Exporter { 
-	static Load(ResourceName: string): PolysExporterOBJ;
-	static Find(Outer: UObject, ResourceName: string): PolysExporterOBJ;
-	static GetDefaultObject(): PolysExporterOBJ;
-	static CreateDefaultSubobject(Name: string, Transient?: boolean, Required?: boolean, Abstract?: boolean): PolysExporterOBJ;
-	static C(Other: UObject | any): PolysExporterOBJ;
-}
-
-declare class PolysExporterT3D extends Exporter { 
-	static Load(ResourceName: string): PolysExporterT3D;
-	static Find(Outer: UObject, ResourceName: string): PolysExporterT3D;
-	static GetDefaultObject(): PolysExporterT3D;
-	static CreateDefaultSubobject(Name: string, Transient?: boolean, Required?: boolean, Abstract?: boolean): PolysExporterT3D;
-	static C(Other: UObject | any): PolysExporterT3D;
-}
-
-declare class PolysFactory extends Factory { 
-	static Load(ResourceName: string): PolysFactory;
-	static Find(Outer: UObject, ResourceName: string): PolysFactory;
-	static GetDefaultObject(): PolysFactory;
-	static CreateDefaultSubobject(Name: string, Transient?: boolean, Required?: boolean, Abstract?: boolean): PolysFactory;
-	static C(Other: UObject | any): PolysFactory;
-}
-
-declare class PopulateDialogueWaveFromCharacterSheetCommandlet extends Commandlet { 
-	static Load(ResourceName: string): PopulateDialogueWaveFromCharacterSheetCommandlet;
-	static Find(Outer: UObject, ResourceName: string): PopulateDialogueWaveFromCharacterSheetCommandlet;
-	static GetDefaultObject(): PopulateDialogueWaveFromCharacterSheetCommandlet;
-	static CreateDefaultSubobject(Name: string, Transient?: boolean, Required?: boolean, Abstract?: boolean): PopulateDialogueWaveFromCharacterSheetCommandlet;
-	static C(Other: UObject | any): PopulateDialogueWaveFromCharacterSheetCommandlet;
-}
-
-declare class PoseAssetFactory extends Factory { 
-	SourceAnimation: AnimSequence;
-	PoseNames: string[];
-	TargetSkeleton: Skeleton;
-	PreviewSkeletalMesh: SkeletalMesh;
-	static Load(ResourceName: string): PoseAssetFactory;
-	static Find(Outer: UObject, ResourceName: string): PoseAssetFactory;
-	static GetDefaultObject(): PoseAssetFactory;
-	static CreateDefaultSubobject(Name: string, Transient?: boolean, Required?: boolean, Abstract?: boolean): PoseAssetFactory;
-	static C(Other: UObject | any): PoseAssetFactory;
-}
-
-declare class PreviewMaterial extends Material { 
-	static Load(ResourceName: string): PreviewMaterial;
-	static Find(Outer: UObject, ResourceName: string): PreviewMaterial;
-	static GetDefaultObject(): PreviewMaterial;
-	static CreateDefaultSubobject(Name: string, Transient?: boolean, Required?: boolean, Abstract?: boolean): PreviewMaterial;
-	static C(Other: UObject | any): PreviewMaterial;
-}
-
-declare class PreviewMeshCollectionFactory extends Factory { 
-	CurrentSkeleton: any;
-	static Load(ResourceName: string): PreviewMeshCollectionFactory;
-	static Find(Outer: UObject, ResourceName: string): PreviewMeshCollectionFactory;
-	static GetDefaultObject(): PreviewMeshCollectionFactory;
-	static CreateDefaultSubobject(Name: string, Transient?: boolean, Required?: boolean, Abstract?: boolean): PreviewMeshCollectionFactory;
-	static C(Other: UObject | any): PreviewMeshCollectionFactory;
-}
-
-declare type EProjectPackagingBuild = 'Always' | 'Never' | 'IfProjectHasCode' | 'IfEditorWasBuiltLocally' | 'EProjectPackagingBuild_MAX';
-declare var EProjectPackagingBuild : { Always:'Always',Never:'Never',IfProjectHasCode:'IfProjectHasCode',IfEditorWasBuiltLocally:'IfEditorWasBuiltLocally',EProjectPackagingBuild_MAX:'EProjectPackagingBuild_MAX', };
-declare type EProjectPackagingBuildConfigurations = 'PPBC_Debug' | 'PPBC_DebugGame' | 'PPBC_Development' | 'PPBC_Test' | 'PPBC_Shipping' | 'PPBC_MAX';
-declare var EProjectPackagingBuildConfigurations : { PPBC_Debug:'PPBC_Debug',PPBC_DebugGame:'PPBC_DebugGame',PPBC_Development:'PPBC_Development',PPBC_Test:'PPBC_Test',PPBC_Shipping:'PPBC_Shipping',PPBC_MAX:'PPBC_MAX', };
-declare type EProjectPackagingBlueprintNativizationMethod = 'Disabled' | 'Inclusive' | 'Exclusive' | 'EProjectPackagingBlueprintNativizationMethod_MAX';
-declare var EProjectPackagingBlueprintNativizationMethod : { Disabled:'Disabled',Inclusive:'Inclusive',Exclusive:'Exclusive',EProjectPackagingBlueprintNativizationMethod_MAX:'EProjectPackagingBlueprintNativizationMethod_MAX', };
-declare type EProjectPackagingInternationalizationPresets = 'English' | 'EFIGS' | 'EFIGSCJK' | 'CJK' | 'All' | 'EProjectPackagingInternationalizationPresets_MAX';
-declare var EProjectPackagingInternationalizationPresets : { English:'English',EFIGS:'EFIGS',EFIGSCJK:'EFIGSCJK',CJK:'CJK',All:'All',EProjectPackagingInternationalizationPresets_MAX:'EProjectPackagingInternationalizationPresets_MAX', };
-declare class ProjectPackagingSettings extends UObject { 
-	Build: EProjectPackagingBuild;
-	BuildConfiguration: EProjectPackagingBuildConfigurations;
-	BuildTarget: string;
-	StagingDirectory: DirectoryPath;
-	FullRebuild: boolean;
-	ForDistribution: boolean;
-	IncludeDebugFiles: boolean;
-	BlueprintNativizationMethod: EProjectPackagingBlueprintNativizationMethod;
-	NativizeBlueprintAssets: FilePath[];
-	bIncludeNativizedAssetsInProjectGeneration: boolean;
-	bExcludeMonolithicEngineHeadersInNativizedCode: boolean;
-	UsePakFile: boolean;
-	bUseIoStore: boolean;
-	bMakeBinaryConfig: boolean;
-	bGenerateChunks: boolean;
-	bGenerateNoChunks: boolean;
-	bChunkHardReferencesOnly: boolean;
-	bForceOneChunkPerFile: boolean;
-	MaxChunkSize: any;
-	bBuildHttpChunkInstallData: boolean;
-	HttpChunkInstallDataDirectory: DirectoryPath;
-	bCompressed: boolean;
-	PakFileCompressionFormats: string;
-	bForceUseProjectCompressionFormatIgnoreHardwareOverride: boolean;
-	PakFileAdditionalCompressionOptions: string;
-	PakFileCompressionMethod: string;
-	PakFileCompressionLevel_DebugDevelopment: number;
-	PakFileCompressionLevel_TestShipping: number;
-	PakFileCompressionLevel_Distribution: number;
-	HttpChunkInstallDataVersion: string;
-	IncludePrerequisites: boolean;
-	IncludeAppLocalPrerequisites: boolean;
-	bShareMaterialShaderCode: boolean;
-	bDeterministicShaderCodeOrder: boolean;
-	bSharedMaterialNativeLibraries: boolean;
-	ApplocalPrerequisitesDirectory: DirectoryPath;
-	IncludeCrashReporter: boolean;
-	InternationalizationPreset: EProjectPackagingInternationalizationPresets;
-	CulturesToStage: string[];
-	LocalizationTargetsToChunk: string[];
-	LocalizationTargetCatchAllChunkId: number;
-	bCookAll: boolean;
-	bCookMapsOnly: boolean;
-	bEncryptIniFiles: boolean;
-	bEncryptPakIndex: boolean;
-	GenerateEarlyDownloaderPakFile: boolean;
-	bSkipEditorContent: boolean;
-	bSkipMovies: boolean;
-	UFSMovies: string[];
-	NonUFSMovies: string[];
-	CompressedChunkWildcard: string[];
-	IniKeyBlacklist: string[];
-	IniSectionBlacklist: string[];
-	EarlyDownloaderPakFileFiles: string[];
-	MapsToCook: FilePath[];
-	DirectoriesToAlwaysCook: DirectoryPath[];
-	DirectoriesToNeverCook: DirectoryPath[];
-	TestDirectoriesToNotSearch: DirectoryPath[];
-	DirectoriesToAlwaysStageAsUFS: DirectoryPath[];
-	DirectoriesToAlwaysStageAsNonUFS: DirectoryPath[];
-	DirectoriesToAlwaysStageAsUFSServer: DirectoryPath[];
-	DirectoriesToAlwaysStageAsNonUFSServer: DirectoryPath[];
-	static Load(ResourceName: string): ProjectPackagingSettings;
-	static Find(Outer: UObject, ResourceName: string): ProjectPackagingSettings;
-	static GetDefaultObject(): ProjectPackagingSettings;
-	static CreateDefaultSubobject(Name: string, Transient?: boolean, Required?: boolean, Abstract?: boolean): ProjectPackagingSettings;
-	static C(Other: UObject | any): ProjectPackagingSettings;
-}
-
-declare class PropertyEditorTestInstancedObject extends UObject { 
-	Number: number;
-	static Load(ResourceName: string): PropertyEditorTestInstancedObject;
-	static Find(Outer: UObject, ResourceName: string): PropertyEditorTestInstancedObject;
-	static GetDefaultObject(): PropertyEditorTestInstancedObject;
-	static CreateDefaultSubobject(Name: string, Transient?: boolean, Required?: boolean, Abstract?: boolean): PropertyEditorTestInstancedObject;
-	static C(Other: UObject | any): PropertyEditorTestInstancedObject;
-}
-
-declare type PropertyEditorTestEnum = 'PropertyEditorTest_Enum1' | 'PropertyEditorTest_Enum2' | 'PropertyEditorTest_Enum3' | 'PropertyEditorTest_Enum4' | 'PropertyEditorTest_Enum5' | 'PropertyEditorTest_Enum6' | 'PropertyEditorTest_MAX';
-declare var PropertyEditorTestEnum : { PropertyEditorTest_Enum1:'PropertyEditorTest_Enum1',PropertyEditorTest_Enum2:'PropertyEditorTest_Enum2',PropertyEditorTest_Enum3:'PropertyEditorTest_Enum3',PropertyEditorTest_Enum4:'PropertyEditorTest_Enum4',PropertyEditorTest_Enum5:'PropertyEditorTest_Enum5',PropertyEditorTest_Enum6:'PropertyEditorTest_Enum6',PropertyEditorTest_MAX:'PropertyEditorTest_MAX', };
-declare type EditColor = 'Red' | 'Orange' | 'Yellow' | 'Green' | 'Blue' | 'Indigo' | 'Violet' | 'Pink' | 'Magenta' | 'Cyan' | 'EditColor_MAX';
-declare var EditColor : { Red:'Red',Orange:'Orange',Yellow:'Yellow',Green:'Green',Blue:'Blue',Indigo:'Indigo',Violet:'Violet',Pink:'Pink',Magenta:'Magenta',Cyan:'Cyan',EditColor_MAX:'EditColor_MAX', };
-declare class PropertyEditorTestSubStruct { 
-	FirstProperty: number;
-	SecondProperty: number;
-	CustomizedStructInsideUncustomizedStruct: LinearColor;
-	CustomizedStructInsideUncustomizedStruct2: SoftObjectPath;
-	clone() : PropertyEditorTestSubStruct;
-	static C(Other: UObject | any): PropertyEditorTestSubStruct;
-}
-
-declare class PropertyEditorTestBasicStruct { 
-	IntPropertyInsideAStruct: number;
-	FloatPropertyInsideAStruct: number;
-	ObjectPropertyInsideAStruct: UObject;
-	InnerStruct: PropertyEditorTestSubStruct;
-	clone() : PropertyEditorTestBasicStruct;
-	static C(Other: UObject | any): PropertyEditorTestBasicStruct;
-}
-
-declare class PropertyEditorTestInstancedStruct { 
-	UObject: PropertyEditorTestInstancedObject;
-	clone() : PropertyEditorTestInstancedStruct;
-	static C(Other: UObject | any): PropertyEditorTestInstancedStruct;
-}
-
-declare class PropertyEditTestTextStruct { 
-	NormalProperty: string;
-	clone() : PropertyEditTestTextStruct;
-	static C(Other: UObject | any): PropertyEditTestTextStruct;
-}
-
-declare class PropertyEditorTestInlineEditCondition { 
-	InlineEditCondition: boolean;
-	HasInlineEditCondition: number;
-	clone() : PropertyEditorTestInlineEditCondition;
-	static C(Other: UObject | any): PropertyEditorTestInlineEditCondition;
-}
-
-declare class PropertyEditorTestObject extends UObject { 
-	Int8Property: any;
-	Int16Property: any;
-	Int32Property: number;
-	Int64Property: any;
-	ByteProperty: number;
-	UnsignedInt16Property: any;
-	UnsignedInt32Property: any;
-	UnsignedInt64Property: any;
-	FloatProperty: number;
-	DoubleProperty: any;
-	NameProperty: string;
-	BoolProperty: boolean;
-	StringProperty: string;
-	TextProperty: string;
-	IntPointProperty: IntPoint;
-	Vector3Property: Vector;
-	Vector2Property: Vector2D;
-	Vector4Property: Vector4;
-	RotatorProperty: Rotator;
-	ObjectProperty: UObject;
-	LinearColorProperty: LinearColor;
-	ColorProperty: Color;
-	EnumByteProperty: PropertyEditorTestEnum;
-	EnumProperty: EditColor;
-	MatrixProperty: Matrix;
-	TransformProperty: Transform;
-	ClassProperty: UnrealEngineClass;
-	ClassPropertyWithAllowed: UnrealEngineClass;
-	ClassPropertyWithDisallowed: UnrealEngineClass;
-	SubclassOfTexture: UnrealEngineClass;
-	SubclassOfWithAllowed: UnrealEngineClass;
-	SubclassOfWithDisallowed: UnrealEngineClass;
-	AssetPointerWithAllowedAndWhitespace: UObject;
-	IntProperty32Array: number[];
-	BytePropertyArray: number[];
-	FloatPropertyArray: number[];
-	NamePropertyArray: string[];
-	BoolPropertyArray: boolean[];
-	StringPropertyArray: string[];
-	TextPropertyArray: string[];
-	Vector3PropertyArray: Vector[];
-	Vector2PropertyArray: Vector2D[];
-	Vector4PropertyArray: Vector4[];
-	RotatorPropertyArray: Rotator[];
-	ObjectPropertyArray: UObject[];
-	ActorPropertyArray: Actor[];
-	LinearColorPropertyArray: LinearColor[];
-	ColorPropertyArray: Color[];
-	EnumPropertyArray: PropertyEditorTestEnum[];
-	StructPropertyArray: PropertyEditorTestBasicStruct[];
-	StructPropertyArrayWithTitle: PropertyEditorTestBasicStruct[];
-	InstancedStructArray: PropertyEditorTestInstancedStruct[];
-	InstancedUObjectArray: PropertyEditorTestInstancedObject[];
-	FixedArrayOfInts: number[];
-	StaticArrayOfInts: number;
-	StaticArrayOfIntsWithEnumLabels: number;
-	FloatPropertyWithClampedRange: number;
-	IntPropertyWithClampedRange: number;
-	IntThatCannotBeChanged: number;
-	StringThatCannotBeChanged: string;
-	ObjectThatCannotBeChanged: PrimitiveComponent;
-	EnumBitflags: number;
-	StringPasswordProperty: string;
-	TextPasswordProperty: string;
-	ThisIsBrokenIfItsVisibleInADetailsView: PropertyEditorTestBasicStruct;
-	StructWithMultipleInstances1: PropertyEditorTestBasicStruct;
-	bEditConditionStructWithMultipleInstances2: boolean;
-	StructWithMultipleInstances2: PropertyEditorTestBasicStruct;
-	RichCurve: RichCurve;
-	AssetReferenceCustomStruct: SoftObjectPath;
-	AssetReferenceCustomStructWithThumbnail: SoftObjectPath;
-	ExactlyPointLightActorReference: SoftObjectPath;
-	LightActorReference: SoftObjectPath;
-	ExactPointOrSpotLightActorReference: SoftObjectPath;
-	LightOrStaticMeshActorReference: SoftObjectPath;
-	NotLightActorReference: SoftObjectPath;
-	MaterialOrTextureAssetReference: SoftObjectPath;
-	ActorWithMetaClass: SoftObjectPath;
-	DisabledByCanEditChange: SoftObjectPath;
-	bEditCondition: boolean;
-	SimplePropertyWithEditCondition: number;
-	bEditConditionAssetReferenceCustomStructWithEditCondition: boolean;
-	AssetReferenceCustomStructWithEditCondition: SoftObjectPath;
-	ArrayOfStructs: PropertyEditorTestBasicStruct[];
-	struct: PropertyEditTestTextStruct;
-	EditInlineNewStaticMeshComponent: StaticMeshComponent;
-	ArrayOfEditInlineNewSMCs: StaticMeshComponent[];
-	TextureProp: Texture;
-	StaticMeshProp: StaticMesh;
-	AnyMaterialInterface: MaterialInterface;
-	OnlyActorsAllowed: Actor;
-	Int32Set: any;
-	FloatSet: any;
-	StringSet: any;
-	ObjectSet: any;
-	ActorSet: any;
-	EditColorSet: any;
-	NameSet: any;
-	Int32ToStringMap: any;
-	StringToColorMap: any;
-	Int32ToStructMap: any;
-	StringToFloatMap: any;
-	StringToObjectMap: any;
-	StringToActorMap: any;
-	ObjectToInt32Map: any;
-	ObjectToColorMap: any;
-	IntToEnumMap: any;
-	NameToNameMap: any;
-	NameToObjectMap: any;
-	NameToCustomMap: any;
-	NameToColorMap: any;
-	IntToCustomMap: any;
-	IntToSubStructMap: any;
-	LinearColorSet: any;
-	VectorSet: any;
-	LinearColorToStringMap: any;
-	VectorToFloatMap: any;
-	LinearColorToVectorMap: any;
-	BlendableInterface: any;
-	AnimClassInterface: any;
-	LightPropagationVolumeBlendable: any;
-	TextureOrBlendableInterface: UObject;
-	bSubcategory: boolean;
-	bSubcategoryAdvanced: boolean;
-	bSubcategoryFooSimple: boolean;
-	bSubcategoryFooAdvanced: boolean;
-	bSubcategoryBarSimple: boolean;
-	bSubcategoryBarAdvanced: boolean;
-	bSubcategoryLast: boolean;
-	bEnablesNext: boolean;
-	bEnabledByPrevious: boolean;
-	EnumEditCondition: EditColor;
-	bEnabledWhenBlue: boolean;
-	bEnabledWhenPink: boolean;
-	EnumAsByteEditCondition: PropertyEditorTestEnum;
-	bEnabledWhenEnumIs2: boolean;
-	bEnabledWhenEnumIs4: boolean;
-	IntegerEditCondition: number;
-	bEnabledWhenIntGreaterOrEqual5: boolean;
-	bEnabledWhenIntLessOrEqual10: boolean;
-	FloatEditCondition: number;
-	bEnabledWhenFloatGreaterThan5: boolean;
-	bEnabledWhenFloatLessThan10: boolean;
-	bEditConditionForArrays: boolean;
-	ArrayWithEditCondition: Texture2D[];
-	ArrayOfStructsWithEditCondition: PropertyEditorTestBasicStruct[];
-	bEditConditionForFixedArray: boolean;
-	FixedArrayWithEditCondition: string;
-	EditConditionFlags: any;
-	bEnabledWhenFlagsHasTwoOrFour: boolean;
-	bDisabledWhenFlagsIsOdd: boolean;
-	InlineProperty: EComponentMobility;
-	PropertyThatHides: EComponentMobility;
-	bVisibleWhenStatic: boolean;
-	VisibleWhenStationary: number;
-	DateTime: DateTime;
-	bInlineEditConditionWithoutMetaToggle: boolean;
-	InlineEditConditionWithoutMeta: number;
-	bInlineEditConditionWithMetaToggle: boolean;
-	InlineEditConditionWithMeta: number;
-	bInlineEditConditionNotEditable: boolean;
-	HasNonEditableInlineCondition: number;
-	bSharedEditCondition: boolean;
-	UsesSharedEditCondition1: number;
-	UsesSharedEditCondition2: number;
-	StructWithInlineCondition: PropertyEditorTestInlineEditCondition;
-	ArrayOfStructsWithInlineCondition: PropertyEditorTestInlineEditCondition[];
-	static Load(ResourceName: string): PropertyEditorTestObject;
-	static Find(Outer: UObject, ResourceName: string): PropertyEditorTestObject;
-	static GetDefaultObject(): PropertyEditorTestObject;
-	static CreateDefaultSubobject(Name: string, Transient?: boolean, Required?: boolean, Abstract?: boolean): PropertyEditorTestObject;
-	static C(Other: UObject | any): PropertyEditorTestObject;
-}
-
-declare class BlueprintPropertyTestObject extends UObject { 
-	ShouldBeHidden: number;
-	ShouldBeVisible: number;
-	static Load(ResourceName: string): BlueprintPropertyTestObject;
-	static Find(Outer: UObject, ResourceName: string): BlueprintPropertyTestObject;
-	static GetDefaultObject(): BlueprintPropertyTestObject;
-	static CreateDefaultSubobject(Name: string, Transient?: boolean, Required?: boolean, Abstract?: boolean): BlueprintPropertyTestObject;
-	static C(Other: UObject | any): BlueprintPropertyTestObject;
-}
-
-declare class BlueprintPropertyContainerTestObject extends UObject { 
-	Array: BlueprintPropertyTestObject[];
-	static Load(ResourceName: string): BlueprintPropertyContainerTestObject;
-	static Find(Outer: UObject, ResourceName: string): BlueprintPropertyContainerTestObject;
-	static GetDefaultObject(): BlueprintPropertyContainerTestObject;
-	static CreateDefaultSubobject(Name: string, Transient?: boolean, Required?: boolean, Abstract?: boolean): BlueprintPropertyContainerTestObject;
-	static C(Other: UObject | any): BlueprintPropertyContainerTestObject;
-}
-
-declare class TestSparseClassDataBase extends UObject { 
-	static Load(ResourceName: string): TestSparseClassDataBase;
-	static Find(Outer: UObject, ResourceName: string): TestSparseClassDataBase;
-	static GetDefaultObject(): TestSparseClassDataBase;
-	static CreateDefaultSubobject(Name: string, Transient?: boolean, Required?: boolean, Abstract?: boolean): TestSparseClassDataBase;
-	static C(Other: UObject | any): TestSparseClassDataBase;
-}
-
-declare class TestSparseClassData extends TestSparseClassDataBase { 
-	static Load(ResourceName: string): TestSparseClassData;
-	static Find(Outer: UObject, ResourceName: string): TestSparseClassData;
-	static GetDefaultObject(): TestSparseClassData;
-	static CreateDefaultSubobject(Name: string, Transient?: boolean, Required?: boolean, Abstract?: boolean): TestSparseClassData;
-	static C(Other: UObject | any): TestSparseClassData;
-}
-
-declare class ReimportCurveFactory extends CSVImportFactory { 
-	static Load(ResourceName: string): ReimportCurveFactory;
-	static Find(Outer: UObject, ResourceName: string): ReimportCurveFactory;
-	static GetDefaultObject(): ReimportCurveFactory;
-	static CreateDefaultSubobject(Name: string, Transient?: boolean, Required?: boolean, Abstract?: boolean): ReimportCurveFactory;
-	static C(Other: UObject | any): ReimportCurveFactory;
-}
-
-declare class ReimportCurveTableFactory extends CSVImportFactory { 
-	static Load(ResourceName: string): ReimportCurveTableFactory;
-	static Find(Outer: UObject, ResourceName: string): ReimportCurveTableFactory;
-	static GetDefaultObject(): ReimportCurveTableFactory;
-	static CreateDefaultSubobject(Name: string, Transient?: boolean, Required?: boolean, Abstract?: boolean): ReimportCurveTableFactory;
-	static C(Other: UObject | any): ReimportCurveTableFactory;
-}
-
-declare class ReimportDataTableFactory extends CSVImportFactory { 
-	static Load(ResourceName: string): ReimportDataTableFactory;
-	static Find(Outer: UObject, ResourceName: string): ReimportDataTableFactory;
-	static GetDefaultObject(): ReimportDataTableFactory;
-	static CreateDefaultSubobject(Name: string, Transient?: boolean, Required?: boolean, Abstract?: boolean): ReimportDataTableFactory;
-	static C(Other: UObject | any): ReimportDataTableFactory;
-}
-
-declare class ReimportFbxAnimSequenceFactory extends FbxFactory { 
-	static Load(ResourceName: string): ReimportFbxAnimSequenceFactory;
-	static Find(Outer: UObject, ResourceName: string): ReimportFbxAnimSequenceFactory;
-	static GetDefaultObject(): ReimportFbxAnimSequenceFactory;
-	static CreateDefaultSubobject(Name: string, Transient?: boolean, Required?: boolean, Abstract?: boolean): ReimportFbxAnimSequenceFactory;
-	static C(Other: UObject | any): ReimportFbxAnimSequenceFactory;
-}
-
-declare class ReimportFbxSceneFactory extends FbxSceneImportFactory { 
-	static Load(ResourceName: string): ReimportFbxSceneFactory;
-	static Find(Outer: UObject, ResourceName: string): ReimportFbxSceneFactory;
-	static GetDefaultObject(): ReimportFbxSceneFactory;
-	static CreateDefaultSubobject(Name: string, Transient?: boolean, Required?: boolean, Abstract?: boolean): ReimportFbxSceneFactory;
-	ScriptReimportHelper(Obj: UObject): void;
-	static C(Other: UObject | any): ReimportFbxSceneFactory;
-}
-
-declare class ReimportFbxSkeletalMeshFactory extends FbxFactory { 
-	static Load(ResourceName: string): ReimportFbxSkeletalMeshFactory;
-	static Find(Outer: UObject, ResourceName: string): ReimportFbxSkeletalMeshFactory;
-	static GetDefaultObject(): ReimportFbxSkeletalMeshFactory;
-	static CreateDefaultSubobject(Name: string, Transient?: boolean, Required?: boolean, Abstract?: boolean): ReimportFbxSkeletalMeshFactory;
-	static C(Other: UObject | any): ReimportFbxSkeletalMeshFactory;
-}
-
-declare class ReimportFbxStaticMeshFactory extends FbxFactory { 
-	static Load(ResourceName: string): ReimportFbxStaticMeshFactory;
-	static Find(Outer: UObject, ResourceName: string): ReimportFbxStaticMeshFactory;
-	static GetDefaultObject(): ReimportFbxStaticMeshFactory;
-	static CreateDefaultSubobject(Name: string, Transient?: boolean, Required?: boolean, Abstract?: boolean): ReimportFbxStaticMeshFactory;
-	static C(Other: UObject | any): ReimportFbxStaticMeshFactory;
-}
-
-declare type ETextureSourceColorSpace = 'Auto' | 'Linear' | 'SRGB' | 'ETextureSourceColorSpace_MAX';
-declare var ETextureSourceColorSpace : { Auto:'Auto',Linear:'Linear',SRGB:'SRGB',ETextureSourceColorSpace_MAX:'ETextureSourceColorSpace_MAX', };
-declare class TextureFactory extends Factory { 
-	NoCompression: boolean;
-	NoAlpha: boolean;
-	bDeferCompression: boolean;
-	CompressionSettings: TextureCompressionSettings;
-	bCreateMaterial: boolean;
-	bRGBToBaseColor: boolean;
-	bRGBToEmissive: boolean;
-	bAlphaToRoughness: boolean;
-	bAlphaToEmissive: boolean;
-	bAlphaToOpacity: boolean;
-	bAlphaToOpacityMask: boolean;
-	bTwoSided: boolean;
-	Blending: EBlendMode;
-	ShadingModel: EMaterialShadingModel;
-	MipGenSettings: TextureMipGenSettings;
-	LODGroup: TextureGroup;
-	bDitherMipMapAlpha: boolean;
-	AlphaCoverageThresholds: Vector4;
-	bPreserveBorder: boolean;
-	bFlipNormalMapGreenChannel: boolean;
-	bUsingExistingSettings: boolean;
-	bUseHashAsGuid: boolean;
-	UdimRegexPattern: string;
-	ColorSpaceMode: ETextureSourceColorSpace;
-	static Load(ResourceName: string): TextureFactory;
-	static Find(Outer: UObject, ResourceName: string): TextureFactory;
-	static GetDefaultObject(): TextureFactory;
-	static CreateDefaultSubobject(Name: string, Transient?: boolean, Required?: boolean, Abstract?: boolean): TextureFactory;
-	static C(Other: UObject | any): TextureFactory;
-}
-
-declare class ReimportTextureFactory extends TextureFactory { 
-	pOriginalTex: Texture;
-	static Load(ResourceName: string): ReimportTextureFactory;
-	static Find(Outer: UObject, ResourceName: string): ReimportTextureFactory;
-	static GetDefaultObject(): ReimportTextureFactory;
-	static CreateDefaultSubobject(Name: string, Transient?: boolean, Required?: boolean, Abstract?: boolean): ReimportTextureFactory;
-	static C(Other: UObject | any): ReimportTextureFactory;
-}
-
-declare class VectorFieldStaticFactory extends Factory { 
-	static Load(ResourceName: string): VectorFieldStaticFactory;
-	static Find(Outer: UObject, ResourceName: string): VectorFieldStaticFactory;
-	static GetDefaultObject(): VectorFieldStaticFactory;
-	static CreateDefaultSubobject(Name: string, Transient?: boolean, Required?: boolean, Abstract?: boolean): VectorFieldStaticFactory;
-	static C(Other: UObject | any): VectorFieldStaticFactory;
-}
-
-declare class ReimportVectorFieldStaticFactory extends VectorFieldStaticFactory { 
-	static Load(ResourceName: string): ReimportVectorFieldStaticFactory;
-	static Find(Outer: UObject, ResourceName: string): ReimportVectorFieldStaticFactory;
-	static GetDefaultObject(): ReimportVectorFieldStaticFactory;
-	static CreateDefaultSubobject(Name: string, Transient?: boolean, Required?: boolean, Abstract?: boolean): ReimportVectorFieldStaticFactory;
-	static C(Other: UObject | any): ReimportVectorFieldStaticFactory;
-}
-
-declare class RenderTargetExporterHDR extends Exporter { 
-	static Load(ResourceName: string): RenderTargetExporterHDR;
-	static Find(Outer: UObject, ResourceName: string): RenderTargetExporterHDR;
-	static GetDefaultObject(): RenderTargetExporterHDR;
-	static CreateDefaultSubobject(Name: string, Transient?: boolean, Required?: boolean, Abstract?: boolean): RenderTargetExporterHDR;
-	static C(Other: UObject | any): RenderTargetExporterHDR;
-}
-
-declare class ReplaceActorCommandlet extends Commandlet { 
-	static Load(ResourceName: string): ReplaceActorCommandlet;
-	static Find(Outer: UObject, ResourceName: string): ReplaceActorCommandlet;
-	static GetDefaultObject(): ReplaceActorCommandlet;
-	static CreateDefaultSubobject(Name: string, Transient?: boolean, Required?: boolean, Abstract?: boolean): ReplaceActorCommandlet;
-	static C(Other: UObject | any): ReplaceActorCommandlet;
-}
-
-declare class ReplaceAssetsCommandlet extends Commandlet { 
-	static Load(ResourceName: string): ReplaceAssetsCommandlet;
-	static Find(Outer: UObject, ResourceName: string): ReplaceAssetsCommandlet;
-	static GetDefaultObject(): ReplaceAssetsCommandlet;
-	static CreateDefaultSubobject(Name: string, Transient?: boolean, Required?: boolean, Abstract?: boolean): ReplaceAssetsCommandlet;
-	static C(Other: UObject | any): ReplaceAssetsCommandlet;
-}
-
-declare class SavePackageUtilitiesCommandlet extends Commandlet { 
-	static Load(ResourceName: string): SavePackageUtilitiesCommandlet;
-	static Find(Outer: UObject, ResourceName: string): SavePackageUtilitiesCommandlet;
-	static GetDefaultObject(): SavePackageUtilitiesCommandlet;
-	static CreateDefaultSubobject(Name: string, Transient?: boolean, Required?: boolean, Abstract?: boolean): SavePackageUtilitiesCommandlet;
-	static C(Other: UObject | any): SavePackageUtilitiesCommandlet;
-}
-
-declare class SceneThumbnailInfo extends ThumbnailInfo { 
-	OrbitPitch: number;
-	OrbitYaw: number;
-	OrbitZoom: number;
-	static Load(ResourceName: string): SceneThumbnailInfo;
-	static Find(Outer: UObject, ResourceName: string): SceneThumbnailInfo;
-	static GetDefaultObject(): SceneThumbnailInfo;
-	static CreateDefaultSubobject(Name: string, Transient?: boolean, Required?: boolean, Abstract?: boolean): SceneThumbnailInfo;
-	static C(Other: UObject | any): SceneThumbnailInfo;
-}
-
-declare type EThumbnailPrimType = 'TPT_None' | 'TPT_Sphere' | 'TPT_Cube' | 'TPT_Plane' | 'TPT_Cylinder' | 'TPT_MAX';
-declare var EThumbnailPrimType : { TPT_None:'TPT_None',TPT_Sphere:'TPT_Sphere',TPT_Cube:'TPT_Cube',TPT_Plane:'TPT_Plane',TPT_Cylinder:'TPT_Cylinder',TPT_MAX:'TPT_MAX', };
-declare class SceneThumbnailInfoWithPrimitive extends SceneThumbnailInfo { 
-	PrimitiveType: EThumbnailPrimType;
-	PreviewMesh: SoftObjectPath;
-	bUserModifiedShape: boolean;
-	static Load(ResourceName: string): SceneThumbnailInfoWithPrimitive;
-	static Find(Outer: UObject, ResourceName: string): SceneThumbnailInfoWithPrimitive;
-	static GetDefaultObject(): SceneThumbnailInfoWithPrimitive;
-	static CreateDefaultSubobject(Name: string, Transient?: boolean, Required?: boolean, Abstract?: boolean): SceneThumbnailInfoWithPrimitive;
-	static C(Other: UObject | any): SceneThumbnailInfoWithPrimitive;
-}
-
-declare class EditorViewportViewMenuContext extends UObject { 
-	static Load(ResourceName: string): EditorViewportViewMenuContext;
-	static Find(Outer: UObject, ResourceName: string): EditorViewportViewMenuContext;
-	static GetDefaultObject(): EditorViewportViewMenuContext;
-	static CreateDefaultSubobject(Name: string, Transient?: boolean, Required?: boolean, Abstract?: boolean): EditorViewportViewMenuContext;
-	static C(Other: UObject | any): EditorViewportViewMenuContext;
-}
-
-declare class SequenceExporterT3D extends Exporter { 
-	static Load(ResourceName: string): SequenceExporterT3D;
-	static Find(Outer: UObject, ResourceName: string): SequenceExporterT3D;
-	static GetDefaultObject(): SequenceExporterT3D;
-	static CreateDefaultSubobject(Name: string, Transient?: boolean, Required?: boolean, Abstract?: boolean): SequenceExporterT3D;
-	static C(Other: UObject | any): SequenceExporterT3D;
-}
-
-declare class ShaderCodeLibraryToolsCommandlet extends Commandlet { 
-	static Load(ResourceName: string): ShaderCodeLibraryToolsCommandlet;
-	static Find(Outer: UObject, ResourceName: string): ShaderCodeLibraryToolsCommandlet;
-	static GetDefaultObject(): ShaderCodeLibraryToolsCommandlet;
-	static CreateDefaultSubobject(Name: string, Transient?: boolean, Required?: boolean, Abstract?: boolean): ShaderCodeLibraryToolsCommandlet;
-	static C(Other: UObject | any): ShaderCodeLibraryToolsCommandlet;
 }
 
