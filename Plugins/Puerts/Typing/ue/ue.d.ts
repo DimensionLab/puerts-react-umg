@@ -54122,6 +54122,8 @@ declare module "ue" {
         constructor(speed: number, age: number);
         speed: number;
         age: number;
+        MyArray: TArray<Vector>;
+        Triangles: TArray<number>;
         static StaticClass(): Class;
     }
     
@@ -70178,8 +70180,8 @@ declare module "ue" {
         I1: number;
         I2: number;
         NewVar_0: ProcMeshVertex;
-        Render(): void;
-        Bar(val1: number, val2: number, val3: number): void;
+        Render(NewParam: TestStruct): void;
+        Bar(NewParam: TestStruct): void;
         Foo(P1: boolean, P2: number, P3: number): void;
         UserConstructionScript(): void;
         ReceiveBeginPlay(): void;
