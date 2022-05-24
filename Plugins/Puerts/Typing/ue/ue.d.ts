@@ -45425,7 +45425,7 @@ declare module "ue" {
     }
     
     enum EPyTestEnum { One, Two, EPyTestEnum_MAX}
-    class PyTestStruct {
+    class PyRenderStruct {
         constructor();
         constructor(Bool: boolean, Int: number, Float: number, Enum: EPyTestEnum, String: string, Name: string, Text: string, StringArray: TArray<string>, StringSet: TSet<string>, StringIntMap: TMap<string, number>, LegacyInt: number, BoolInstanceOnly: boolean, BoolDefaultsOnly: boolean);
         Bool: boolean;
@@ -45444,7 +45444,7 @@ declare module "ue" {
         static StaticClass(): Class;
     }
     
-    class PyTestChildStruct extends PyTestStruct {
+    class PyTestChildStruct extends PyRenderStruct {
         constructor();
         static StaticClass(): Class;
     }
@@ -45463,8 +45463,8 @@ declare module "ue" {
         StringIntMap: TMap<string, number>;
         Delegate: $Delegate<(InValue: number) => number>;
         MulticastDelegate: $MulticastDelegate<(InStr: string) => void>;
-        Struct: PyTestStruct;
-        StructArray: TArray<PyTestStruct>;
+        Struct: PyRenderStruct;
+        StructArray: TArray<PyRenderStruct>;
         ChildStruct: PyTestChildStruct;
         BoolInstanceOnly: boolean;
         BoolDefaultsOnly: boolean;
@@ -45472,18 +45472,18 @@ declare module "ue" {
         static ReturnMap(): TMap<number, boolean>;
         static ReturnArray(): TArray<number>;
         MulticastDelegatePropertyCallback(InStr: string): void;
-        LegacyFuncTakingPyTestStruct(InStruct: PyTestStruct): void;
+        LegacyFuncTakingPyRenderStruct(InStruct: PyRenderStruct): void;
         static GetConstantValue(): number;
-        FuncTakingPyTestStruct(InStruct: PyTestStruct): void;
+        FuncTakingPyRenderStruct(InStruct: PyRenderStruct): void;
         FuncTakingPyTestDelegate(InDelegate: $Delegate<(InValue: number) => number>, InValue: number): number;
         FuncTakingPyTestChildStruct(InStruct: PyTestChildStruct): void;
-        FuncBlueprintNativeRef(InOutStruct: $Ref<PyTestStruct>): void;
+        FuncBlueprintNativeRef(InOutStruct: $Ref<PyRenderStruct>): void;
         FuncBlueprintNative(InValue: number): number;
         FuncBlueprintImplementable(InValue: number): number;
         static EmitScriptWarning(): void;
         static EmitScriptError(): void;
         DelegatePropertyCallback(InValue: number): number;
-        CallFuncBlueprintNativeRef(InOutStruct: $Ref<PyTestStruct>): void;
+        CallFuncBlueprintNativeRef(InOutStruct: $Ref<PyRenderStruct>): void;
         CallFuncBlueprintNative(InValue: number): number;
         CallFuncBlueprintImplementable(InValue: number): number;
         static StaticClass(): Class;
@@ -54117,7 +54117,7 @@ declare module "ue" {
         static Load(InName: string): MovieSceneLiveLinkTrackRecorder;
     }
 
-    class TestStruct {
+    class RenderStruct {
         constructor();
         constructor(speed: number, age: number);
         speed: number;
@@ -65247,17 +65247,17 @@ declare module "ue" {
         static Load(InName: string): PyTestObjectLibrary;
     }
     
-    class PyTestStructLibrary extends BlueprintFunctionLibrary {
+    class PyRenderStructLibrary extends BlueprintFunctionLibrary {
         constructor(Outer?: Object, Name?: string, ObjectFlags?: number);
-        static LegacyIsBoolSet(InStruct: PyTestStruct): boolean;
-        static IsBoolSet(InStruct: PyTestStruct): boolean;
+        static LegacyIsBoolSet(InStruct: PyRenderStruct): boolean;
+        static IsBoolSet(InStruct: PyRenderStruct): boolean;
         static GetConstantValue(): number;
-        static AddStr(InStruct: PyTestStruct, InValue: string): PyTestStruct;
-        static AddInt(InStruct: PyTestStruct, InValue: number): PyTestStruct;
-        static AddFloat(InStruct: PyTestStruct, InValue: number): PyTestStruct;
+        static AddStr(InStruct: PyRenderStruct, InValue: string): PyRenderStruct;
+        static AddInt(InStruct: PyRenderStruct, InValue: number): PyRenderStruct;
+        static AddFloat(InStruct: PyRenderStruct, InValue: number): PyRenderStruct;
         static StaticClass(): Class;
-        static Find(OrigInName: string, Outer?: Object): PyTestStructLibrary;
-        static Load(InName: string): PyTestStructLibrary;
+        static Find(OrigInName: string, Outer?: Object): PyRenderStructLibrary;
+        static Load(InName: string): PyRenderStructLibrary;
     }
     
     class PythonGeneratedClass extends Class {
@@ -70170,7 +70170,7 @@ declare module "ue" {
         static Load(InName: string): TestBeaconHost;
     }
     
-    class TestBlueprint_C extends Actor {
+    class MainRenderBP_C extends Actor {
         constructor(Outer?: Object, Name?: string, ObjectFlags?: number);
         UberGraphFrame: PointerToUberGraphFrame;
         ProceduralMesh: ProceduralMeshComponent;
@@ -70180,15 +70180,15 @@ declare module "ue" {
         I1: number;
         I2: number;
         NewVar_0: ProcMeshVertex;
-        Render(NewParam: TestStruct): void;
-        Bar(NewParam: TestStruct): void;
+        Render(NewParam: RenderStruct): void;
+        Bar(NewParam: RenderStruct): void;
         Foo(P1: boolean, P2: number, P3: number): void;
         UserConstructionScript(): void;
         ReceiveBeginPlay(): void;
-        ExecuteUbergraph_TestBlueprint(EntryPoint: number): void;
+        ExecuteUbergraph_MainRenderBPt(EntryPoint: number): void;
         static StaticClass(): Class;
-        static Find(OrigInName: string, Outer?: Object): TestBlueprint_C;
-        static Load(InName: string): TestBlueprint_C;
+        static Find(OrigInName: string, Outer?: Object): MainRenderBP_C;
+        static Load(InName: string): MainRenderBP_C;
     }
     
     class TestBTDecorator_Blackboard extends BTDecorator_Blackboard {

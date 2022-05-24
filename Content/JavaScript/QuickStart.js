@@ -110,15 +110,15 @@ let actor = world.SpawnActor(UE.MainActor.StaticClass(), undefined, UE.ESpawnAct
 console.log(actor.GetName());
 console.log(actor.K2_GetActorLocation().ToString());
 //蓝图加载
-let bpClass = UE.Class.Load('/Game/StarterContent/TestBlueprint.TestBlueprint_C');
+let bpClass = UE.Class.Load('/Game/StarterContent/MainRenderBP.MainRenderBP_C');
 let bpActor = world.SpawnActor(bpClass, undefined, UE.ESpawnActorCollisionHandlingMethod.Undefined, undefined, undefined);
 bpActor.Foo(false, 8000, 9000);
 //蓝图结构体加载
-let TestStruct = UE.UserDefinedStruct.Load("UserDefinedStruct'/Game/StarterContent/TestStruct.TestStruct'");
-let testStruct = UE.NewStruct(TestStruct);
-testStruct.age = 10;
-testStruct.speed = 5;
-bpActor.Bar(testStruct);
+let RenderStruct = UE.UserDefinedStruct.Load("UserDefinedStruct'/Game/StarterContent/RenderStruct.RenderStruct'");
+let renderStruct = UE.NewStruct(RenderStruct);
+// RenderStruct.age = 10;
+// RenderStruct.speed = 5;
+bpActor.Bar(renderStruct);
 //Delegate
 console.log("----------------------------------------------------");
 function MutiCast1(i) {

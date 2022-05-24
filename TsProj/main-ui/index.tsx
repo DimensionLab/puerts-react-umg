@@ -8,7 +8,7 @@ import { TextBlock, EditableTextBox, VerticalBox, CanvasPanel, ReactUMG, CanvasP
 import { VectorEditable } from './ui-components'
 import * as data from './004.json'
 
-let obj = new UE.MainObject();
+const scale = 50; 
 
 let SlotOfVerticalBox: CanvasPanelSlot = {
     LayoutData: {
@@ -25,7 +25,7 @@ const sleep = (time) => {
     return new Promise((resolve) => setTimeout(resolve, time))
   }
 
-const animate = async (d, testStruct, bpActor, index) => {
+const animate = async (d, RenderStruct, bpActor, index) => {
     let positions_array = UE.NewArray(UE.Vector);
     let triangles_array = UE.NewArray(UE.BuiltinInt);
     if (Object.entries(d).length > index) {
@@ -34,7 +34,7 @@ const animate = async (d, testStruct, bpActor, index) => {
         let value = entry[1]
 
         value['positions'].forEach((v, i) => {
-            positions_array.Add(new UE.Vector(v[0] * 100, v[1] * 100, v[2] * 100));
+            positions_array.Add(new UE.Vector(v[0] * scale, v[1] * scale, v[2] * scale));
         })
         value['faces'].forEach((v, i) => {
             v.forEach((g) => {
@@ -42,13 +42,13 @@ const animate = async (d, testStruct, bpActor, index) => {
             });
         });
   
-        sleep(40).then(() => {
-            testStruct.MyArray = positions_array;
-            testStruct.Triangles = triangles_array;
+        sleep(20).then(() => {
+            RenderStruct.MyArray = positions_array;
+            RenderStruct.Triangles = triangles_array;
             let incr = index + 1;
-            bpActor.Render(testStruct);
+            bpActor.Render(RenderStruct);
 
-            animate(d, testStruct, bpActor, incr);
+            animate(d, RenderStruct, bpActor, incr);
         });
     }
 }
@@ -58,18 +58,18 @@ function Main() {
     const [text, setText] = useState('First model');
 
     let world = (argv.getByName("GameInstance") as UE.GameInstance).GetWorld();
-    let bpClass = UE.Class.Load('/Game/StarterContent/TestBlueprint.TestBlueprint_C')
+    let bpClass = UE.Class.Load('/Game/StarterContent/MainRenderBP.MainRenderBP_C')
     
     // From here you can access the blueprint class
-    let bpActor = world.SpawnActor(bpClass, undefined, UE.ESpawnActorCollisionHandlingMethod.Undefined, undefined, undefined) as UE.TestBlueprint_C;
+    let bpActor = world.SpawnActor(bpClass, undefined, UE.ESpawnActorCollisionHandlingMethod.Undefined, undefined, undefined) as UE.MainRenderBP_C;
     bpActor.SetActorScale3D(new UE.Vector(7, 7, 7));	
     bpActor.K2_SetActorLocation(new UE.Vector(0,1,1), undefined, undefined, undefined);
-    let TestStruct = UE.UserDefinedStruct.Load("UserDefinedStruct'/Game/StarterContent/TestStruct.TestStruct'");
-    let testStruct = UE.NewStruct(TestStruct) as UE.TestStruct;
+    let RenderStruct = UE.UserDefinedStruct.Load("UserDefinedStruct'/Game/StarterContent/RenderStruct.RenderStruct'");
+    let renderStruct = UE.NewStruct(RenderStruct) as UE.RenderStruct;
  
     let json_object = JSON.parse(JSON.stringify(data));
 
-    animate(json_object, testStruct, bpActor, 0)
+    animate(json_object, renderStruct, bpActor, 0)
     
     return (<CanvasPanel>
         <VerticalBox Slot={SlotOfVerticalBox}>

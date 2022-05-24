@@ -14,7 +14,7 @@ async function asyncTest() {
     console.warn("delay finished");
 
     console.warn("async loading...");
-    let cls = await AsyncUtils.AsyncLoad("/Game/StarterContent/TestBlueprint.TestBlueprint_C");
+    let cls = await AsyncUtils.AsyncLoad("/Game/StarterContent/MainRenderBP.MainRenderBP_C");
     console.warn("loaded class:" + cls.GetName());
 }
 
